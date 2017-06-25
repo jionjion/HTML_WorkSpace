@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>子元素选择器</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>子元素筛选选择器</h1>
+		<p>	子元素筛选选择器不常使用，其筛选规则比起其它的选择器稍微要复杂点<br />
+			无论中间间隔多少子辈,查找符合要求的
+			<img src="../../img/子选择器.jpg"/>
+		</p>
+		<p>
+			:first只匹配一个单独的元素，但是:first-child选择器可以匹配多个：即为每个父级元素匹配第一个子元素。这相当于:nth-child(1)<br />
+			:last 只匹配一个单独的元素， :last-child 选择器可以匹配多个元素：即，为每个父级元素匹配最后一个子元素<br />
+			如果子元素只有一个的话，:first-child与:last-child是同一个<br />
+			:only-child匹配某个元素是父元素中唯一的子元素，就是说当前子元素是父元素中唯一的元素，则匹配<br />
+			jQuery实现:nth-child(n)是严格来自CSS规范，所以n值是“索引”，也就是说，从1开始计数，:nth-child(index)从1开始的，而eq(index)是从0开始的<br />
+			nth-child(n) 与 :nth-last-child(n) 的区别前者是从前往后计算，后者从后往前计算
+		</p>
+		<hr />
+		
+		<h3>:first-child、:last-child、:only-child</h3>
+	    <div class="first-div">
+	        <div>
+	            <a>:first-child</a>
+	            <a>第二个元素</a>
+	            <a>:last-child</a>
+	        </div>
+	        <div>
+	            <a>:first-child</a>
+	        </div>
+	        <div>
+	            <a>:first-child</a>
+	            <a>第二个元素</a>
+	            <a>:last-child</a>
+	        </div>
+	    </div>
+	
+	    <script type="text/javascript">
+	        //查找class="first-div"下的第一个a元素
+	        //针对所有父级下的第一个
+	        $('.first-div a:first-child').css("color", "#CD00CD");
+	    </script>
+	
+	    <script type="text/javascript">
+	        //查找class="first-div"下的最后一个a元素
+	        //针对所有父级下的最后一个
+	        //如果只有一个元素的话，last也是第一个元素
+	        $('.first-div a:last-child').css("color", "red");
+	    </script>
+	
+	    <script type="text/javascript">
+	        //查找class="first-div"下的只有一个子元素的a元素
+	        $('.first-div a:only-child').css("color", "blue");
+	    </script>
+	
+	
+	    <h3>:nth-child、:nth-last-child</h3>
+	    <div class="last-div">
+	        <div>
+	            <a>:first-child</a>
+	            <a>第二个元素</a>
+	            <a>第三个元素</a>
+	            <a>:last-child</a>
+	        </div>
+	        <div>
+	            <a>:first-child</a>
+	            <a>第二个元素</a>
+	        </div>
+	        <div>
+	            <a>:first-child</a>
+	            <a>第二个元素</a>
+	            <a>第三个元素</a>
+	            <a>:last-child</a>
+	        </div>
+	    </div>
+	
+	    <script type="text/javascript">
+	        //查找class="last-div"下的第二个a元素
+	        $('.last-div a:nth-child(2)').css("color", "#CD00CD");
+	    </script>
+	
+	    <script type="text/javascript">
+	        //查找class="last-div"下的倒数第二个a元素
+	        $('.last-div a:nth-last-child(2)').css("color", "red");
+	    </script>
+	</body>
+</html>

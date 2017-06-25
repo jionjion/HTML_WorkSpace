@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>使用ajaxStart()和ajaxStop()方法</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>
+			ajaxStart()和ajaxStop()方法是绑定Ajax事件。ajaxStart()方法用于在Ajax请求发出前触发函数，ajaxStop()方法用于在Ajax请求完成后触发函数。它们的调用格式为：<br />
+			$(selector).ajaxStart(function())<br />
+			$(selector).ajaxStop(function())<br />
+			其中，两个方法中括号都是绑定的函数，当发送Ajax请求前执行ajaxStart()方法绑定的函数，请求成功后，执行ajaxStop ()方法绑定的函数。
+		</p>
+		<hr />
+		
+		<div>
+            <div>
+                <span>加载一段文字</span> 
+                <span>
+                    <input type="button" value="加载" />
+                </span>
+            </div>
+            <ul>
+               <li></li>
+            </ul>
+        </div>
+        
+        <script type="text/javascript">
+            $(function () {
+                $('li').ajaxStart(function(){
+                    $(this).html("正在请求数据...");
+                });
+                $('li').ajaxStop(function(){
+                    $(this).html("数据请求完成！");
+                });
+                $("input:button").bind("click", function () {
+                    var $this = $(this);
+                    $.ajax({
+                        url: "http://www.imooc.com/data/info_f.php",
+                        dataType: "json",
+                        success: function (data) {
+                            $this.attr("disabled", "true");
+                        $("ul").append("<li>我的名字叫：" + data.name + "</li>");
+                        $("ul").append("<li>男朋友对我说：" + data.say + "</li>");
+                        }
+                    });
+                })
+            });
+        </script>
+	</body>
+</html>

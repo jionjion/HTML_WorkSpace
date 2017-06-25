@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>元素样式的删除</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<style type="text/css">
+			.aa{color: red;}
+			.bb{font-weight: bolder;}
+			.newClass{background-color: blue;}
+			.myClass{border: 2px solid green;}
+		</style>
+	</head>
+	<body>
+		<p>	jQuery通过.addClass()方法可以很便捷的增加样式。<br />
+			如果需要样式之间的切换，同样jQuery提供了一个很方便的.removeClass()，它的作用是从匹配的元素中删除全部或者指定的class</p>
+		
+		<p>
+			.removeClass( )方法<br />
+			.removeClass( [className ] )：每个匹配元素移除的一个或多个用空格隔开的样式名,不写全部移除<br />
+			.removeClass( function(index, class) ) ： 一个函数，返回一个或多个将要被移除的样式名<br />
+			注意:如果一个样式类名作为一个参数,只有这样式类会被从匹配的元素集合中删除 。 如果没有样式名作为参数，那么所有的样式类将被移除.
+		</p>
+		<hr />
+		
+		<h2>.removeClass()方法</h2>
+	    <div class="one">
+	        <div class="aa newClass">	<!--红字,蓝底-->
+	            <p>newClass</p>
+	        </div>
+	        <div class="aa newClass">
+	            <p>newClass</p>
+	        </div>
+	    </div>
+	    <div class="two">
+	        <div class="aa bb myClass">	<!--红字,加粗,绿框-->
+	            <article>
+	                <p>myClass</p>
+	            </article>
+	        </div>
+	        <div>
+	            <article>
+	                <p>myClass</p>
+	            </article>
+	        </div>
+	    </div>
+	
+	    <script type="text/javascript"> 
+	        //class=one下div元素删除newClass样式
+	        $('.one div').removeClass('newClass');
+//	        $('.one div').removeClass();			//删除全部样式
+	    </script>
+	
+	
+	    <script type="text/javascript"> 
+	        //.removeClass() 方法允许我们指定一个函数作为参数，返回将要被删除的样式
+	        $('.two > div:first').removeClass(function(index,className){
+	            
+	            //className = aa bb myClass
+	            //把div的className赋给下一个兄弟元素div上作为它的class
+	            $(this).next().addClass(className);
+	
+	            //删除自己本身的myClass
+	            return 'myClass';
+	        })
+	
+	
+	    </script>
+	</body>
+</html>

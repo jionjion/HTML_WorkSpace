@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>可见性选择器</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>可见性选择器</h1>
+		<p>元素有显示状态与隐藏状态，jQuery根据元素的状态扩展了可见性筛选选择器:visible与:hidden<br />
+			:hidden选择器，不仅仅包含样式是display="none"的元素，还包括隐藏表单、visibility等等
+		</p>
+		<img src="../../img/隐藏.jpg"/>
+		<p>常用的隐藏方式有:<br />
+			CSS display的值是none。<br />
+			type="hidden"的表单元素。<br />
+			宽度和高度都显式设置为0。<br />
+			一个祖先元素是隐藏的，该元素是不会在页面上显示<br />
+			CSS visibility的值是hidden<br />
+			CSS opacity的指是0</p>
+		<p>	如果元素中占据文档中一定的空间,元素被认为是可见的。<br />
+			可见元素的宽度或高度，是大于零。<br />
+			元素的visibility: hidden 或 opacity: 0被认为是可见的，因为他们仍然占用空间布局。<br />
+		</p>
+		<hr />
+		
+		<h3>:visible/:hidden</h3>
+	    <div>
+	        <div class="one">
+	            <a>display</a>
+	            <p id="div1" style="display:none;">display</p>
+	        </div>
+	        <div class="one">
+	            <a>width</a>
+	            <a>height</a>
+	            <p id="div2" style="width:0;height:0">width/height</p>
+	        </div>
+	        <div class="one">
+	            <a>visibility</a>
+	            <a>opacity</a>
+	            <p id="div3" style="visibility:hidden;opacity:0">visibility</p>
+	        </div>
+	    </div>
+	
+	    <p id="show"></p>
+	    
+		<script type="text/javascript">
+			function show (ele) {
+				if (ele instanceof jQuery) {
+					$("#show").html('元素的长度的 = ' + ele.length)
+				} else {
+					alert(ele+' 不是jQuery对象')
+				}
+			}
+		</script>
+	
+	
+		<!--根据是0还是1判断是否成立-->
+	    <script type="text/javascript">
+	    	//查找id = div1的DOM元素,是否可见
+//	    	show($('#div1:visible'));
+	    </script>
+	    <script type="text/javascript">
+	    	//查找id = div1的DOM元素,是否隐藏
+//	    	show($('#div1:hidden'));
+	    </script>
+	
+	    <script type="text/javascript">
+	    	//查找id = div2的DOM元素,是否可见
+//	    	show($('#div2:visible') );
+	    </script>
+	    <script type="text/javascript">
+	    	//查找id = div2的DOM元素,是否隐藏
+//	    	show($('#div2:hidden'));
+	    </script>
+		
+	    <script type="text/javascript">
+	    	//查找id = div3的DOM元素,是否可见
+//	    	show($('#div3:visible'));
+	    </script>
+	
+	
+	    <script type="text/javascript">
+	    	//查找id = div3的DOM元素,是否隐藏
+//	    	show($('#div3:hidden'));
+	    </script>
+	</body>
+</html>

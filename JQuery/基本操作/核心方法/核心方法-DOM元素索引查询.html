@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>传入DOM元素,查找位置</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>DOM元素的索引位置查询</h1>
+		<p>
+			.index()方法，从匹配的元素中搜索给定元素的索引值，从0开始计数。<br />
+			语法：参数接受一个jQuery或者dom对象作为查找的条件	<br />
+			.index() 								<br />
+			.index( selector )						<br />
+			.index( element )						<br />
+			如果不传递任何参数给 .index() 方法，则返回值就是jQuery对象中第一个元素相对于它同辈元素的位置							<br />
+			如果在一组元素上调用 .index() ，并且参数是一个DOM元素或jQuery对象， .index() 返回值就是传入的元素相对于原先集合的位置		<br />
+			如果参数是一个选择器， .index() 返回值就是原先元素相对于选择器匹配元素的位置。如果找不到匹配的元素，则 .index() 返回 -1  	
+		</p>
+		<hr />
+		
+	    <h2>index方法</h2>
+	    <ul>
+	        <a></a>
+	        <a></a>
+	        <li id="test1">1</li>
+	        <li id="test2">2</li>
+	        <li id="test3">3</li>
+	    </ul>
+	    <ul>
+	        <li id="test4">4</li>
+	        <li id="test5">5</li>
+	        <li id="test6">6</li>
+	    </ul>
+	    <select>
+	        <option value="1">index无参数</option>
+	        <option value="2">index传递dom</option>
+	        <option value="3">index传递jQuery对象</option>
+	    </select>
+	    <input type="button" value="点击执行">
+	    <br />
+	    <br /> 索引结果：
+	    <span></span>
+	    <script type="text/javascript">
+	    $("input:button").click(function() {
+	        var v = $("select").val();
+	
+	        var $span = $("span");
+	        //首先置空
+	        $span.empty();				
+	
+	        if (v == "1") {
+	            //找到第一个li的同辈节点中的索引位置
+	            $span.text($("li").index())
+	        } else if (v == "2") {
+	
+	            //通过传递dom查找,在所有li元素中的位置
+	            $span.text($("li").index(document.getElementById("test5")))
+	
+	        } else if (v == "3") {
+	            //通过传递jQuery对象查找,在所有li元素中的位置
+	            $span.text($("li").index($("#test6")))
+	
+	        }
+	    });
+    </script>
+
+	</body>
+</html>

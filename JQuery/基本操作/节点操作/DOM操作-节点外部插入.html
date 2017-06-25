@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM节点的外部插入</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>也就是兄弟之间的关系处理，这里jQuery引入了2个方法，可以用来在匹配I的元素前后插入内容<br />
+		<img src="../../img/节点外部插入.jpg"/></p>
+		<p>	after向元素的后边添加html代码，如果元素后面有元素了，那将后面的元素后移，然后将html代码插入<br />
+			before向元素的前边添加html代码，如果元素前面有元素了，那将前面的元素前移，然后将html代码插</p>
+		<hr />
+		
+		<h2>通过before与after添加元素</h2>
+	    <button id="bt1">点击通过jQuery的before添加元素</button>
+	    <button id="bt2">点击通过jQuery的after添加元素</button>
+	    <div>
+	        <p class="test1">测试before</p>
+	    </div>
+	    <div>
+	        <p class="test2">测试after</p>
+	    </div>
+	    <script type="text/javascript">
+	    $("#bt1").on('click', function() {
+	        //在匹配test1元素集合中的每个元素前面插入p元素
+	        $(".test1").before('<p style="color:red">before,在匹配元素之前增加</p>', '<p style="color:red">可以添加多个</p>')
+	    })
+	    </script>
+	    <script type="text/javascript">
+	    $("#bt2").on('click', function() {
+	        //在匹配test1元素集合中的每个元素后面插入p元素
+	        $(".test2").after('<p style="color:blue">after,在匹配元素之后增加</p>', '<p style="color:blue">可以添加多个</p>')
+	
+	    })
+	    </script>
+	    
+	    <hr /><hr />
+	    <p>与内部插入处理一样，jQuery由于内容目标的位置不同，然增加了2个新的方法insertAfter与insertBefore<br />
+	    	<img src="../../img/节点外部插入2.jpg"/></p>
+	    <p>
+	    	.before()和.insertBefore()实现同样的功能。主要的区别是语法——内容和目标的位置。<br />
+	    	 对于before()选择表达式在函数前面，内容作为参数，而.insertBefore()刚好相反，内容在方法前面，它将被放在参数里元素的前面
+			.after()和.insertAfter() 实现同样的功能。主要的不同是语法——特别是（插入）内容和目标的位置。 <br />
+			对于after()选择表达式在函数的前面，参数是将要插入的内容。对于 .insertAfter(), 刚好相反，内容在方法前面，它将被放在参数里元素的后面
+			before、after与insertBefore。insertAfter的除了目标与位置的不同外，后面的不支持多参数处理
+	    </p>	
+	   	<p>
+	   		insertAfter将JQuery封装好的元素插入到指定元素的后面，如果元素后面有元素了，那将后面的元素后移，然后将JQuery对象插入；<br />
+			insertBefore将JQuery封装好的元素插入到指定元素的前面，如果元素前面有元素了，那将前面的元素前移，然后将JQuery对象插入；
+	   	</p>
+	   	<hr />
+	   	
+	   	<h2>通过insertBefore与insertAfter添加元素</h2>
+	    <button id="bt3">点击通过jQuery的insertBefore添加元素</button>
+	    <button id="bt4">点击通过jQuery的insertAfter添加元素</button>
+	    <div>
+	        <p class="test3">测试insertBefore,不支持多参数</p>
+	    </div>
+	    <div>
+	        <p class="test4">测试insertAfter,不支持多参数</p>
+	    </div>
+	    <script type="text/javascript">
+	    $("#bt3").on('click', function() {
+	        //在test1元素前后插入集合中每个匹配的元素
+	        //不支持多参数
+	        $('<p style="color:red">测试insertBefore方法增加</p>', '<p style="color:red">多参数</p>').insertBefore($(".test3"))
+	    })
+	    </script>
+	    <script type="text/javascript">
+	    $("#bt4").on('click', function() {
+	        //在test2元素前后插入集合中每个匹配的元素
+	        //不支持多参数
+	        $('<p style="color:red">测试insertAfter方法增加</p>', '<p style="color:red">多参数</p>').insertAfter($(".test4"))
+	    })
+	    </script>
+	</body>
+</html>

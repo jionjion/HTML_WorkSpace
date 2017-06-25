@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标的按下与弹出事件</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>鼠标的按下与弹出事件</h1>
+		<p>jQuery提供了一个mousedown的快捷方法可以监听用户鼠标按下的操作，与其对应的还有一个方法mouseup快捷方法可以监听用户鼠标弹起的操作。</p>
+		<p>
+			方法一：$ele.mousedown()<br />
+			绑定$ele元素，不带任何参数一般是用来指定触发一个事件，可能一般用的比较少<br />
+			方法二：$ele.mousedown( handler(eventObject) )<br />
+			绑定$ele元素，每次$ele元素触发点击操作会执行回调 handler函数<br />
+			这样可以针对事件的反馈做很多操作了<br />
+			方法三：$ele.mousedown( [eventData ], handler(eventObject) )<br />
+			使用与方法二一致，不过可以接受一个数据参数，这样的处理是为了解决不同作用域下数据传递的问题
+		</p>
+		<p>
+			mousedown事件触发需要以下几点：<br />
+			mousedown强调是按下触发<br />
+			如果在一个元素按住了鼠标不放，并且拖动鼠标离开这个元素，并释放鼠标键，这仍然是算作mousedown事件<br />
+			任何鼠标按钮被按下时都能触发mousedown事件<br />
+			用event 对象的which区别按键，敲击鼠标左键which的值是1，敲击鼠标中键which的值是2，敲击鼠标右键which的值是3<br />
+		</p>
+		
+		<p>
+			mouseup事件触发需要以下几点：<br />
+			mouseup强调是松手触发，与mousedown是相反的<br />
+			mouseup与mousedown组合起来就是click事件<br />
+			如果用户在一个元素上按下鼠标按键，并且拖动鼠标离开这个元素，然后释放鼠标键，这仍然是算作mouseup事件<br />
+			任何鼠标按钮松手时都能触发mouseup事件<br />
+			用event 对象的which区别按键，敲击鼠标左键which的值是1，敲击鼠标中键which的值是2，敲击鼠标右键which的值是3<br />
+		</p>
+		<hr />
+		
+		<h2>.mousedown()方法</h2>
+	    <h4>测试方法一：$ele.mousedown()</h4>
+	    <p>通过e.which获取鼠标触发的键位</p>
+	    <button>弹出回调中的鼠标键</button>
+	    <script type="text/javascript">
+	    //this指向button元素
+	    $("button:eq(0)").mousedown(function(e) {
+	    	if (e.which == 1) {
+	    		alert('e.which: ' + e.which+"鼠标左键触发");
+	    	} else if (e.which == 2){
+	    		alert('e.which: ' + e.which+"鼠标中键触发");
+	    	} else if (e.which ==3){
+	    		alert('e.which: ' + e.which+"鼠标右键触发");
+	    	} else {
+	    		alert('其他方式触发鼠标按下事件');
+	    	}
+	    	
+	    })
+	    </script>
+	
+	
+	    <h4>测试方法二：$ele.mousedown( handler(eventObject) )</h4>
+	    <p>$('button:first').mousedown(function(e) {alert(this)})</p>
+	    <button>传入触发事件并解析</button>
+	    <script type="text/javascript">
+	    $("button:eq(1)").mousedown(function(e) {	//传入点击事件,并解析
+	            alert(e.target.textContent);	//获得事件的文字上下文,也就是按钮上的文字
+	    })
+	    </script>
+	
+	
+	    <h4>测试方法三：$ele.mousedown( [eventData ], handler(eventObject) )</h4>
+	    <p>传入数据和解析函数,对数据进行解析</p>
+	    <button>不同函数传递数据</button>
+	    <script type="text/javascript">
+	    //定义解析函数
+	    function handler(e) {
+	        alert(e.data) 				//弹出传入的数据
+	    }
+		//触发条件
+	    $("button:eq(2)").mousedown('这是传入的参数123', handler)		//传入数据和函数解析对象,完成数据的解析
+	    </script>
+	</body>
+</html>

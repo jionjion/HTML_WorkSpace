@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM节点的包裹</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>单个DOM包裹wrap()方法</h1>
+		<p>	针对这样的处理，JQuery提供了一个wrap方法<br />
+			.wrap( wrappingElement )：在集合中匹配的每个元素周围包裹一个HTML结构
+			.wrap( function ) ：一个回调函数，返回用于包裹匹配元素的 HTML 内容或 jQuery 对象使用后的效果与直接传递参数是一样，只不过可以把代码写在函数体内部，写法不同而已
+		</p>
+		<p>
+			注意：<br />
+			.wrap()函数可以接受任何字符串或对象，可以传递给$()工厂函数来指定一个DOM结构。<br />
+			这种结构可以嵌套了好几层深，但应该只包含一个核心的元素。<br />
+			每个匹配的元素都会被这种结构包裹。该方法返回原始的元素集，以便之后使用链式方法。
+		</p>
+		<hr />
+		
+		<h2>DOM包裹wrap()方法</h2>
+	    <div>
+	        <button class="bt1">点击,通过wrap方法给p元素增加父容器div</button>
+	        <button class="bt2">点击,通过wrap的回调方法给a元素增加父容器div</div>
+	    </div>
+	    <div class="one">
+	        <p>p元素</p>
+	        <p>p元素</p>
+	    </div>
+	    <div class="two">
+	        <a>a元素</a>
+	        <a>a元素</a>
+	    </div>
+	    <script type="text/javascript">
+	    $(".bt1").on('click', function() {
+	        //给所有p元素，增加父容器div
+	        $('.one p').wrap('<div style="background-color: #CCCCCC;"></div>')
+	    })
+	    </script>
+	    <script type="text/javascript">
+	    $(".bt2").on('click', function() {				
+	        $('.two > a').wrap(function() {
+	            return '<div style="background-color: #CCCCCC;">包含元素</div>';		//使用回调函数增加,如果其中有文本,将会替换被包裹的元素
+	        })
+	    })
+	    </script>
+		<hr /><hr />
+		
+		<h1>多个DOM包裹wrapAll()方法</h1>
+		<p>wrap是针对单个dom元素处理，如果要将集合中的元素用其他元素包裹起来，也就是给他们增加一个父元素，针对这样的处理，JQuery提供了一个wrapAll方法<br />
+			.wrapAll( wrappingElement )：给集合中匹配的元素增加一个外面包裹HTML结构<br />
+			用wrap也可以给所有p元素增加div，但不是同一个div。而wrapALL能给所有p元素增加一个共同的div,将多个元素同时被包裹在同一个下
+			可以有多个嵌套包裹.
+		</p>
+		<hr />
+		
+		<h2>DOM包裹wrapAll()方法</h2>
+	    <div>
+	        <button class="bt3">点击,通过wrapAll方法给所有P元素增加父容器div</button>
+	        <button class="bt4">点击,通过wrapAll的回调方法给每个a元素增加父容器div</button>
+	    </div>
+	    <div class="three">
+	        <p>p元素</p>
+	        <p>p元素</p>
+	    </div>
+	    <div class="four">
+	        <a>a元素</a>
+	        <a>a元素</a>
+	    </div>
+	    <script type="text/javascript">
+	    $(".bt3").on('click', function() {
+	        //给所有p元素，增加父容器div
+	        $('.three p').wrapAll('<div style="background-color: #CCCCCC;"></div>');
+	    })
+	    </script>
+	    <script type="text/javascript">
+	    $(".bt4").on('click', function() {
+	        //wrapAll接受一个回调函数
+	        //每一次遍历this都指向了合集中每一个a元素,中间不能隔断
+	        $('.four a').wrapAll(function() {
+	            return '<div style="background-color: #CCCCCC;"></div>'
+	        })
+	    })
+	    </script>
+	</body>
+</html>

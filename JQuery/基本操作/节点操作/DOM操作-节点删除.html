@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>节点的删除操作</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>
+			empty 顾名思义，清空方法，但是与删除又有点不一样，因为它只移除了 指定元素中的所有子节点;本身属性和节点不会改变<br />
+			这个方法不仅移除子元素（和其他后代元素），同样移除元素里的文本。
+		</p>
+		<hr />
+		
+		<h2>通过empty移除元素</h2>
+	    <div id="test1" style="background: #bbffaa;width: 300px;height:80px;">
+	        <p>p元素1</p>
+	        <p>p元素2</p>
+	    </div>
+	    <button id="bt1">点击通过jQuery的empty移除元素</button>
+	    <script type="text/javascript">
+	    $("#bt1").on('click', function() {
+	        //通过empty移除了当前div元素下的所有p元素
+	        //但是本身id=test的div元素没有被删除
+	        $("#test1").empty()
+	    })
+	    </script>
+	    <hr /><hr />
+	    
+	    <h2>通过remove移除元素</h2>
+	    <p>
+	    	remove与empty一样，都是移除元素的方法，但是remove会将元素自身移除，同时也会移除元素内部的一切，包括绑定的事件及与该元素相关的jQuery数据。
+	    </p>
+	    <hr />
+		
+		<div class="test2" style="background: #bbffaa;width: 300px;height: 60px;">
+	        <p>p元素1</p>
+	        <p>p元素2</p>
+	    </div>
+	    <div class="test3" style="background: #bbffaa;width: 300px;height: 60px;">
+	        <p>p元素3</p>
+	        <p>p元素4</p>
+	    </div>
+	    <button id="bt2">通过点击jQuery的remove移除元素</button>
+	    <button id="bt3">通过点击jQuery的remove移除指定元素</button>
+	    <script type="text/javascript">
+	    $("#bt2").on('click', function() {
+	        //删除整个 class=test1的div节点
+	        $(".test2").remove()
+	    })
+	
+	    $("#bt3").on('click', function() {
+	        //找到所有p元素中，包含了3的元素
+	        //这个也是一个过滤器的处理
+	        $("p").remove(":contains('3')")
+	    })
+	    </script>
+	    <hr /><hr />
+	    
+	    <h2>保留数据的删除操作detach</h2>
+	    <p>
+	    	如果我们希望临时删除页面上的节点，但是又不希望节点上的数据与事件丢失，并且能在下一个时间段让这个删除的节点显示到页面，这时候就可以使用detach方法来处理<br />
+	    	detach从字面上就很容易理解。让一个web元素托管。即从当前页面中移除该元素，但保留这个元素的内存模型对象。<br />
+	    	注意，detach方法是JQuery特有的，所以它只能处理通过JQuery的方法绑定的事件或者数据
+	    </p>
+	    <hr />
+	    
+	    <div id="div1">
+	    <p id="p1">P元素1，默认给绑定一个点击事件</p>
+	    <p id="p2">P元素2，默认给绑定一个点击事件</p>
+	    </div>
+	    <button id="bt4">点击删除 p 元素</button>
+	    <button id="bt5">点击移动 p 元素</button>
+	    <script type="text/javascript">
+	    $('#p1,#p2').click(function(e) {
+	        alert(e.target.innerHTML)
+	    })
+	    var p;
+	    $("#bt4").click(function() {
+	        if (!$("#p1,#p2").length) return; //去重,空段落去除
+	        //通过detach方法删除元素
+	        //只是页面不可见，但是这个节点还是保存在内存中
+	        //数据与事件都不会丢失.保存为p对象
+	        p = $("#p1,#p2").detach()
+	    });
+	
+	    $("#bt5").click(function() {
+	        //把p元素在添加到页面中
+	        //事件还是存在
+	        $("#div1").append(p);
+	    });
+	    </script>
+	    
+	</body>
+</html>

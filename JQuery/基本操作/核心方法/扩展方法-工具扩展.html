@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>工具扩展方法</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>使用$.extend()扩展工具函数</h1>
+		<p>
+			调用名为$. extend的工具函数，可以对原有的工具函数进行扩展，自定义类级别的jQuery插件，调用格式为：<br />
+			$. extend ({options});<br />
+			参数options表示自定义插件的函数内容。
+		</p>
+		<hr />
+		
+		<div>
+            <div>
+                <span>自定义工具函数求两值中最小值</span> 
+                <span>
+                    <input name="btnShow" type="button" value="计算" />
+                </span>
+            </div>
+            <div>
+                <div class="content"></div>
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            /*------------------------------------------------------------/
+			            功能：返回两个数中最小值
+			            参数：数字p1,p2
+			            返回：最小值的一个数
+			            示例：$.MinNum(1,2);
+            /------------------------------------------------------------*/
+            (function ($) {
+                $.extend({							//传入一个为JSON对象,包含方法匿名
+                    "MinNum": function (p1, p2) {
+                        return (p1 > p2) ? p2 : p1;
+                    }
+                });
+            })(jQuery);
+            $(function () {
+                $("input:button").bind("click", function () {
+                    var strTmp = "17与18中最小的数是：";
+                    strTmp +=$.MinNum(17, 18);
+                    //显示在页面中
+                    $(".content").show().append(strTmp);
+                });
+            });
+        </script>
+	</body>
+</html>

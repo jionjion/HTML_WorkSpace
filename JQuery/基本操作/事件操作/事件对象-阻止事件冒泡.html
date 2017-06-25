@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>阻止事件冒泡</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>阻止事件冒泡操作</h1>
+		<p>
+			trigger事件还有一个特性：会在DOM树上冒泡，所以如果要阻止冒泡就需要在事件处理程序中返回false或调用事件对象中的.stopPropagation() 方法可以使事件停止冒泡
+		</p>
+		<p>
+			trigger事件是具有触发原生与自定义能力的，但是存在一个不可避免的问题： 事件对象event无法完美的实现，毕竟一个是浏览器给的，一个是自己模拟的。尽管 .trigger() 模拟事件对象，但是它并没有完美的复制自然发生的事件，若要触发通过 jQuery 绑定的事件处理函数，而不触发原生的事件，使用.triggerHandler() 来代替
+		</p>
+		<p>
+			triggerHandler与trigger的用法是一样的，重点看不同之处：<br />
+			triggerHandler不会触发浏览器的默认行为，.triggerHandler( "submit" )将不会调用表单上的.submit()<br />
+			.trigger() 会影响所有与 jQuery 对象相匹配的元素，而 .triggerHandler() 仅影响第一个匹配到的元素<br />
+			使用 .triggerHandler() 触发的事件，并不会在 DOM 树中向上冒泡。 如果它们不是由目标元素直接触发的，那么它就不会进行任何处理<br />
+			与普通的方法返回 jQuery 对象(这样就能够使用链式用法)相反，.triggerHandler() 返回最后一个处理的事件的返回值。如果没有触发任何事件，会返回 undefined
+		</p>
+		<hr />
+		
+		<h2>自定义事件triggerHandler</h2>
+		<div>
+		    <div id="parent">
+		        <a href="www.baidu.com">triggerHandler事件</a><br />
+		        <input type="text">
+		    </div>
+		    <button>trigger事件冒泡,触发浏览器默认聚焦行为</button><br><br>
+		    <button>triggerHandler不会冒泡，不触发浏览器默认聚焦行为</button>
+		</div>
+		<script type="text/javascript">
+		
+		    //给input绑定一个聚焦事件
+		    $("input").on("focus",function(event,title) {
+		        $(this).val(title)
+		    });
+		
+		    $("#parent").on("click",function() {
+		        alert("DOM 树中向上冒泡在父节点触发");
+		    });
+		    //trigger触发事件
+		    $("button:first").click(function() {
+		        $("a").trigger("click");			//默认标签事件,没有触发
+		        $("input").trigger("focus");		//触发自定义事件
+		    });
+		
+		    //triggerHandler触发focus
+		    $("button:last").click(function() {
+		        $("a").triggerHandler("click");		//默认标签事件,没有触发
+		        $("input").triggerHandler("focus","没有触发默认聚焦事件");	//触发自定义事件
+		    });
+		
+		
+		
+		</script>
+
+	</body>
+</html>

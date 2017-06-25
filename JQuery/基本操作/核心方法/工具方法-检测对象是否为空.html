@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>检测对象是否为空</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>
+			在jQuery中，可以调用名为$.isEmptyObject的工具函数，检测一个对象的内容是否为空，如果为空，则该函数返回true，否则，返回false值，调用格式如下：<br />
+			$.isEmptyObject(obj);<br />
+			其中，参数obj表示需要检测的对象名称。
+		</p>
+		<hr />
+		    <div>
+            <div>
+                <span>检测对象是否为空</span> 
+            </div>
+            <div class="content"></div>
+        </div>
+        
+        <script type="text/javascript">
+            $(function () {
+                var obj = { "姓名": "张谦" };
+                var strTmp = "您定义了一个：";
+                if ($.isEmptyObject(obj)) { //检测是否为空
+                    strTmp += "空对象";
+                } else {
+                    strTmp += "非空对象";
+                }
+                $(".content").html(strTmp);
+            });
+        </script>
+	</body>
+</html>

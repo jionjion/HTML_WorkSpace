@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>键盘按下与弹出事件</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>键盘按下与弹出</h1>
+		<p>鼠标有mousedown,mouseup之类的事件，这是根据人的手势动作分解的2个触发行为。<br />
+			相对应的键盘也有这类事件，将用户行为分解成2个动作，键盘按下与松手，针对这样的2种动作，jQuery分别提供了对应keydown与keyup方法来监听</p>
+		<p>
+			keydown事件：<br />
+			当用户在一个元素上第一次按下键盘上字母键的时候，就会触发它。使用上非常简单，与基本事件参数处理保持一致，这里使用不在重复了，列出使用的方法<br />
+			手动触发已绑定的事件<br />
+			$elem.keydown()<br />
+			直接绑定事件<br />
+			$elem.keydown( handler(eventObject) )<br />
+			传递参数<br />
+			$elem.keydown( [eventData ], handler(eventObject) )<br />
+			keyup事件：<br />
+			当用户在一个元素上第一次松手键盘上的键的时候，就会触发它。使用方法与keydown是一致的只是触发的条件是方法的
+		</p>
+		
+		<p>
+			注意：<br />
+			keydown是在键盘按下就会触发<br />
+			keyup是在键盘松手就会触发<br />
+			理论上它可以绑定到任何元素，但keydown/keyup事件只是发送到具有焦点的元素上，不同的浏览器中，可获得焦点的元素略有不同，但是表单元素总是能获取焦点，所以对于此事件类型表单元素是最合适的。
+		</p>
+		<hr />
+		
+		<h2>keydown()与keyup()事件</h2>
+	    <div>
+	        <h4>键盘按事件</h4>
+	        <div>监听keydown输入:
+	            <input class="target1" type="text" value="" /><br />
+	            	按下显示输入的值,有延时:<em></em>
+	        </div>
+	        <h4>键盘弹起事件</h4>
+	        <div>监听keyup输入:
+	            <input class="target2" type="text" value="" /><br />
+	            	松手显示输入的值,无延时:<em></em>
+	        </div>
+	    </div>
+	
+	    <script type="text/javascript">
+	    //监听键盘按键
+	    //获取输入的值
+	    $('.target1').keydown(function(e) {
+	        $("em:first").text(e.target.value)
+	    });
+	
+	    //监听键盘按键
+	    //获取输入的值
+	    $('.target2').keyup(function(e) {
+	        $("em:last").text(e.target.value)
+	    });
+	
+	    </script>
+	</body>
+</html>

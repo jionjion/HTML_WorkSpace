@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>对象选择</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+	        $(document).ready(function() {
+	       		$("h1").html("对象的选择与封装"); 	
+            });
+		</script>
+	</head>
+	<body>
+		<h1></h1>
+		
+		
+		<!--JQuery与原生的方式的操作-->
+		<h3>两者的区别</h3>
+		<p>通过jQuery方法包装后的对象，是一个类数组对象。它与DOM对象完全不同，唯一相似的是它们都能操作DOM。
+			通过jQuery处理DOM的操作，可以让开发者更专注业务逻辑的开发，而不需要我们具体知道哪个DOM节点有那些方法，
+			也不需要关心不同浏览器的兼容性问题，我们通过jQuery提供的API进行开发，代码也会更加精短。</p>
+		<p id="diff1">原生方式</p>
+		<script type="text/javascript">
+			var p = document.getElementById('diff1');
+			p.innerHTML = '您好！这是原生的方式获得对象';
+			p.style.color = 'red';
+		</script>
+		
+		<p id="diff2">JQuery方式</p>
+		<script type="text/javascript">
+			var $p = $('#diff2');
+			$p.html('您好！这是JQuery的方式获得对象').css('color','green');
+		</script>
+		<hr />
+		
+		
+		<div>元素一</div>
+		<div>元素二</div>
+		<div>元素三</div>
+		
+		<h3>jQuery对象转化成DOM对象</h3>
+		<p>jQuery是一个类数组对象，而DOM对象就是一个单独的DOM元素。</p>
+		<!--方式一:使用数组下标的方法-->
+		<script type="text/javascript">
+			var $div = $('div') //jQuery对象
+			var div = $div[0] //转化成DOM对象
+			div.style.color = 'red' //操作dom对象的属性
+		</script>
+		<!--方式二:使用Get方式-->
+		<script type="text/javascript">
+			var $div = $('div') //jQuery对象
+			var div = $div.get(1) //通过get方法，转化成DOM对象
+			div.style.color = 'blue' //操作dom对象的属性
+		</script>
+		<hr />
+		
+		<h3>DOM对象转化成jQuery对象</h3>
+		<p>$(参数)是一个多功能的方法，通过传递不同的参数而产生不同的作用。<br />
+		如果传递给$(DOM)函数的参数是一个DOM对象，jQuery方法会把这个DOM对象给包装成一个新的jQuery对象.</p>
+		<script type="text/javascript">
+			var div = document.getElementsByTagName('div'); //dom对象数组
+			var $div = $(div); //jQuery对象
+			var $first = $div.last(); //找到最后一个div元素
+			$first.css('color', 'green'); //给最后一个元素设置颜色
+		</script>
+	</body>
+</html>

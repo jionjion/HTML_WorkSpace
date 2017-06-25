@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>查找最近的父节点</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>
+			以选定的元素为中心，往内查找可以通过find、children方法。<br />
+			如果往上查找，也就是查找当前元素的父辈祖辈元素，jQuery提供了closest()方法，这个方法类似parents但是又有一些细微的区别，属于使用频率很高的方法
+		</p>
+		<p>
+			closest()方法接受一个匹配元素的选择器字符串<br />
+			从元素本身开始，在DOM 树上逐级向上级元素匹配，并返回最先匹配的祖先元素<br />
+			注意：jQuery是一个合集对象，所以通过closest是匹配合集中每一个元素的祖先元素<br />
+			closest()方法给定的jQuery集合或元素来过滤元素<br />
+			同样的也是因为jQuery是合集对象，可能需要对这个合集对象进行一定的筛选，找出目标元素，所以允许传一个jQuery的对象
+		</p>
+		<p>
+			注意事项：在使用的时候需要特别注意<br />
+			粗看.parents()和.closest()是有点相似的，都是往上遍历祖辈元素，但是两者还是有区别的<br />
+			起始位置不同：.closest开始于当前元素 .parents开始于父元素<br />
+			遍历的目标不同：.closest要找到指定的目标，.parents遍历到文档根元素，closest向上查找，直到找到一个匹配的就停止查找，parents一直查找到根元素，并将匹配的元素加入集合
+			结果不同：.closest返回的是包含零个或一个元素的jquery对象，parents返回的是包含零个或一个或多个元素的jquery对象
+		</p>
+		<hr />
+		
+		<h2>closest方法()</h2>
+	    <div>
+	        <ul class="level-2">
+	            <li class="item-a">A</li>
+	            <li class="item-b">B
+	                <ul class="level-3">
+	                    <li class="item-1">1</li>
+	                    <li class="item-2">2</li>
+	                    <li class="item-3">3</li>
+	                </ul>
+	            </li>
+	            <li class="item-c">C</li>
+	        </ul>
+	    </div>
+	    <br/>
+	    <button>点击：closest传递选择器 </button>
+	    <button>点击：closest传递一个元素对象</button>
+	    <script type="text/javascript">
+	    $("button:first").click(function() {
+	            //找到class="item-1"的li元素
+				//通过closest方法往上找到class=".level-2"的ul元素
+				//加上边框颜色
+			$('li.item-1')						//li标签下的.item-1类 
+            	.closest('.level-2')			//传入表达式,完成查找
+            	.css('border', '1px solid red');
+	    })
+	    </script>
+	    <script type="text/javascript">
+	    $("button:last").click(function() {
+	        var itemB = $('.item-b')
+	        $('li.item-1')
+	            .closest(itemB)					//传入对象,完成查找
+	            .css('border', '1px solid blue');
+	    })
+	    </script>
+	</body>
+</html>

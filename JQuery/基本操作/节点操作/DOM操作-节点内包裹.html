@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM节点内包裹</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>如果要将合集中的元素内部所有的子元素用其他元素包裹起来，并当作指定元素的子元素，针对这样的处理，JQuery提供了一个wrapInner方法		<br />
+			.wrapInner( wrappingElement )：给集合中匹配的元素的内部，增加包裹的HTML结构
+			.wrapInner( function ) ：允许我们用一个callback函数做参数，每次遇到匹配元素时，该函数被执行，返回一个DOM元素，jQuery对象，或者HTML片段，用来包住匹配元素的内容<br />
+			记住：wrap()穿外套，wrapInner()穿内衣！</p>
+		<hr />
+		
+		<h2>DOM包裹wrapInner()方法</h2>
+	    <div>
+	        <button class="bt1">点击,通过wrapInner方法给所有div元素增加内部父容器p</button>
+	        <button class="bt2">点击,通过wrapInner的回调方法给每个div元素增加内部父容器a</button>
+	    </div>
+	    <div class="one">
+	        <div>p元素</div>
+	        <div>p元素</div>
+	    </div>
+	    <div class="two">
+	        <div>a元素</div>
+	        <div>a元素</div>
+	    </div>
+	
+	
+	    <script type="text/javascript">
+	    $(".bt1").on('click', function() {
+	        //给所.one下的div元素，增加内部包裹父容器p
+	       $('.one div').wrapInner('<p style="background-color: #CCCCCC;"></p>');
+	    })
+	    </script>
+	    <script type="text/javascript">
+	    $(".bt2").on('click', function() {
+	        //wrapInner接受一个回调函数
+	        //每一次遍历this都指向了合集中每一个.two下的div元素
+	        $('.two div').wrapInner(function() {
+	            return '<a style="background-color: #CCCCCC;"></a>'
+	        })
+	    })
+	    </script>
+	</body>
+</html>

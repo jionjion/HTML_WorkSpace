@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单的改变事件</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>表单的改变事件</h1>
+		<p>
+			input元素，textarea和select元素的值都是可以发生改变的，开发者可以通过change事件去监听这些改变的动作
+		</p>
+		<p>
+			input元素<br />
+			监听value值的变化，当有改变时，失去焦点后触发change事件。对于单选按钮和复选框，当用户用鼠标做出选择时，该事件立即触发。<br />
+			select元素<br />
+			对于下拉选择框，当用户用鼠标作出选择时，该事件立即触发<br />
+			textarea元素<br />
+			多行文本输入框，当有改变时，失去焦点后触发change事件<br />
+		</p>
+		<hr />
+		
+		<h2>input、textarea与select</h2>
+	    <div>
+	        <div>
+	        	input：<input id="target1" type="text" value="监听input的改变" />
+	        </div>
+	        <div>
+	        	select：
+	            <select id="target2">
+	                <option value="option1" selected="selected">Option 1</option>
+	                <option value="option2">Option 2</option>
+	            </select>
+	        </div>
+	        <div>
+	        	textarea：
+	            <textarea id="target3" rows="3" cols="20">多行的文本输入控件</textarea>
+	        </div>
+	    </div>
+	    	输出结果：
+	    <div id="result"></div>
+	    <script type="text/javascript">
+	    
+	    //监听input值的改变
+	    $('#target1').change(function(e) {
+	        $("#result").html(e.target.value)	//事件监听的对象的文本信息
+	    });
+	
+	    //监听select：
+	    $("#target2").change(function(e) {
+	        $("#result").html(e.target.value)
+	    })
+	
+	     //监听textarea：
+	    $("#target3").change(function(e) {
+	        $("#result").html(e.target.value)
+	    })
+	    </script>
+	</body>
+</html>

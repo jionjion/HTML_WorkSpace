@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件对象的介绍</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>事件对象</h1>
+		<p>
+			在不同浏览器之间事件对象的获取, 以及事件对象的属性都有差异。jQuery根据 W3C 标准规范了事件对象，所以在jQuery事件回调方法中获取到的事件对象是经过兼容后处理过的一个标准的跨浏览器对象
+		</p>
+<pre>
+	&lt;ul>
+		&lt;li class="even1">&lt;/li>
+		&lt;li class="even2">&lt;/li>
+		&lt;li class="even2">&lt;/li>
+		.........
+	&lt;/ul>
+</pre>
+		<p>
+			ul有N个子元素li(这里只写了3个)，如果我要响应每一个li的事件，那么常规的方法就是需要给所有的li都单独绑定一个事件监听，这样写法很符合逻辑，但是同时有显得繁琐<br />
+			因为li都有一个共同的父元素，而且所有的事件都是一致的，这里我们可以采用要一个技巧来处理，也是常说的"事件委托"<br />
+			事件没直接和li元素发生关系，而且绑定父元素了。由于浏览器有事件冒泡的这个特性，我们可以在触发li的时候把这个事件往上冒泡到ul上，因为ul上绑定事件响应所以就能够触发这个动作了。唯一的问题怎么才知道触发的li元素是哪个一个？<br />
+			这里就引出了事件对象了
+		</p>
+		<p>
+			事件对象是用来记录一些事件发生时的相关信息的对象。事件对象只有事件发生时才会产生，并且只能是事件处理函数内部访问，在所有事件处理函数运行结束后，事件对象就被销毁
+		</p>
+		<p>
+			event.target <br />
+			target 属性可以是注册事件时的元素，或者它的子元素。通常用于比较 event.target 和 this 来确定事件是不是由于冒泡而触发的。经常用于事件冒泡时处理事件委托
+		</p>
+		<p>
+			简单来说：event.target代表当前触发事件的元素，可以通过当前元素对象的一系列属性来判断是不是我们想要的元素.<br />
+			而this是给哪个元素绑定了事件，结合这个例子 event是li，this是ul，个人见解
+		</p>
+		<hr />
+		
+		<h3>事件委托，通过事件对象区别触发元素</h3>
+	    <div>
+	        <div>
+	            <ul>
+	                <li>点击：触发一</li>
+	                <li>点击：触发二</li>
+	                <li>点击：触发三</li>
+	                <li>点击：触发四</li>
+	            </ul>
+	        </div>
+	    </div>
+	
+	    <script type="text/javascript">
+	        $("ul").on('click',function(e){
+	           alert('触发的元素是内容是: ' + e.target.textContent)
+	        })
+	    </script>
+		
+		<h3>事件的属性方法</h3>
+		<p>
+			event.type：获取事件的类型<br />
+			触发元素的事件类型
+		</p>
+		<script type="text/javascript">
+	        $("ul").on('click',function(e){
+	           alert('触发的事件类型为: ' + e.type)
+	        })
+	    </script>
+	    
+	    <p>
+	    	event.pageX 和 event.pageY：获取鼠标当前相对于页面的坐标<br />
+			通过这2个属性，可以确定元素在当前页面的坐标值，鼠标相对于文档的左边缘的位置（左边）与 （顶边）的距离，简单来说是从页面左上角开始,即是以页面为参考点,不随滑动条移动而变化
+	    </p>
+	    <script type="text/javascript">
+	        $("ul").on('click',function(e){
+	           alert('点击的X坐标为:'+e.pageX+'Y坐标为:'+e.pageY)
+	        })
+	    </script>
+	    
+		<p>
+			event.preventDefault() 方法：阻止默认行为<br />
+			这个用的特别多，在执行这个方法后，如果点击一个链接（a标签），浏览器不会跳转到新的 URL 去了。我们可以用 event.isDefaultPrevented() 来确定这个方法是否(在那个事件对象上)被调用过了
+		</p>
+		<a href="www.baidu.com">点击能否跳转百度</a>
+		<script type="text/javascript">
+	        $("a").on('click',function(e){
+	        	e.preventDefault();
+	        })
+	    </script>
+	    
+	    <p>
+	    	event.stopPropagation() 方法：阻止事件冒泡<br />
+			事件是可以冒泡的，为防止事件冒泡到DOM树上，也就是不触发的任何前辈元素上的事件处理函数
+	    </p>
+	   	<script type="text/javascript">
+	        $("li").on('click',function(e){
+	        	alert("点击li标签");
+	        	e.stopPropagation();	//阻止事件冒泡,让其他监听父节点的绑定失效
+	        })
+	    </script>
+	    
+	    <p>
+	    	event.which：获取在鼠标单击时，单击的是鼠标的哪个键<br />
+			event.which 将 event.keyCode 和 event.charCode 标准化了。<br />
+			event.which也将正常化的按钮按下(mousedown 和 mouseupevents)，左键报告1，中间键报告2，右键报告3
+	    </p>
+	    <button>点击我判断按键</button>
+	    <script type="text/javascript">
+	    	$("button").on('click',function(e){
+	    		alert(e.which);
+	    	})
+	    </script>
+	    
+	    <p>
+	    	event.currentTarget : 在事件冒泡过程中的当前DOM元素<br />
+			冒泡前的当前触发事件的DOM对象, 等同于this.
+	    </p>
+	    <script type="text/javascript">
+	    	
+	    </script>
+	    
+	    <p>
+	    	this和event.target的区别：<br />
+			js中事件是会冒泡的，所以this是可以变化的，但event.target不会变化，它永远是直接接受事件的目标DOM元素；
+	    </p>
+	    
+	    <p>
+	    	.this和event.target都是dom对象<br />
+			如果要使用jquey中的方法可以将他们转换为jquery对象。比如this和$(this)的使用、event.target和$(event.target)的使用；
+	    </p>
+	</body>
+</html>

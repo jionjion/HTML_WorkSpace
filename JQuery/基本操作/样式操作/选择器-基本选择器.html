@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>各种选择器的使用</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		
+		<h3>ID选择器</h3>
+		<p>id是唯一的，每个id值在一个页面中只能使用一次。如果多个元素分配了相同的id，将只匹配该id选择集合的第一个DOM元素。
+			但这种行为不应该发生;有超过一个元素的页面使用相同的id是无效的</p>
+	 	<div id="one">
+	    	<p>id="one"</p>
+	    	<p>选中</p>
+	    </div>
+	    <div id="two">
+	        <p>id="two"</p>
+	        <p>jQuery选中</p>
+	    </div>
+	    <div id="two">
+	        <p>id="two"</p>
+	        <p>jQuery未选中</p>
+	    </div>
+	
+	    <script type="text/javascript">
+	       //通过原生方法处理
+	        var div = document.getElementById('one');
+	        div.style.border = "3px solid blue";
+	    </script>
+	
+	    <script type="text/javascript">
+	    	//通过jQuery直接传入id
+	    	//id的唯一，只选择到了第一个匹配的id为imooc的div节点,可以传递多个选择器
+	        $('#one,#two').css("border","3px solid red");
+	        
+	    </script>
+	    <hr />
+	    
+	    <h3>类选择器</h3>
+	    <p>类选择器，相对id选择器来说，效率相对会低一点，但是优势就是可以多选<br />
+	    	jQuery除了选择上的简单，而且没有再次使用循环处理
+	    </p>
+     	<div class="three">
+	    	<p>class="three"</p>
+	    	<p>选中</p>
+	    </div>   
+	     <div class="three">
+	        <p>class="four"</p>
+	        <p>选中</p>
+	    </div>
+	
+	    <div class="four">
+	        <p>class="four"</p>
+	        <p>jQuery选中</p>
+	    </div>
+	    <div class="four">
+	        <p>class="four"</p>
+	        <p>jQuery选中</p>
+	    </div>
+	
+	    <script type="text/javascript">
+	        //通过原生方法处理
+	        //样式是可以多选的，所以得到的是一个合集
+	        //需要通过循环给合集中每一个元素修改样式
+	        var divs = document.getElementsByClassName('three');
+	        for (var i = 0; i < divs.length; i++) {
+	            divs[i].style.border = "3px solid blue";
+	        }
+	    </script>
+	
+	    <script type="text/javascript">
+	        //通过jQuery直接传入class
+	        //class选择器可以选择多个元素进行修改
+	        $('.four').css("border", "3px solid red");
+	    </script>
+		<hr />
+		
+		<h3>元素选择器</h3>
+		<p>根据给定（html）标记名称选择所有的元素</p>
+		<script type="text/javascript">
+			<script type="text/javascript">
+		    //通过原生方法处理
+		    //获取到所有的节点标记名为div的元素
+		    //给每一个div加上蓝色的边框
+		    var divs = document.getElementsByTagName('div');
+		    for (var i = 0; i < divs.length; i++) {
+		        divs[i].style.border = "3px solid blue";
+		    }
+		    </script>
+		    <script type="text/javascript">
+		    //通过jQuery直接传入标签名p
+		    //标签是可以多个的，所以得到的同样也是一个合集
+		    $('div').css("border", "3px solid red");
+		    </script>
+		</script>
+		<hr />
+		
+		<h3>全选择器</h3>
+		<p>使用*匹配所有元素</p>
+		<script type="text/javascript">
+	        //获取页面中所有的元素
+	        var elements1 = document.getElementsByTagName('*');
+	    </script>
+	    <script type="text/javascript">
+	        //获取页面中所有的元素
+	        var elements2 = $("*");
+	        //原生与jQuery方法比较
+	        //===表示数据和类型都相等
+	        if(elements2.length === elements1.length){
+	           elements2.css("border","1px solid red");
+	        }
+	    </script>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>监听鼠标的移动事件</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>鼠标的移动事件</h1>
+		<p>基于移动的机制可以做出拖动、拖拽一系列的效果出来。针对移动事件，jQuery提供了一个mousemove的快捷方法可以监听用户移动的的操作</p>
+		<p>
+			方法一：$ele.mousemove()<br />
+			绑定$ele元素，不带任何参数一般是用来指定触发一个事件，可能一般用的比较少<br />
+			方法二：$ele.mousemove( handler(eventObject) )<br />
+			绑定$ele元素，每次$ele元素触发点击操作会执行回调 handler函数<br />
+			这样可以针对事件的反馈做很多操作了<br />
+			方法三：$ele.mousemove( [eventData ], handler(eventObject) )<br />
+			使用与方法二一致，不过可以接受一个数据参数，这样的处理是为了解决不同作用域下数据传递的问题
+		</p>
+		<p>
+			mousemove事件触发需要以下几点：<br />
+			mousemove事件是当鼠标指针移动时触发的，即使是一个像素<br />
+			如果处理器做任何重大的处理，或者如果该事件存在多个处理函数，这可能造成浏览器的严重的性能问题
+		</p>
+		<hr />
+		
+		<h2>.mousemove()方法</h2>
+	    <h4>测试方法一：$ele.mousemove()</h4>
+	    <button>点击：指定触发mousemove事件</button>
+	    <script type="text/javascript">
+	    $('button:eq(0)').mousemove(function() {
+	        alert('触发按钮绑定的mousemove事件');
+	    })
+	    </script>
+	
+	
+	    <h4>测试方法二：$ele.mousemove( handler(eventObject) )</h4>
+	    <div style="width: 500px;height: 50px;">
+	        <div style="background-color: #CCCCCC;" id="div1">
+	            <p>鼠标在灰色区域移动触发mousemove</p>
+	            <p>移动的X位置：</p>
+	        </div>
+	    </div>
+	    <script type="text/javascript">
+	    //绑定一个mousemove事件
+	    //触发后修改内容
+	    $("#div1").mousemove(function(e) {
+	        $(this).find('p:last').html('移动的X位置：' + e.pageX);		//找到触发对象的最后一个p元素
+	    })
+	    </script>
+	
+	    
+	    <h4>测试方法三：$ele.mousemove( [eventData ], handler(eventObject) )</h4>
+	    <div style="width: 500px;height: 50px;">
+	        <div style="background-color: #CCCCCC;" id="div2">
+	            <p>鼠标移动：不同函数传递数据</p>
+	            <p>数据：</p>
+	        </div>
+	    </div>
+	    <script type="text/javascript">
+	    //不同函数传递数据
+	    function handler(e) {
+	        $(this).find('p:last').html('获取数据:' + e.data)				//找到冒泡触发函数的最后一个p元素
+	    }
+	
+        $("#div2").mousemove('这是传入的数据参数', handler);	//传入数据参数和解析事件,完成对事件的解析过程
+	    </script>
+	</body>
+</html>

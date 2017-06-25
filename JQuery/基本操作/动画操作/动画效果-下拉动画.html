@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>下拉动画</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>
+			对于隐藏的元素，在将其显示出来的过程中，可以对其进行一些变化的动画效果。<br />
+			之前学过了show方法，show方法在显示的过程中也可以有动画，但是.show()方法将会匹配元素的宽度，高度，以及不透明度，同时进行动画操作。<br />
+			这里将要学习一个新的显示方法slideDown方法
+		</p>
+		<p>
+			.slideDown()：用滑动动画显示一个匹配元素
+			.slideDown()方法将给匹配元素的高度的动画，这会导致页面的下面部分滑下去，弥补了显示的方式
+		</p>
+		<p>
+			.slideDown( [duration ] [, complete ] )
+			提供一个动画是时间，然后传递一个回调，用于知道动画是什么时候结束
+		</p>
+		<p>
+			下拉动画是从无到有，所以一开始元素是需要先隐藏起来的，可以设置display:none<br />
+			如 果提供回调函数参数，callback会在动画完成的时候调用。<br />
+			将不同的动画串联在一起按顺序排列执行是非常有用的。<br />
+			这个回调函数不设置任何参数，但是 this会设成将要执行动画的那个DOM元素，如果多个元素一起做动画效果，那么要非常注意，回调函数会在每一个元素执行完动画后都执行一次，而不是这组 动画整体才执行一次
+		</p>
+		
+	    <h2>slideDown</h2>
+	    <div>
+	        <h4>直接滑动显示</h4>
+	        <div id="div1" style="display: none;">下拉滑动显示</div>
+	        <button>点击slideDown显示动画</button>
+	    </div>
+	        <script type="text/javascript">
+		        $("button:first").click(function() {
+		            $("#div1").slideDown(3000)
+		        });
+	        </script>
+	    <div>
+	        <h4>带动画的下拉滑动显示</h4>
+	        <div id="div2" style="display: none;">动画下拉显示</div>
+	        <button>点击slideDown执行回调</button>
+	    </div>
+	        <script type="text/javascript">
+		        $("button:last").click(function() {
+		            $("#div2").slideDown(3000,function(){
+		                alert('动画执行结束')
+		            })
+		        });
+	        </script>
+
+	</body>
+</html>

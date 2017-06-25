@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>检测对象是否为原始对象</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>
+			调用名为$.isPlainObject的工具函数，能检测对象是否为通过{}或new Object()关键字创建的原始对象，如果是，返回true，否则，返回false值，调用格式为：<br />
+			$.isPlainObject (obj);<br />
+			其中，参数obj表示需要检测的对象名称。
+		</p>
+		<hr />
+		
+		<div>
+            <div>
+                <span>检测对象是否为原始对象</span> 
+            </div>
+            <div class="content"></div>
+        </div>
+        
+        <script type="text/javascript">
+            $(function () {
+                var obj = "null";			//为空
+                var strTmp = "您定义了一个：";
+                if ($.isPlainObject(obj)) { //检测是否为原始对象
+                    strTmp += "原始对象";
+                }
+                else {
+                    strTmp += "非原始对象";
+                }
+                $(".content").html(strTmp);
+            });
+        </script>
+	</body>
+</html>

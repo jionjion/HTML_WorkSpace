@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>通过表单序列化实现URL传输</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>使用serialize()方法序列化表单元素值</h1>
+		<p>
+			使用serialize()方法可以将表单中有name属性的元素值进行序列化，生成标准URL编码文本字符串，直接可用于ajax请求，它的调用格式如下：<br />
+			$(selector).serialize()<br />
+			其中selector参数是一个或多个表单中的元素或表单元素本身。
+		</p>
+		<hr />
+		        
+		    <div>
+            <div>
+                <span>我的个人资料</span> 
+                <span>
+                    <input type="button" value="序列化" />
+                </span>
+            </div>
+            <form action="">
+            <ul>
+                <li>姓名：<input name="name" type="text" size="12" /></li>
+                <li>
+                    <select name="sex">
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+                </li>
+                <li><input  type="checkbox" name="visual" />资料是否可见 </li>
+                <li></li>
+            </ul>
+            </form>
+        </div>
+        
+        <script type="text/javascript">
+        	//序列化
+        	var str = $("form").serialize();
+            $(function () {
+                $("input:button").bind("click", function () {
+                	//展示序列化后的文字
+					$("li:last").html(str+"<br />");
+                })
+            })
+        </script>
+	</body>
+</html>

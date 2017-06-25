@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>修改元素的文本</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>读取、修改元素的html结构或者元素的文本内容是常见的DOM操作，jQuery针对这样的处理提供了2个便捷的方法.html()与.text()</p>
+		<p>
+			.html()方法 <br />
+			获取集合中第一个匹配元素的HTML内容 或 设置每一个匹配元素的html内容，具体有3种用法：<br />
+			.html() 不传入值，就是获取集合中第一个匹配元素的HTML内容<br />
+			.html( htmlString )  设置每一个匹配元素的html内容<br />
+			.html( function(index, oldhtml) ) 用来返回设置HTML内容的一个函数<br />
+			.html()方法内部使用的是DOM的innerHTML属性来处理的，所以在设置与获取上需要注意的一个最重要的问题，这个操作是针对整个HTML内容（不仅仅只是文本内容）
+		</p>
+		<p>
+			.text()方法<br />
+			得到匹配元素集合中每个元素的文本内容结合，包括他们的后代，或设置匹配元素集合中每个元素的文本内容为指定的文本内容。，具体有3种用法：<br />
+			.text() 得到匹配元素集合中每个元素的合并文本，包括他们的后代<br />
+			.text( textString ) 用于设置匹配元素内容的文本<br />
+			.text( function(index, text) ) 用来返回设置文本内容的一个函数<br />
+			.text()结果返回一个字符串，包含所有匹配元素的合并文本
+		</p>
+		
+		<p>
+			.html与.text的异同:<br />
+			.html与.text的方法操作是一样，只是在具体针对处理对象不同<br />
+			.html处理的是元素内容，.text处理的是文本内容<br />
+			.html只能使用在HTML文档中，.text 在XML 和 HTML 文档中都能使用<br />
+			如果处理的对象只有一个子文本节点，那么html处理的结果与text是一样的<br />
+			火狐不支持innerText属性，用了类似的textContent属性，.text()方法综合了2个属性的支持，所以可以兼容所有浏览器
+		</p>
+		<hr />
+		
+		<h3>.html()与.text()</h3>
+	    <div class="first-div">
+	        <div>
+	            <a>:first-child</a>
+	            <a>第二个元素</a>
+	            <a>:last-child</a>
+	        </div>  
+	        <div>
+	            <a>:first-child</a>
+	            <a>第二个元素</a>
+	            <a>:last-child</a>
+	        </div>
+	    </div>
+	    
+	    <h4>显示通过html方法获取到的内容</h4>
+	    <p id="p1"></p>
+	
+	    <h4>显示通过text方法获取到的内容</h4>
+	    <p id="p2"></p>
+	
+	
+	    <script type="text/javascript">			
+	        //显示出html方法获取到的内容
+	        //.html()是整个html文档结构
+	        $('#p1').text( $(".first-div").html() ) //html获取一堆带尖括号的元素,再将其作为文本存入p标签
+	    </script>
+	
+	
+	    <script type="text/javascript">
+	        //显示出text方法获取到的内容
+	        //.text()是文本内容的合集
+	        $('#p2').text( $(".first-div").text() ) 			//获得文本后装填	
+	    </script>
+	
+	
+	    <script type="text/javascript">
+	        //通过.text()方法替换文本内容,替换该类子类下的,第一个元素
+	        $(".first-div a:first").text('替换第一个a元素的内容')
+	    </script>
+	
+	
+	    <script type="text/javascript">
+	        //通过.html()方法替换html结构
+	        $(".first-div div:last").html('整个div的子节点都被替换了')		//使用html替换整个节点
+	    </script>
+	
+	
+	    <script type="text/javascript">
+	        //通过.text()的回调，获取原本的内容，修改，在重新赋值
+	        $(".first-div a:first").text(function(index,text){
+	            return '增加新的文本内容' + text+index;
+	        })
+	    </script>
+	
+
+	</body>
+</html>

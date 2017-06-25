@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>属性选择器</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>属性选择器</h1>
+		<p>
+			属性选择器让你可以基于属性来定位一个元素。<br />
+			可以只指定该元素的某个属性，这样所有使用该属性而不管它的值，
+			这个元素都将被定位，也可以更加明确并定位在这些属性上使用特定值的元素，
+			这就是属性选择器展示它们的威力的地方。
+			<img src="../../img/属性选择器.jpg" />
+		</p>
+			在这么多属性选择器中[attr="value"]和[attr*="value"]是最实用的<br />
+		<p>	
+			[attr="value"]能帮我们定位不同类型的元素，特别是表单form元素的操作，比如说input[type="text"],input[type="checkbox"]等<br />
+			[attr*="value"]能在网站中帮助我们匹配不同类型的文件
+		</p>
+		<hr />
+		
+		<h3>[att=val]、[att]、[att|=val]、[att~=val]</h3>
+	    <div testattr="true" >		<!--自定义属性-->
+	        <div class="one" testattr="true" name='p1'>
+	            <a>[att=val]</a>
+	        </div>
+	        <div class="one" testattr="true" p2>
+	            <a>[att]</a>
+	        </div>
+	        <div class="one" testattr="true" name="-">
+	            <a>[att|=val]</a>
+	        </div>
+	        <div class="one" testattr="true" name="a b">
+	            <a>[att~=val]</a>
+	        </div>
+	    </div>
+		
+		<!--最常用-->
+	    <script type="text/javascript">
+	        //查找所有div中.one类，属性name=p1的div元素
+	        $('.one[name=p1]').css("border", "3px groove red"); 
+	    </script>
+	
+	    <script type="text/javascript">
+	        //查找所有div中.one类，有属性p2的div元素
+	        $('.one[p2]').css("border", "3px groove blue"); 
+	    </script>
+	
+	    <script type="text/javascript">
+	        //查找所有div中.one类，有属性name中的值只包含一个连字符“-”的div元素
+	        $('.one[name|="-"]').css("border", "3px groove #00FF00"); 
+	    </script>
+	
+	    <script type="text/javascript">
+	        //查找所有div中.one类，有属性name中的值包含一个连字符“空”和“a”的div元素
+	        $('.one[name~="a"]').css("border", "3px groove #668B8B"); 
+	    </script>
+	
+	
+	    <h3>[att^=val]、[att*=val]、[att$=val]、[att!=val]</h3>
+	    <div>
+	        <div class="two" testattr="true"  name='test-text'>
+	            <a>[att^=val]</a>
+	        </div>
+	        <div class="two" testattr="true"  name='text-test'>
+	            <a>[att$=val]</a>
+	        </div>
+	        <div class="two" testattr="true"  name="attr-test-selector">
+	            <a>[att*=val]</a>
+	        </div>
+	        <div class="two" name="a b">
+	            <a>[att!=val]</a>
+	        </div>
+	    </div>
+	
+	
+	    <script type="text/javascript">
+	        //查找所有div中two，属性name的值是用test开头的
+	        $('.two[name^="test"]').css("border", "3px groove red"); 
+	    </script>
+	
+	    <script type="text/javascript">
+	        //查找所有div中.two类，属性name的值是用test结尾的
+	        $('.two[name$=test]').css("border", "3px groove blue"); 
+	    </script>
+	
+		<!--最常用-->
+	    <script type="text/javascript">
+	        //查找所有div中.two类，有属性name中的值包含一个selector字符串的div元素
+	        $('.two[name*="selector"]').css("border", "3px groove #00FF00"); 
+	    </script>
+	
+	    <script type="text/javascript">
+	        //查找所有div中.two类，有属性testattr中的值没有包含"true"的div,或者不含该属性
+	        $('.two[testattr!="true"]').css("border", "3px groove #668B8B"); 
+	    </script>
+	
+
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>查找元素的相邻上一节点</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>
+			jQuery是一个合集对象，如果想快速查找指定元素集合中每一个元素紧邻的前面同辈元素的元素集合，此时可以用prev()方法
+		</p>
+		<p>
+			prev()无参数<br />
+			取得一个包含匹配的元素集合中每一个元素紧邻的前一个同辈元素的元素集合<br />
+			注意：jQuery是一个合集对象，所以通过prev是匹配合集中每一个元素的上一个兄弟元素
+		</p>
+		<p>
+			prev()方法选择性地接受同一类型选择器表达式<br />
+			同样的也是因为jQuery是合集对象，可能需要对这个合集对象进行一定的筛选，找出目标元素，所以允许传一个选择器的表达式
+		</p>
+		<hr />
+		
+		<h2>prev方法()</h2>
+	    <div>
+	        <div class="div">
+	            <ul class="level-1">
+	                <li class="item-1">1</li>
+	                <li class="item-2">2</li>
+	                <li class="item-3">3</li>
+	            </ul>
+	        </div>
+	        <div class="div">
+	            <ul class="level-2">
+	                <li class="item-1">1</li>
+	                <li class="item-2">2</li>
+	                <li class="item-3">3</li>
+	            </ul>
+	        </div>
+	        <div class="div">
+	            <ul class="level-3">
+	                <li class="item-1">1</li>
+	                <li class="item-2">2</li>
+	                <li class="item-3">3</li>
+	            </ul>
+	        </div>
+	    </div>
+	    <button>点击：prev无参数</button>
+	    <button>点击：prev传递选择器</button>
+	    <script type="text/javascript">
+	    $("button:first").click(function() {
+	        //通过prev方法，找到每个class=item-2的li节点所对应的上一个兄弟节点
+	        $('.item-2').prev().css('border', '1px solid red')
+	    })
+	    </script>
+	
+	    <script type="text/javascript">
+	    $("button:last").click(function() {
+	        //找到所有class=item-2的li
+	        //然后筛选出中间一个，加上蓝色的边
+	       $('.item-3').prev(':eq(1)').css('border', '1px solid blue')
+	    })
+	    </script>
+	</body>
+</html>

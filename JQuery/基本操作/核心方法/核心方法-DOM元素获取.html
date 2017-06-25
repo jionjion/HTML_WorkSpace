@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM元素的获取</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>DOM元素的获取</h1>
+		<p>
+			jQuery是一个合集对象，如果需要单独操作合集中的的某一个元素，可以通过.get()方法获取到<br />
+			语法：<br />
+			.get( [index ] )<br />
+			注意2点<br />
+			get方法是获取的dom对象，也就是通过document.getElementById获取的对象<br />
+			get方法是从0开始索引<br />
+			负索引值参数<br />
+			get方法还可以从后往前索引，传递一个负索引值，注意的负值的索引起始值是-1
+		</p>
+		<p>
+			区别<br />
+			get方法是获取dom对象，eq方法是获取jq对象<br />
+			如果你想改成eq()是可以的。但是你只把get()改成eq()是不行的。<br />
+			因为对$()用get()，那个$()所取到的元素就变成了dom，也就是变成了js。<br />
+			那么js取得的元素后面就必须跟js的方法或者属性，既$().get().style()而不是$().get().css()。<br />
+			因为style是js独有的方法，而css()是jq独有的方法，get()方法后取得的js元素，它只能识别style()，而不能识别css()。
+		</p>
+		<hr />
+
+		<h2>get方法</h2>
+	    <div id="div1">
+	        <a>1</a>
+	        <a>2</a>
+	        <a>3</a>
+	        <a>4</a>
+	        <a>5</a>
+	    </div>
+	
+	    <select>
+	        <option value="1">get正数索引参数,获取正数第二个</option>
+	        <option value="2">get负数索引参数,获取倒数第一个</option>
+	    </select>
+	    <input  type="button" value="点击执行">
+	    <script type="text/javascript">
+	    $("input").click(function() {
+	        var v = $("select").val();
+	        var $div1 = $("#div1 a");	//获取div1下面的所有a标签元素
+	
+	        //通过get找到第二个a元素，并修改蓝色字体
+	        if (v == "1") {
+	           $div1.get(1).style.color = "blue"
+	        } else if (v == "2") {
+	            //通过get找到最后一个a元素，并修改字体颜色
+	            $div1.get(-1).style.color = "#8A2BE2"
+	        }
+	    });
+	    </script>
+	</body>
+</html>

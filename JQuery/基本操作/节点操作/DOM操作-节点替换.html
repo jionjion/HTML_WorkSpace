@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM节点的替换</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>
+			.replaceWith( newContent )：用提供的内容替换集合中所有匹配的元素并且返回被删除元素的集合<br />
+			.replaceAll( target ) ：用集合的匹配元素替换每个目标元素
+		</p>
+		<p>
+			.replaceAll()和.replaceWith()功能类似，主要是目标和源的位置区别<br />
+			.replaceWith()与.replaceAll() 方法会删除与节点相关联的所有数据和事件处理程序<br />
+			.replaceWith()方法，和大部分其他jQuery方法一样，返回jQuery对象，所以可以和其他方法链接使用<br />
+			.replaceWith()方法返回的jQuery对象引用的是替换前的节点，而不是通过replaceWith/replaceAll方法替换后的节点
+		</p>
+		<hr />
+		
+		<h2>replaceWith()和replaceAll()</h2>
+	    <div>
+	        <button class="bt1">点击,通过replaceWith替换内容</button>
+	        <button class="bt2">点击,通过rreplaceAll替换内容</button>
+	    </div>
+	    <div class="one">
+	        <div>
+	            <p>第一段</p>
+	            <p>第二段</p>		<!--将会被替换-->
+	            <p>第三段</p>
+	        </div>
+	        <div>
+	            <p>第四段</p>
+	            <p>第五段</p>
+	            <p>第六段</p>
+	        </div>
+	    </div>
+	    <script type="text/javascript">
+	    //只克隆节点
+	    //不克隆事件
+	    $(".bt1").on('click', function() {
+	        //找到内容为第二段的p元素
+	        //通过replaceWith删除并替换这个节点
+	        $(".one > div:first p:eq(1)").replaceWith('<a style="color:red">replaceWith替换第二段的内容</a>')
+	    })
+	    </script>
+	    <script type="text/javascript">
+	    //找到内容为第六段的p元素
+	    //通过replaceAll删除并替换这个节点
+	    $(".bt2").on('click', function() {
+	        $('<a style="color:red">replaceAll替换第六段的内容</a>').replaceAll('.one > div:last p:last');
+	    })
+	    </script>
+	</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM节点的内部插入</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		
+		<p>
+			append：这个操作与对指定的元素执行原生的appendChild方法，将它们添加到文档中的情况类似。<br />
+			appendTo：实际上，使用这个方法是颠倒了常规的$(A).append(B)的操作，即不是把B追加到A中，而是把A追加到B中。<br />
+			<img src="../../img/节点内部插入.jpg"/>
+		</p>
+		<hr />
+		
+		<h2>通过append与appendTo添加元素</h2>
+	    <button id="bt1">点击通过jQuery的append添加元素</button>
+	    <button id="bt2">点击通过jQuery的appendTo添加元素</button>
+	
+	    <div class="one">
+	    	<p>测试文本</p>
+	    </div>
+	
+	    <script type="text/javascript">
+	
+	        $("#bt1").on('click', function() {
+	    		//.append(), 内容在方法的后面，
+	    		//参数是将要插入的内容。
+	    		$(".one").append('<div class="append">通过append方法添加的元素</div>')
+	    	})
+	
+	    </script>
+	
+	    <script type="text/javascript">
+	
+	    	$("#bt2").on('click', function() {
+	    		//.appendTo()刚好相反，内容在方法前面，
+	    		//无论是一个选择器表达式 或创建作为标记上的标记
+	    		//它都将被插入到目标容器的末尾。
+	    		$('<div class="appendTo">通过appendTo方法添加的元素</div>').appendTo($(".one"))
+	    	})
+	    </script>
+	    
+	    <hr /><hr />
+	    <p>
+	    	在元素内部进行操作的方法，除了在被选元素的结尾（仍然在内部）通过append与appendTo插入指定内容外，相应的还可以在被选元素之前插入，<br />
+	    	jQuery提供的方法是prepend与prependTo<br />
+	    	<img src="../../img/节点内部插入2.jpg"/>
+	    </p>
+	    <p>
+	    	四个的区别:<br />
+	    	append()向每个匹配的元素内部追加内容<br />
+			prepend()向每个匹配的元素内部前置内容<br />
+			appendTo()把所有匹配的元素追加到另一个指定元素的集合中<br />
+			prependTo()把所有匹配的元素前置到另一个指定的元素集合中<br />
+	    </p>
+	    <hr />
+	    
+        <h2>通过prepend与prependTo添加元素</h2>
+	    <button id="bt3">点击通过jQuery的prepend添加元素</button>
+	    <button id="bt4">点击通过jQuery的prependTo添加元素</button>
+	    <div class="two">
+	        <p>测试文本</p>
+	    </div>
+	    <script type="text/javascript">
+	    $("#bt3").on('click', function() {
+	        //找到class="aaron1"的div节点
+	        //然后通过prepend在内部的首位置添加一个新的p节点
+	        $('.two')
+	            .prepend('<p>prepend增加的p元素</p>')
+	    })
+	    </script>
+	    <script type="text/javascript">
+	    $("#bt4").on('click', function() {
+	        //找到class="aaron2"的div节点
+	        //然后通过prependTo内部的首位置添加一个新的p节点
+	        $('<p>prependTo增加的p元素</p>')
+	            .prependTo($('.two'))
+	    })
+	    </script>
+	</body>
+</html>

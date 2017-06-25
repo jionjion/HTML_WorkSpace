@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>特殊选择器this</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>特殊选择器</h1>
+		<p>this是JavaScript中的关键字，指的是当前的上下文对象，简单的说就是方法/属性的所有者</p>
+		<p>this，表示当前的上下文对象是一个html对象，可以调用html对象所拥有的属性和方法。 <br />
+			$(this),代表的上下文对象是一个jquery的上下文对象，可以调用jQuery的方法和属性值。</p>
+		<hr />	
+		
+		<p id="test1">点击测试：通过原生DOM处理</p>
+    
+	    <p id="test2">点击测试：通过原生jQuery处理</p>
+	
+	    <script type="text/javascript">
+	        var p1 = document.getElementById('test1')
+	        p1.addEventListener('click',function(){
+	            //直接通过dom的方法改变颜色
+	            this.style.color = "red"; 
+	        },false);
+	    </script>
+	
+	    <script type="text/javascript">
+	        $('#test2').click(function(){
+	            //通过包装成jQuery对象改变颜色
+	            $(this).css('color','blue');
+	        })
+	    </script>
+	</body>
+</html>

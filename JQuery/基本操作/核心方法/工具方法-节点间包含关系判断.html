@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>判断两个节点间的包含关系</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>检测两个节点的包含关系</h1>
+		<p>
+			调用名为$.contains的工具函数，能检测在一个DOM节点中是否包含另外一个DOM节点，如果包含，返回true，否则，返回false值，调用格式为：<br />
+			$.contains (container, contained);<br />
+			参数container表示一个DOM对象节点元素，用于包含其他节点的容器，contained是另一个DOM对象节点元素，用于被其他容器所包含。
+		</p>
+		<hr />
+		
+		<div>
+            <div>
+                <span>检测两个节点的包含关系</span> 
+            </div>
+            <div class="content"></div>
+        </div>
+        
+        <script type="text/javascript">
+            $(function () {
+                var node_a = document.body.firstChild;
+                var node_b = document.body;
+                var strTmp = "对象node_a";
+                if ($.contains (node_a, node_b)) { //检测是否包含节点
+                    strTmp += " 包含 ";
+                }
+                else {
+                    strTmp += " 不包含 ";
+                }
+                strTmp += "对象node_b";
+                $(".content").html(strTmp);
+            });
+        </script>
+	</body>
+</html>

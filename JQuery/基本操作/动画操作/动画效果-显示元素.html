@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>元素的显示</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>元素的显示</h1>
+		<p>
+			css中有display:none属性，同时也有display:block，所以jQuery同样提供了与hide相反的show方法<br />
+			方法的使用几乎与hide是一致的，hide是让元素显示到隐藏，show则是相反，让元素从隐藏到显示
+		</p>
+		<p>
+			show与hide方法是修改的display属性，通过是visibility属性布局需要通过css方法单独设置<br />
+			如果使用!important在你的样式中，比如display: none !important，如果你希望.show()方法正常工作，必须使用.css('display', 'block !important')重写样式<br />
+			如果让show与hide成为一个动画，那么默认执行动画会改变元素的高度，高度，透明度
+		</p>
+		<hr />
+	
+		<h2>立即显示元素</h2>
+	    <div>
+	        <div id="div1" style="display: none;">显示元素</div>
+	        <button>show立即</button>
+	    <script type="text/javascript">
+	
+	    $("button:first").click(function() {
+	        $("#div1").show();
+	    });
+	    </script>
+	    
+   		<h2>动画显示元素</h2>
+	    <div>
+	        <div id="div2" style="display: none;">显示元素</div>
+	        <button>show动画</button>
+	    <script type="text/javascript">
+	
+	    //点击button
+	    //执行3秒显示
+	    $("button:last").click(function() {
+	        $("#div2").show({
+                duration: 3000,				//修改显示的时间
+                complete: function() {		//时间到后的触发函数对象
+                    alert('执行3000ms动画完毕')
+                }
+	    	})
+	    })
+	    </script>
+
+
+	</body>
+</html>

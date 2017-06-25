@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>键盘触发字符编码</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>键盘按下时触发的字符编码</h1>
+		<p>
+			当浏览器捕获键盘输入时，还提供了一个keypress的响应，这个跟keydown是非常相似<br />
+			keypress事件与keydown和keyup的主要区别<br />
+			只能捕获单个字符，不能捕获组合键<br />
+			无法响应系统功能键（如delete，backspace）<br />
+			不区分小键盘和主键盘的数字字符
+		</p>
+		<p>
+			KeyPress主要用来接收字母、数字等ANSI字符，而 KeyDown 和 KeyUP 事件过程可以处理任何不被 KeyPress 识别的击键。<br />
+			诸如：功能键（F1-F12）、编辑键、定位键以及任何这些键和键盘换档键的组合等。
+		</p>
+		<hr />
+		
+		<h2>keypress()事件</h2>
+	    <div>
+	        <div>监听keypress输入:
+	            <input class="target1" type="text" value="" /><br />
+	            输入测试,无延时,中文支持差:<em></em>
+	        </div>
+	    </div>
+	
+	    <script type="text/javascript">
+	    //监听键盘按键
+	    //获取输入的值
+	    $('.target1').keypress(function(e) {
+	        $("em").text(e.target.value)
+	    });
+	    </script>
+	</body>
+</html>

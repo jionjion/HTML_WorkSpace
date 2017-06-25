@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>内容选择器的使用</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>内容筛选选择器</h1>
+		<p>基本筛选选择器针对的都是元素DOM节点，如果我们要通过内容来过滤，jQuery也提供了一组内容筛选选择器，当然其规则也会体现在它所包含的子元素或者文本内容上</p>
+		<img src="../../img/内容选择器.jpg"/>
+		<p>
+			:contains与:has都有查找的意思，但是contains查找包含“指定文本”的标签元素，has查找包含“指定标签”的标签元素<br />
+			如果:contains匹配的文本包含在元素的子元素中，同样认为是符合条件的。<br />
+			:parent与:empty是相反的，两者所涉及的子元素，包括文本节点
+		</p>
+		<hr />
+		
+		<h3>:contains/:has</h3>
+	    <div>
+	        <div class="one">
+	            <p>:contains</p>
+	        </div>
+	        <div class="one">
+	            <p>:contains</p>
+	        </div>
+	        <div class="one">
+	            <p>
+	                <span>:has</span>
+	            </p>
+	        </div>
+	        <div class="one">
+	            <p>:contains</p>
+	        </div>
+	    </div>
+	
+	    <script type="text/javascript">
+	        //查找所有class='one'中DOM元素中包含"contains"文本的元素节点
+	        //并且设置颜色
+	        $(".one:contains(':contains')").css("color", "#CD00CD");	//选择的为一个文本,虽然有包含关系,父元素仍然被选择
+	    </script>
+	
+	    <script type="text/javascript">
+	        //查找所有class='one'中DOM元素中包含"span"的元素节点
+	        //并且设置颜色
+	        $(".one:has(span)").css("color", "blue");					//选择的为一个元素
+	    </script>
+	
+	
+	    <h3>:parent/:empty</h3>
+	    <div>
+	        <div class="two">
+	            <a>:parent</a>
+	        </div>
+	        <div class="two">
+	            <a>:parent</a>
+	        </div>
+	        <div class="two">
+	            <a>:parent</a>
+	        </div>
+	        <div class="two">
+	            <a></a>
+	        </div>
+	    </div>
+	    <script type="text/javascript">
+	       //选择所有包含子元素或者文本的a元素
+	       //增加一个蓝色的边框
+	       $("a:parent").css("border", "3px groove blue");		
+	    </script>
+	
+	    <script type="text/javascript">
+	       //找到a元素下面的所有空节点(没有子元素)
+	       //增加一段文本与边框
+	       $("a:empty").text(":empty属性").css("border", "3px groove red"); 
+	    </script>
+	</body>
+</html>

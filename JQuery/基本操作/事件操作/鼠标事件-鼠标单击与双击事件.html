@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标的单击和双击事件</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>鼠标的单击和双击事件</h1>
+		<p>jQuery提供了两个方法一个是click方法用于监听用户单击操作，另一个方法是dbclick方法用于监听用户双击操作。</p>
+		<p>
+			方法一：$ele.click()<br />
+			绑定$ele元素，不带任何参数一般是用来指定触发一个事件，用的比较少<br />
+			方法二：$ele.click( handler(eventObject) )<br />
+			绑定$ele元素，每次$ele元素触发点击操作会执行回调 handler函数，这样可以针对事件的反馈做很多操作了，方法中的this是指向了绑定事件的元素<br />
+			方法三：$ele.click( [eventData ], handler(eventObject) )<br />
+			使用与方法二一致，不过可以接受一个数据参数，这样的处理是为了解决不同作用域下数据传递的问题
+		</p>
+		<p>
+			click事件触发需要以下几点：<br />
+			click事件其实是由mousedown与mouseup 2个动作构成，所以点击的动作只有在松手后才触发<br />
+			dblclick事件触发需要以下几点：<br />
+			dblclick又是由2个click叠加而来的，所以dblclick事件只有在满足以下条件的情况下才能被触发<br />
+			鼠标指针在元素里面时点击。<br />
+			鼠标指针在元素里面时释放。<br />
+			鼠标指针在元素里面时再次点击，点击间隔时间，是系统而定。<br />
+			鼠标指针在元素里面时再次释放。
+		</p>
+		<hr />
+		
+		    <h2>.click()方法</h2>
+
+		    <h4>测试方法一：$ele.click()</h4>
+		    <p>只是真</p>
+		    <button>元素绑定事件,弹出回调中的this</button>
+		    <script type="text/javascript">
+		        //this指向button元素
+		         $("button:eq(0)").click(function() {
+		            alert(this);					//指带button对象本体
+		        })
+		    </script>
+		
+		
+		
+		    <h4>测试方法二：$ele.click( handler(eventObject) )</h4>
+		    <p>传入事件对象的事件监听,进行事件解析</p>
+		    <button>指定触发事件,获取传入事件对象</button>
+		    <script type="text/javascript">
+		        $('button:eq(1)').click(function(e) {	
+		            alert(e.target.textContent);	//获得触发事件的目标的文本元素
+		        })
+		    </script>
+		
+		
+		
+		    <h4>测试方法三：$ele.click( [eventData ], handler(eventObject) )</h4>
+		    <p>传入数据,进行事件的解析</p>
+		    <button>传递数据和拦截函数进行解析</button>
+		    <script type="text/javascript">
+		
+		        //定义函数对象,传入事件并解析事件
+		        function handler(e) {
+		            alert("解析传入的时间:"+e.data) 	
+		        }
+		
+		        $("button:eq(2)").click("这是我传入的参数123", handler)	//传入参数和Handler解析事件
+		
+		    </script>
+	</body>
+</html>

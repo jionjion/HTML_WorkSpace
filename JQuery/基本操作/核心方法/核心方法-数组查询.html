@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组遍历</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>
+			jQuery封装了inArray()函数判断元素是否存在数组中。<br />
+			索引默认从0开始<br />
+			jQuery.inArray()函数用于在数组中搜索指定的值，并返回其索引值。如果数组中不存在该值，则返回 -1。
+		</p>
+		<p>
+			语法:<br />
+			jQuery.inArray( value, array ,[ fromIndex ] )<br />
+			用法非常简单，传递一个检测的目标值，然后传递原始的数组，可以通过fromIndex规定查找的起始值，默认数组是0开始
+			技巧:
+			如果要判断数组中是否存在指定值，你需要通过该函数的返回值不等于(或大于)-1来进行判断
+		</p>
+		<hr />
+		
+		<h2>inArray方法</h2>
+	    <p>这书数据</p>
+	    <div id="div1"></div>
+	    点击观察结果：
+	    <select>
+	        <option value="1">不指定位置索引查询</option>
+	        <option value="2">指定位置索引查询</option>
+	    </select>
+	    <input type="button" value="执行数组查询">
+	    <script type="text/javascript">
+	    $('input:button').click(function() {
+	        var v = $("select").val();
+	        var $div = $("#div1");
+	           $div.empty();			//使其置空
+	        if (v == "1") {
+	
+	            var index = $.inArray('Aaron',['test','Aaron', 'array','慕课网']);
+	
+	            $div.text('Aaron的索引是: '+ index)
+	
+	        } else if (v == "2") {
+	
+	            //指定索引开始的位置
+	            var index = $.inArray('a',['b','a','c','d','a','c'],2);		//a在数组中从第二个位置开始查找,返回索引位置
+	
+	            $div.text('a的索引是: '+ index)
+	        } 
+	    });
+	    </script>
+
+	</body>
+</html>

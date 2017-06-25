@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画的上拉效果</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>动画的上拉效果</h1>
+		<p>
+			$("elem").slideUp();<br />
+			这个使用的含义就是：找到元素的高度，然后采用一个下滑动画让元素一直滑到隐藏，当高度为0的时候，也就是不可见的时，修改元素display 样式属性被设置为none。<br />
+			这样就能确保这个元素不会影响页面布局了
+		</p>
+		<p>
+			.slideUp( [duration ] [, easing ] [, complete ] )<br />
+			同样可以提供一个时间，然后可以使用一种过渡使用哪种缓动函数，jQuery默认就2种，可以通过下载插件支持。最后一个动画结束的回调方法。
+		</p>
+		<p>
+			因为动画是异步的，所以要在动画之后执行某些操作就必须要写到回调函数里面，这里要特别注意
+		</p>
+		<hr />
+		
+	    <h2>slideUp</h2>
+	    <div>
+	        <h4>立即上划隐藏</h4>
+	        <div id="div1">隐藏的元素</div>
+	        <button>点击slideUp隐藏动画</button>
+	    </div>
+	        <script type="text/javascript">
+	        $("button:first").click(function() {
+	            $("#div1").slideUp()
+	        });
+	        </script>
+	    <div>
+	        <h4>上划动画</h4>
+	        <div id="div2">隐藏的元素</div>
+	        <button>点击slideUp执行回调</button>
+	    </div>
+	        <script type="text/javascript">
+	        $("button:last").click(function() {
+	            $("#div2").slideUp(3000,function(){
+	                alert('动画执行结束')
+	            })
+	        });
+	        </script>
+	
+
+	</body>
+</html>

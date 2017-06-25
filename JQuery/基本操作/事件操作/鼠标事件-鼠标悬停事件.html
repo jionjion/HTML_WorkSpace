@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标悬停事件</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>鼠标悬停事件</h1>
+		<p>
+			hover()这个方法里头封装的是mouseenter(), mouseleave()两个方法, 可以阻止冒泡问题. 这个方法可以用来改变样式, 比如鼠标移入div变色, 移出回到以前的颜色.<br />
+			 相当于css中的div:hover, 但是:hover很多的浏览器对a:hover支持还不错, 对div:hover, ul:hover支持有点差, 特别是ie6,ie7这些较低的版本. <br />
+			 用jquery可以解决兼容性,代码量比js要少很多, 可以专注在逻辑业务上.
+		</p>
+		<p>
+			只需要在hover方法中传递2个回调函数就可以了，不需要显示的绑定2个事件<br />
+			$(selector).hover(handlerIn, handlerOut)<br />
+			handlerIn(eventObject)：当鼠标指针进入元素时触发执行的事件函数<br />
+			handlerOut(eventObject)：当鼠标指针离开元素时触发执行的事件函数
+		</p>
+		<hr />
+		
+		<h2>.hover()方法</h2>
+	    <div>
+	        <div>
+	            <p id="p1">触发hover事件</p>
+	        </div>
+	    </div>
+	    <script type="text/javascript">
+	
+	    // hover()方法是同时绑定 mouseenter和 mouseleave事件。
+	    // 我们可以用它来简单地应用在 鼠标在元素上行为
+	    // 改变后不再恢复原来初始值的颜色
+	    $("#p1").hover(
+	        function() {		//移入时,变为红色
+	            $(this).css("background", 'red');
+	        },
+	        function() {		//移出时,变为蓝色
+	            $(this).css("background", 'blue');
+	        }
+	    );
+	
+	
+	    </script>
+	</body>
+</html>

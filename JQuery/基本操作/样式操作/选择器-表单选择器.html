@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单选择器</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>
+			jQuery中专门加入了表单选择器，从而能够极其方便地获取到某个类型的表单元素<br />
+			<img src="../../img/表单选择器.jpg"/>
+		</p>
+		<hr />
+		
+		<h1>表单选择器</h1>
+	    <h3>input、text、password、radio、checkbox、submit、image、reset、button、file</h3>
+	    <div class="first-div">
+	        <form>
+	            <input type="text" value="text类型"/>						<br />
+	            <input type="password" value="password"/>				<br />
+	            <input type="radio" checked="checked"/> 				<br />
+	            <input type="checkbox" checked="checked"/>				<br />
+	            <input type="submit" />									<br />
+	            <input type="image" />									<br />
+	            <input type="reset" />									<br />
+	            <input type="button" value="Button" />					<br />
+	            <input type="file" />									<br />
+	        </form>
+	    </div>
+	
+	    <script type="text/javascript">
+	        //查找所有 input, textarea, select 和 button 元素
+	        //:input 选择器基本上选择所有表单控件
+	        $(':input').css("border", "1px groove red"); 
+	    </script>
+	
+	    <script type="text/javascript">
+	        //匹配所有input元素中类型为text的input元素
+	        $('input:text').css("background", "#A2CD5A");
+	    </script>
+	
+	    <script type="text/javascript">
+	        //匹配所有input元素中类型为password的input元素
+	        $('input:password').css("background", "yellow");
+	    </script>
+	
+	    <script type="text/javascript">
+	        //匹配所有input元素中的单选按钮,并选中
+	        $('input:radio').attr('checked','true');
+	    </script>
+	
+	    <script type="text/javascript">
+	        //匹配所有input元素中的复选按钮,并选中
+	        $('input:checkbox').attr('checked','true'); 
+	    </script>
+	
+	    <script type="text/javascript">
+	        //匹配所有input元素中的提交的按钮,修改背景颜色
+	        $('input:submit').css("background", "#C6E2FF");
+	    </script>
+	
+	    <script type="text/javascript">
+	        //匹配所有input元素中的图像类型的元素,修改背景颜色
+	        $('input:image').css("background", "#F4A460");
+	    </script>
+	
+	    <script type="text/javascript">
+	        //匹配所有input元素中类型为按钮的元素
+	        $('input:button').css("background", "red");
+	    </script>
+	
+	    <script type="text/javascript">
+	        //匹配所有input元素中类型为file的元素
+	        $('input:file').css("background", "#CD1076");
+	    </script>
+		
+		
+		
+		<br /><br />
+		<!--表单状态选择器-->
+		<p>
+			除了表单元素选择器外，表单对象属性筛选选择器也是专门针对表单元素的选择器，可以附加在其他选择器的后面，主要功能是对所选择的表单元素进行筛选
+			<img src="../../img/表单状态选择器.jpg"/>
+		</p>
+		<p>
+			选择器适用于复选框和单选框，对于下拉框元素, 使用 :selected 选择器<br />
+			在某些浏览器中，选择器:checked可能会错误选取到option元素，所以保险起见换用选择器input:checked，确保只会选取input元素
+		</p>
+		<hr />
+		
+		<h3>enabled、disabled</h3>
+	    <form>
+	        <input type="text" value="未设置disabled" />
+	        <input type="text" value="设置disabled" disabled="disabled" />
+	        <input type="text" value="未设置disabled" />
+	    </form>
+	
+	    <script type="text/javascript">
+	        //查找所有input所有可用的（未被禁用的元素）input元素。
+	        $('input:enabled').css("border", "2px groove red");
+	    </script>
+	
+	    <script type="text/javascript">
+	        //查找所有input所有不可用的（被禁用的元素）input元素。
+	        $('input:disabled').css("border", "2px groove blue");
+	    </script>
+	
+	
+	    <h3>checked、selected</h3>
+	    <form>
+	        <input type="checkbox" checked="checked">				<br />
+	        <input type="checkbox">									<br />
+	        <input type="radio" checked>       						<br />
+	        <input type="radio">									<br />
+	        
+	        <select name="garden" multiple="multiple">
+	            <option>元素一</option>
+	            <option selected="selected">元素二</option>
+	            <option>元素三</option>
+	            <option selected="selected">元素四</option>
+	          </select>
+	
+	    </form>
+	
+	    <script type="text/javascript">
+	         //查找所有input所有勾选的元素(单选框,复选框)
+	         //移除input的checked属性
+	        $('input:checked').removeAttr('checked')
+	    </script>
+	
+	    <script type="text/javascript">
+	         //查找所有option元素中,有selected属性被选中的选项
+	         //移除option的selected属性
+	        $('option:selected').removeAttr('selected')
+	    </script>
+
+		
+	</body>
+</html>

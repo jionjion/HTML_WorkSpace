@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>扩展Object对象</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>使用$.extend()扩展Object对象</h1>
+		<p>
+			除使用$.extend扩展工具函数外，还可以扩展原有的Object对象，在扩展对象时，两个对象将进行合并，当存在相同属性名时，后者将覆盖前者，调用格式为：<br />
+			$. extend (obj1,obj2,…objN);<br />
+			参数obj1至objN表示需要合并的各个原有对象。
+		</p>
+		<hr />
+		
+		<div>
+            <div>
+                <span>合并原有对象</span> 
+            </div>
+            <div>
+                <div class="content"></div>
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            $(function () {
+                var objInfo = { name: "" };										//创建两个对象
+                var objMess = { name: "张谦,", title: "欢迎与我联系！" };				
+                var objNewInfo =$.extend(objInfo,objMess);						//进行合并,属性相同时后者覆盖前者
+                var strTmp = "<b>对象  合并后</b>：<br/><br/>";
+                strTmp += objNewInfo.name + objInfo.title;						//输出对象属性
+                //显示在页面中
+                $(".content").show().append(strTmp);
+            });
+        </script>
+	</body>
+</html>

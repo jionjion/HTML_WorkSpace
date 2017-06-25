@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM节点的拆除包裹操作</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>jQuery提供了一个unwarp()方法 ，作用与wrap方法是相反的。将匹配元素集合的父级元素删除，保留自身（和兄弟元素，如果存在）在原来的位置。<br />
+			每次只删除其直接父辈一次,可以多次嵌套删除
+		</p>
+		<hr />
+		
+		<h2>DOM包裹unwrap()方法</h2>
+	    <div>
+	        <button class="bt1">点击,通过unwrap方法给p元素删除父容器div</button>
+	        <button class="bt2">点击,通过unwrap的回调方法给a元素删除父容器div</button>
+	    </div>
+	    <div class="one" style="background-color: #0000FF;">
+	        <div style="background-color: #CCCCCC;">
+	            <p>p元素</p>
+	        </div>
+	        <div style="background-color: #CCCCCC;">
+	            <p>p元素</p>
+	        </div>
+	    </div>
+	    <div class="two" style="background-color: #0000FF;">
+	        <div style="background-color: #CCCCCC;">
+	            <a>a元素</a>
+	        </div>
+	        <div style="background-color: #CCCCCC;">
+	            <a>a元素</a>
+	        </div>
+	    </div>
+	    <script type="text/javascript">
+	    $(".bt1").on('click', function() {
+	        //找到所有p元素，删除父容器div
+	        $('.one p').unwrap('<div></div>')
+	    })
+	    </script>
+	    <script type="text/javascript">
+	    $(".bt2").on('click', function() {
+	        //找到所有p元素，删除父容器div
+	        $('.two a').unwrap(function() {
+	            return '<div></div>';
+	        })
+	    })
+    	</script>
+	</body>
+</html>

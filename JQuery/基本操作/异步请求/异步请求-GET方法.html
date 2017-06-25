@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>使用get()方法以GET方式从服务器获取数据</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>使用get()方法以GET方式从服务器获取数据</h1>
+		<p>
+			使用get()方法时，采用GET方式向服务器请求数据，并通过方法中回调函数的参数返回请求的数据，它的调用格式如下：<br />
+			$.get(url,[callback])<br />
+			参数url为服务器请求地址，可选项callback参数为请求成功后执行的回调函数。
+		</p>
+		<hr />
+		<div>
+            <div>
+                <span>我的个人资料</span> 
+                <span>
+                    <button>加载</button>
+                </span>
+            </div>
+            <ul></ul>
+        </div>
+        
+        <script type="text/javascript">
+			$(function() {
+                $("button").bind("click", function () {
+                	var $this = $(this);
+                    $.get("请求文件/get方法.json",function(data){
+                        $this.attr("disabled", "true");
+                        $("ul").append("<li>我的名字叫：" + data.name + "</li>");
+                        $("ul").append("<li>男朋友对我说：" + data.say + "</li>");
+                    }, "json");
+                })
+            });
+        </script>
+	</body>
+</html>

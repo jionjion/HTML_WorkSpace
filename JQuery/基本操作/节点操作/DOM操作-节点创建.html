@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>节点的创建操作</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<style type="text/css">
+			.one{background-color: #CCCCCC;}
+		</style>
+	</head>
+	<body>
+		<p>
+			创建流程比较简单，大体如下：<br />
+			创建节点(常见的：元素、属性和文本)<br />
+			添加节点的一些属性<br />
+			加入到文档中
+		</p>
+		<p>
+			流程中涉及的一点方法：<br />
+			创建元素：document.createElement<br />
+			设置属性：setAttribute<br />
+			添加文本：innerHTML<br />
+			加入文档：appendChild
+		</p>
+		<hr />
+		
+		<h2>动态创建元素节点</h2>
+	    <div>
+	        <div>点击body区域会动态创建元素节点</div>
+	    </div>
+	    <script type="text/javascript">
+	        var body = document.querySelector('body');
+	
+	        document.addEventListener('click',function(){
+		    	
+		    	//创建2个div元素
+			    var rightdiv = document.createElement('div');
+			    var rightaaron = document.createElement("div");
+	
+			    //给2个div设置不同的属性
+			    rightdiv.setAttribute('class', 'one');
+			    rightaaron.className = 'one';
+			    rightaaron.innerHTML = "动态创建DIV元素节点";
+	
+			    //2个div合并成包含关系
+			    rightdiv.appendChild(rightaaron);
+			   	
+			   	//绘制到页面body
+			   	body.appendChild(rightdiv);
+	
+		    },false);
+		</script>
+		
+		<hr />
+        <h2>动态创建元素节点,冒泡事件,同时创建两个</h2>
+	    <button>点击通过jQuery动态创建元素节点</button>
+	    <script type="text/javascript">	
+		    var $body = $('body');
+		    $body.on('click', function() {
+		        //通过jQuery生成div元素节点
+		        var div = $("<div class='right'><div class='aaron'>动态创建DIV元素节点</div></div>")
+		        $body.append(div)
+		    })
+	    </script>
+	</body>
+</html>

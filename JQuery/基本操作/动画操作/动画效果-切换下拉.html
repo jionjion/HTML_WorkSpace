@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>元素上下拉切换</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>上下拉切换</h1>
+		<p>
+			slideDown与slideUp是一对相反的方法。需要对元素进行上下拉卷效果的切换，jQuery提供了一个便捷方法slideToggle用滑动动画显示或隐藏一个匹配元素
+		</p>
+		<p>
+			基本的操作：slideToggle();
+			这是最基本的操作，获取元素的高度，使这个元素的高度发生改变，从而让元素里的内容往下或往上滑。
+			同时也提供了时间的快速定义，字符串 'fast' 和 'slow' 分别代表200和600毫秒的延时
+		</p>
+		<p>
+			提供参数：.slideToggle( [duration ] ,[ complete ] )
+			同样的提供了时间、还有动画结束的回调。在参数对应的时间内，元素会完成动画，然后出发回调函数
+		</p>
+		<p>
+			display属性值保存在jQuery的数据缓存中，所以display可以方便以后可以恢复到其初始值
+			当一个隐藏动画后，高度值达到0的时候，display 样式属性被设置为none，以确保该元素不再影响页面布局
+		</p>
+		<hr />
+
+		<h2>切换上下拉</h2>
+	    <div>
+	        <div id="div1"></div>
+	        <button>点击slideToggle上下卷滚切换</button>
+	    </div>
+	    <script type="text/javascript">
+	        $("button").click(function() {
+	            $("#div1").slideToggle(3000)
+	        });
+	    </script>
+
+	</body>
+</html>

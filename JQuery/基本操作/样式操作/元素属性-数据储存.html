@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>元素数据的储存</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>
+			html5 dataset是新的HTML5标准，允许你在普通的元素标签里嵌入类似data-*的属性，来实现一些简单数据的存取。<br />
+			它的数量不受限制，并且也能由JavaScript动态修改，也支持CSS选择器进行样式设置。<br />
+			这使得data属性特别灵活，也非常强大。有了这样的属性我们能够更加有序直观的进行数据预设或存储。<br />
+			那么在不支持HTML5标准的浏览器中，我们如何实现数据存取?  jQuery就提供了一个.data()的方法来处理这个问题
+		</p>
+		<p>
+			使用jQuery初学者一般不是很关心data方式，这个方法是jquery内部预用的，可以用来做性能优化，<br />
+			比如sizzle选择中可以用来缓存部分结果集等等。当然这个也是非常重要的一个API了，常常用于我们存放临时的一些数据，因为它是直接跟DOM元素对象绑定在一起的
+		</p>
+		<p>
+			jQuery提供的存储接口:<br />
+			jQuery.data( element, key, value )   //静态接口,存数据<br />
+			jQuery.data( element, key )  //静态接口,取数据   <br />
+			element.data( key, value ) //实例接口,存数据<br />
+			element.data( key ) //实例接口,取数据<br /><br />
+			2个方法在使用上存取都是通一个接口，传递元素，键值数据。在jQuery的官方文档中，建议用.data()方法来代替。<br />
+			我们把DOM可以看作一个对象，那么我们往对象上是可以存在基本类型，引用类型的数据的，但是这里会引发一个问题，可能会存在循环引用的内存泄漏风险<br />
+			通过jQuery提供的数据接口，就很好的处理了这个问题了，我们不需要关心它底层是如何实现，只需要按照对应的data方法使用就行了<br />
+			同样的也提供2个对应的删除接口，使用上与data方法其实是一致的，只不过是一个是增加一个是删除罢了<br />
+			jQuery.removeData( element [, name ] )<br />
+			element.removeData( [name ] )<br />
+		</p>
+		<hr />
+		
+		<h2>jQuery.data()静态方法</h2>
+	    <div class="one">
+	        <div>
+	            <p>点击看结果</p>
+	            <p>jQuery.data</p>
+	        </div>
+	        <div><span></span></div>
+	    </div>
+	    <h2>.data()实例方法</h2>
+	    <div class="two">
+	        <div>
+	            <p>点击看结果</p>
+	            <p>.data</p>
+	        </div>
+	        <div><span></span></div>
+	    </div>
+	    
+	    <script type="text/javascript">
+	    $('.one').click(function() {		//被点击时,触发函数
+	        var ele = $(this);				//获得点击对象
+	        //通过$.data方式设置数据
+	        $.data(ele, "a", "data test");	//数据绑定		JQuery.data( element, key, value )
+	        $.data(ele, "b", {			
+	            name : "慕课网"
+	        });								//数据绑定		JQuery.data( element, key, Object )	
+	        //通过$.data方式取出数据	字符串和JSON对象读取
+	        var reset = $.data(ele, "a") + "</br>" + $.data(ele, "b").name;
+	        ele.find('span').append(reset);	//追加显示
+	    })
+	    </script>
+	    <script type="text/javascript">
+	    $('.two').click(function() {		//被点击时,触发函数
+	        var ele = $(this);
+	        //通过.data方式设置数据
+	        ele.data("a", "data test")		//数据绑定,element.data( key, value )
+	        ele.data("b", {					//数据绑定,element.data( key, Object )
+	            name: "慕课网"
+	        })
+	        //通过.data方式取出数据	element.data( key )
+	        var reset = ele.data("a") + "</br>" + ele.data("b").name;	
+	        ele.find('span').append(reset);
+	    })
+	    </script>
+	</body>
+</html>

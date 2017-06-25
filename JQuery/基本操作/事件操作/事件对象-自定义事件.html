@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义事件</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		
+		
+		<h2>自定义事件trigger</h2>
+		<p> element.trigger()   触发被选元素上指定的事件以及事件的默认行为（比如表单提交）</p>
+		<hr />
+		
+        <input type="text" placeholder="表一">
+		<button>点击触发</button>
+
+		<script type="text/javascript">
+          $("button").click(function(){
+
+                $("input").eq(0).trigger("focus");
+
+           })
+		</script>
+	</body>
+</html>

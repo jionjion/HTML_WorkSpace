@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="www.imooc.com">  
+		<title>POST异步请求方法</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>使用post()方法以POST方式从服务器发送数据</h1>
+		<p>
+			与get()方法相比，post()方法多用于以POST方式向服务器发送数据，服务器接收到数据之后，进行处理，并将处理结果返回页面，调用格式如下：<br />
+			$.post(url,[data],[callback])<br />
+			参数url为服务器请求地址，可选项data为向服务器请求时发送的数据，可选项callback参数为请求成功后执行的回调函数。
+		</p>
+		<p>跨域失败</p>
+		<hr />
+		
+		<div>
+            <div>
+                <span>检测数字是否大于0</span> 
+                <span><input type="button" value="检测" /></span>
+            </div>
+            <ul>
+               <li>请求输入一个数字 <input id="txtNumber" type="text" size="12" /></li>
+            </ul>
+        </div>
+        
+        <script type="text/javascript">
+            $(function () {
+                $("input:button").bind("click", function () {
+                	$.post(
+                	'http://www.imooc.com/data/check_f.php',
+                	{'num':$('input:text').val()},
+                    function (data) {
+                        $("ul").append("<li>你输入的<b>  "
+                        + $("#txtNumber").val() + " </b>是<b> "
+                        + data + " </b></li>");
+                    });
+                })
+            });
+        </script>
+	</body>
+</html>

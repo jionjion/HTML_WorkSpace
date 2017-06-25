@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标移入移出时非冒泡事件</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>用交互操作中，经常需要知道用户操作鼠标是否有移到元素内部或是元素外部，因此jQuery提供了一个mouseenter和mouseleave的快捷方法可以监听用户移动到内部的操作</p>
+		<p>使用上非常简单，三种参数传递方式与mouseover和mouseout是一模一样的，所以这里不再重复，主要讲讲区别，下面以mouseenter为例：</p>
+		<p>mouseenter JavaScript事件是Internet Explorer专有的。<br />
+			由于该事件在平时很有用，jQuery的模拟这一事件，以便它可用于所有浏览器。该事件在鼠标移入到元素上时被触发。任何HTML元素都可以接受此事件。</p>
+		<p>
+			mouseenter事件和mouseover的区别<br />
+			关键点就是：冒泡的方式处理问题<br />
+			mouseenter事件只会在绑定它的元素上被调用，而不会在后代节点上被触发
+		</p>
+		<hr />		
+		
+	    <h2>.mouseover()方法冒泡</h2>
+	    <div style="width: 500px;height: 50px;">
+	        <div style="background-color: #CCCCCC;" id="div1">
+	            <p style="background-color: #EBEBEB; width: 400px;">鼠标离开此区域触发mouseover事件</p>
+	            <a>mouseover事件触发次数：</a><br/>
+	            <a>mouseover冒泡事件触发次数：</a>
+	        </div>
+	    </div>
+		<br />
+	    <h2>.mouseenter()方法非冒泡</h2>
+	    <div style="width: 500px;height: 50px;">
+	        <div style="background-color: #CCCCCC;" id="div2">
+	            <p style="background-color: #EBEBEB; width: 400px;">鼠标进入此区域触发mouseenter事件</p>
+	            <a>mouseenter事件触发次数：</a><br/>
+	            <a>mouseenter冒泡事件触发次数：</a>
+	        </div>
+	    </div>
+	    <br/>
+	   
+	    
+	    <script type="text/javascript">
+	    	//原因就是事件冒泡的问题，p元素触发了mouseover，他会一直往上找父元素上的mouseover事件，如果父元素有mouseover事件就会被触发.所以,触发了子元素,冒泡事件会使子元素和父元素的事件同时被触发
+	        var i = 0;
+	        $("#div1 p").mouseover(function(e) {
+	            $("#div1 a:first").html('mouseover事件触发次数：' + (++i))
+	        })
+	
+	        var n = 0;
+	        $("#div1").mouseover(function() {
+	            $("#div1 a:last").html('mouseover冒泡事件触发次数：' + (++n))
+	        })
+	    </script>
+	
+	
+	    <script type="text/javascript">
+			//非冒泡事件则子元素不向上冒泡,只会触发子元素事件,不会触发父元素事件
+	        var ii = 0;
+	        $("#div2 p").mouseenter(function(e) {
+	            $("#div2 a:first").html('mouseenter事件触发次数：' + (++ii))
+	        })
+	
+	        var nn = 0;
+	        $("#div2").mouseenter(function() {
+	            $("#div2 a:last").html('mouseenter冒泡事件触发次数：' + (++nn))
+	        })
+	    </script>			
+	</body>
+</html>

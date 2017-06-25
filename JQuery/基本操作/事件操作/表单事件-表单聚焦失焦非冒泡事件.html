@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标聚焦和失焦的非冒泡事件</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>鼠标聚焦和失焦的非冒泡事件</h1>
+		<p>
+			聚焦focus和失焦blur事件
+		</p>
+		<hr />
+		
+		<h4>.focus(非冒泡)与focusin(冒泡)</h4>
+	    <div id="div1">
+	        <div>
+	        	点击触发焦点(无反应)： <input type="text" />
+	        </div>
+	        <div>
+	        	点击触发焦点并冒泡：<input type="text" />
+	        </div>
+	    </div>
+	    <script type="text/javascript">
+	    $("#div1 div:first").focus(function() {
+	        $(this).css('border', '2px solid red')
+	    })
+	    $("#div1 div:last").focusin(function() {
+	        $(this).find('input').val('冒泡捕获了focusin事件')
+	    })
+	    </script>
+	
+	
+	    <h4>.blur(非冒泡)与focusout(冒泡)</h4>
+	    <div id="div2">
+	        <div>
+	            点击触发失去焦点(无反应)：
+	            <input type="text" />
+	        </div>
+	        <div>
+	            点击触发失去焦点并冒泡：
+	            <input type="text" />
+	        </div>
+	    </div>
+	    <script type="text/javascript">
+	    $("#div2 div:first").blur(function() {
+	        $(this).css('border', '2px solid red')
+	    })
+	    $("#div2 div:last").focusout(function() {
+	        $(this).find('input').val('冒泡捕获了focusout事件')
+	    })
+	    </script>
+
+	</body>
+</html>
