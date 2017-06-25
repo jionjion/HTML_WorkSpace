@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Cookie插件的使用</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<!--插件CDN地址-->
+		<script src="../表单插件/js-cookie/js.cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+	</head>
+	<body>
+		<h1>Cookie的使用</h1>
+		
+		<script type="text/javascript">
+			
+			function createCookies(){
+				
+				//存入键值对
+				Cookies.set('key1','存入的值');	
+				
+				//存入后指明超时时间为一天,默认为关闭浏览器后销毁.
+				Cookies.set('key2', '存入的值,一天后过期', { expires: 1 });
+				
+				//指明cookie的保存位置,可以是页面或者层级.其他位置获取不到.乱码为中文序列化后的.
+				Cookies.set('key3', '存入的值,指定', { expires: 7, path: '/插件示例/表单插件/js-cookie' });
+				
+				
+			}
+			
+			function readCookies(){
+				
+				//从当前网站内获得key1,如果获取不到返回undefined
+				Cookies.get('key1');
+				
+				//获取所有cookie.
+				Cookies.get();
+				
+				
+			}
+			
+			function deleteCookies(){
+				//删除当前网站内
+				Cookies.remove('key1');
+				
+				//如果cookie在保存时指定了位置,则需要指明删除时的位置
+				Cookies.remove('key3', { path: '/插件示例/表单插件/js-cookie' });
+			}
+			
+			/**
+			 * 	关于命名空间,避免使用其他同名对象,属性
+			 * 	关于转码,默认使用UTF转码
+			 * */
+			
+			function cookiesAboutJSON(){
+				//保存JSON对象的
+				Cookies.set('people', { name:'张谦',age:'23',sex:'boy' });
+				
+				//读取,此时返回的是一串字符串
+				Cookies.get('people');
+				//读取为JSON对象
+				Cookies.getJSON('people');
+				//读取全部JSON对象
+				Cookies.getJSON(); 
+			}
+			
+			/**
+			 * 	Cookie的属性
+			 * */
+			function cookiesAttributes(){
+				
+				//设置超时时间,默认为关闭浏览器时销毁,单位为天
+				Cookies.set('key1', '5天后过期', { expires: 5 });
+				
+				//设置挂载路径,默认为挂载在根路径下	/
+				Cookies.set('key2', '挂载子路径下', { path: '/插件示例/表单插件/js-cookie' });
+			}
+			
+		</script>
+	</body>
+</html>
