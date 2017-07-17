@@ -11,10 +11,18 @@
 	<body>
 		<h1>Cookie的使用</h1>
 		
+		<button onclick="createCookies()">点击创建cookies</button>
+		<button onclick="readCookies()">点击读取cookies</button>
+		<button onclick="deleteCookies()">点击删除cookies</button>
+		<button onclick="cookiesAboutJSON()">JSON格式的cookies</button>
+		<button onclick="cookiesAttributes()">cookies的属性</button>
+		<button onclick="cookiesMethod()">cookies的方法</button>
+			
 		<script type="text/javascript">
 			
+			
 			function createCookies(){
-				
+				debugger;
 				//存入键值对
 				Cookies.set('key1','存入的值');	
 				
@@ -28,17 +36,19 @@
 			}
 			
 			function readCookies(){
-				
+				debugger;
 				//从当前网站内获得key1,如果获取不到返回undefined
-				Cookies.get('key1');
+				var key1 = Cookies.get('key1');
+				console.log(key1);
 				
 				//获取所有cookie.
-				Cookies.get();
-				
+				var key2 = Cookies.get();
+				console.log(key2);
 				
 			}
 			
 			function deleteCookies(){
+				debugger;
 				//删除当前网站内
 				Cookies.remove('key1');
 				
@@ -52,30 +62,71 @@
 			 * */
 			
 			function cookiesAboutJSON(){
+				debugger;
 				//保存JSON对象的
 				Cookies.set('people', { name:'张谦',age:'23',sex:'boy' });
 				
 				//读取,此时返回的是一串字符串
-				Cookies.get('people');
+				var people = Cookies.get('people');
+				console.log(people);
 				//读取为JSON对象
-				Cookies.getJSON('people');
+				people = Cookies.getJSON('people');
+				console.log(people);
 				//读取全部JSON对象
-				Cookies.getJSON(); 
+				people = Cookies.getJSON();
+				console.log(people);
 			}
 			
 			/**
 			 * 	Cookie的属性
 			 * */
 			function cookiesAttributes(){
-				
+//				debugger;
 				//设置超时时间,默认为关闭浏览器时销毁,单位为天
 				Cookies.set('key1', '5天后过期', { expires: 5 });
 				
 				//设置挂载路径,默认为挂载在根路径下	/
-				Cookies.set('key2', '挂载子路径下', { path: '/插件示例/表单插件/js-cookie' });
+				Cookies.set('key2', '挂载子路径下', { path: '/插件示例/表单插件' });
 				
-				//共享cookies
+				//共享cookies,将cookies文件保存在其他项目域名下
+				Cookies.set('key3', '保存在百度下的', { domain: 'www.baidu.com' });
 				
+				//默认使用加密后的cookies
+				Cookies.set('key4', '加密后的', { secure: true });
+				console.log(Cookies.get('key4'));
+				Cookies.remove('name', { secure: true });
+				
+			}
+			
+			function cookiesMethod(){
+				debugger;
+				//读取本地cookies
+				document.cookie = 'escaped=%u5317';
+				document.cookie = 'default=%E5%8C%97';
+				var cookies = Cookies.withConverter(function (value, name) {
+				    if ( name === 'escaped' ) {
+				        return unescape(value);
+				    }
+				});
+				var key1 = Cookies.get('escaped'); 
+				console.log(key1);
+				
+				var key2 = Cookies.get('default'); 
+				console.log(key2);
+				
+				var key3 = Cookies.get(); // { escaped: '北', default: '北' }
+				console.log(key3);
+				
+				
+				///读写方法
+				Cookies.withConverter({
+				    read: function (value, name) {
+				        // Read converter
+				    },
+				    write: function (value, name) {
+				        // Write converter
+				    }
+				});
 			}
 			
 		</script>
