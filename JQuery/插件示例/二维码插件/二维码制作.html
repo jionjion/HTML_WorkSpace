@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>二维码制作页面</title>
+		<!--JQuery的包-->
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<p>
+			TODO make a nice looking pure client qrcode generator
+			even allow download of the image
+		</p>
+		
+		<div id="output"></div>
+		
+		<script>
+		jQuery(function(){
+			jQuery('#output').qrcode("https://github.com");			//生成的文本信息
+		});
+
+		</script>
+	</body>
+</html>
