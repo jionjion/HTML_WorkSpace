@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>间隔与延时事件</title>
+	</head>
+	<body>
+		<h1>setInterval</h1>
+		<p>函数将会间隔执行,如果每隔指定的时间执行一次.可以通过clearInterval()方法消除</p>
+		
+		<!--示例代码-->
+		<script type="text/javascript">
+//			var num = 0;
+//			var fn = setInterval(function() {
+//				num++;
+//				console.log(num);
+//				if(num >= 20) {
+//					clearInterval(fn);						//清除间隔
+//				}
+//			}, 500); //通过传入事件函数.间隔执行函数对象.该步骤会阻塞线程.			/* 下面的代码将不会继续执行 */
+		</script>
+		
+		<h1>setTimeout</h1>
+		<p>延时执行,仅此执行一次.</p>
+		<!--示例代码-->
+		<script type="text/javascript">
+			var num = 0;
+			var countNum = function(){									//定义函数对象
+					num++;
+					console.log(num);
+				}
+			var fn = setTimeout(countNum,500);				//传入函数句柄,执行调用
+			clearTimeout(fn);								//清除延时函数
+		</script>
+	</body>
+</html>

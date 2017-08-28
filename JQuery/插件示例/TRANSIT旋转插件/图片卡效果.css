@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+/*通用样式	无填充;无边距;字体为微软雅黑*/
+* {padding: 0; margin: 0; font-family: "微软雅黑"; }
+
+/*父容器	宽度指定;高度指定;如果过宽则隐藏;居中;定位相对定位;*/
+.main_box {width: 1000px; height: 450px; overflow:hidden;margin: 0 auto;position: relative;}
+
+/*图片元素	 左浮动;不显示列表点;宽度为父元素的1/4;高度与父元素一致;如果图片过大则隐藏;增加一组白边框;左边距为负表示压着左边图片的位置;相对定位*/
+.main_box ul li {float: left;list-style: none;width: 250px;height: 400px;overflow: hidden;border: 30px solid white;margin-left: -60px;position: relative;}
+/*图片浮动,新增的图片跑到上面*/
+.main_box ul li img {position: absolute;}
+/*标签元素		位置,绝对父元素定位;距离底部80px;距离右侧50px;带通道的背景颜色为白色半透明;字间距为0.6个字宽*/
+h2 {position:absolute;bottom: 80px;right: 50px;background: rgba(255,255,255,0.6);color: darkviolet;letter-spacing: 0.6em;}
+
+/*容器下的按钮组的a标签*/
+.main_box .btn_box a {position: absolute; opacity: 0.6 ;text-decoration: none;color: darkgray;font-size: 80px;}
+/*鼠标经过下*/
+.main_box .btn_box a:hover {opacity: 1 ;}
+/*左边的按钮*/
+.main_box .btn_box .btn_left {top: 220px;left: 50px;}
+/*右边的按钮*/
+.main_box .btn_box .btn_right {top: 220px;right: 50px;}

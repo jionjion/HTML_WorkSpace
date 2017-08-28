@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>旋转插件的使用</title>
+		<!--以CDN方式引用插件-->
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/jquery.transit/0.9.12/jquery.transit.js"></script>
+		<style type="text/css">
+			div {background-color: lightgrey; border: 1px solid black; width: 100px; height: 100px; margin: 50px; display: inline-block;}
+		</style>
+	</head>
+	<body>
+		<h4><a href="http://ricostacruz.com/jquery.transit/">官网网址</a></h4>
+		<hr />
+		<h3>使用方式</h3>
+		<p>      
+			通过将命令传入,可以实现旋转效果
+			<ul>
+				<li>x (px)</li>
+				<li>y (px) </li>
+				<li>translate (x, y)</li>
+				<li>rotate (deg)</li>
+				<li>rotateX (deg)</li>
+				<li>rotateY (deg)</li>
+				<li>rotate3d (x, y, z, deg)</li>
+				<li>scale (x, [y])</li>
+				<li>perspective (px)</li>
+				<li>skewX (deg)</li>
+				<li>skewY (deg)</li>
+			</ul>
+		</p>
+		
+		<h3>平面移动</h3>
+		<!--X轴移动-->
+		<div id="div1_1"></div>
+		<script type="text/javascript">
+			$('#div1_1').transition({x:'50px'});			//指定单位
+		</script>
+		
+		<!--Y轴移动-->
+		<div id="div1_2"></div>
+		<script type="text/javascript">
+			$('#div1_2').transition({y:50});				//不指定单位,默认为像素
+		</script>
+		
+		<!--XY轴移动-->
+		<div id="div1_3"></div>
+		<script type="text/javascript">
+			$('#div1_3').transition({x:50,y:50});			//传入JSON数据结构
+		</script>		
+		
+		<!--顺序移动-->
+		<div id="div1_4"></div>
+		<script type="text/javascript">
+		  $('#div1_4').transition({ x: -40 })
+					  .transition({ y: 40 })
+					  .transition({ x: 0 })
+					  .transition({ y: 0 });
+		</script>
+		<hr />
+		
+		<h3>旋转移动</h3>
+		<!--旋转-->
+		<div id="div2_1"></div>
+		<script type="text/javascript">
+			$('#div2_1').transition({rotate: '45deg'});			//默认单位为度
+		</script>
+		
+		<!--指定中心点旋转-->
+		<div id="div2_2"></div>
+		<script type="text/javascript">
+			$('#div2_2').css({ transformOrigin: '100px 100px' })			//中心点
+					  .transition({ rotate: '45deg' });			
+		</script>
+		
+		<!--X轴拉伸-->
+		<div id="div2_3"></div>
+		<script type="text/javascript">
+			$('#div2_3').transition({skewX: '30deg'});				//X轴方向拉伸
+		</script>
+		
+		<!--Y轴拉伸-->
+		<div id="div2_4"></div>
+		<script type="text/javascript">
+			$('#div2_4').transition({skewY: '30deg'});
+		</script>
+
+		<!--X轴翻转-->
+		<div id="div2_5"></div>
+		<script type="text/javascript">
+			$('#div2_5').transition({perspective: '100px',rotateX: '180deg'});				//X轴水平翻转
+		</script>
+		
+		<!--Y轴翻转-->
+		<div id="div2_6"></div>
+		<script type="text/javascript">
+			$('#div2_6').transition({ perspective: '100px',rotateY: '180deg'});				//Y轴水平翻转
+		</script>
+
+		<!--空间翻转-->
+		<div id="div2_7"></div>
+		<script type="text/javascript">
+			$('#div2_7').transition({ perspective: '100px',rotate3d: '1,1,0,180deg'});			//空间对角线翻转
+		</script>
+		
+		<h3>动画操作</h3>
+		<!--透明度变化-->
+		<div id="div3_1"></div>
+		<script type="text/javascript">
+			$('#div3_1').transition({opacity: 0 });								//透明操作
+		</script>
+		
+		<!--css操作-->
+		<div id="div3_2"></div>
+		<script type="text/javascript">
+			$('#div3_2').transition({marginTop: '10px', height: '22px'});		//动画操作
+		</script>
+		
+		<!--等比例放大-->
+		<div id="div3_3"></div>
+		<script type="text/javascript">
+			$('#div3_3').transition({ scale: 2.2});								//等比例放大
+		</script>
+
+		<!--非等比例放大-->
+		<div id="div3_4"></div>
+		<script type="text/javascript">
+			$('#div3_4').transition({scale: [2.0, 1.5]});						//X轴放大2倍,Y轴放大1.5倍
+		</script>		
+	</body>
+</html>

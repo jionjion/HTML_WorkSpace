@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>闭包</title>
+		<h1>闭包</h1>
+		<p>
+			什么是闭包:
+			<ul>
+				<li>闭包就是能够读取其他函数内部变量的函数</li>
+				<li>闭包可以让其他函数的内部变量持续在内存中持有</li>
+				<li>闭包可以保护函数内的变量安全</li>
+			</ul>
+		</p>
+		
+		<p>
+			作用域和作用域链:
+			<ul>
+				<li>作用域是程序中定义的有效变量范围</li>
+				<li>分为全局变量和局部变量</li>
+				<li>作用域链的查询范围是由内而外的</li>
+				<li>JavaScript语言中没有块级作用域</li>
+			</ul>
+		</p>
+		
+		<!--示例代码-->
+		
+		<script type="text/javascript">
+			
+			function pkg(){					//闭包
+				var num = 0 ;				//包内的内部变量
+				function fn(){				//闭包函数
+					num ++ ;				//修改变量,如果将变量加载到调用者的值域范围内,则持有后持续自增
+					console.log(num);
+				}
+				return fn;					//将函数对象返回.
+			}
+			
+			//调用闭包函数
+			var use = pkg();				//将会获得闭包中返回的fn函数对象,并在该变量范围中持有该fn函数初始化时所调用的变量
+			use();							//use调用的就是闭包中的fn函数,执行
+			use();							//继续执行.可以看到num的数值发生自增
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

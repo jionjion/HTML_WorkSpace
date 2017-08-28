@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var dot_flag = false;												//小数点出现
+			function check(value){
+				var c = value.split('')[value.length-1];						//获取键入的结尾
+			
+				if(value.indexOf('.')==-1){										//没有.,则复原.排除删除后的情况
+					dot_flag = false;				
+				}
+				
+				if(isNaN(value) && '.'!==c){															//傻逼地连续输入
+					$('#input').val('');
+					return null;
+				}
+				if(dot_flag && isNaN(c)){										//出现过小数点,截取..但是要排除新键入的为数字的情况
+					return value.substr(0,value.length-1);
+				}
+				if('.'===c){
+					dot_flag = true;
+				}
+				if(isNaN(c) && '.'!==c){										//如果不是数字,以及.以外的字符
+					return value.substr(0,value.length-1);
+				}
+				if(value==='.'){												//首次输入为.
+					return null;
+				}
+				return value;
+			}
+			
+		</script>
+		<input id="input" type="text" onkeyup="value=check(value)" />
+	</body>
+</html>
