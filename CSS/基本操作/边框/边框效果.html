@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>边框效果</title>
+		<style type="text/css">
+			/*圆型的搭建,当圆角直径和长宽相等即可搭建*/
+			div.circle {
+				/*与width设置一致*/
+				height: 100px;
+				width: 100px;
+				background: #9da;
+				/*四个圆角值都设置为宽度或高度值的一半,可以传入一个参数(所有圆角),或者两个参数(左上右下和左下右上),或者四个参数(左上,右上,右下,左下)*/
+				border-radius: 50px 50px 50px 50px;			
+			}
+			
+			/*阴影的搭建*/
+			.boxshadow-outset{
+			    width:100px;
+				height:100px;
+				border: 1px solid blue;
+				/*X方向偏移4像素,Y方向偏移4像素,阴影模糊半径6px,颜色灰色*/
+			    box-shadow:4px 4px 6px #666; 
+			}
+			.boxshadow-inset{
+			    width:100px;
+			    height:100px;
+				border: 1px solid blue;
+				/*X方向偏移4像素,Y方向偏移4像素,阴影模糊半径6px,向内投影*/
+			    box-shadow:4px 4px 6px #666 inset; 
+			}
+			.boxshadow-multi{
+			    width:100px;
+			    height:100px;
+				border: 1px solid blue;
+				/*通过分隔逗号,可以指定多个阴影颜色*/
+			    box-shadow:4px 2px 6px #f00, -4px -2px 6px #000, 0px 0px 12px 5px #33CC00 inset;
+			}
+			.circle-shadow{
+			    width:100px;
+			    height:100px;
+			    /*向外打出阴影*/
+			    box-shadow:4px 4px 6px 1px #666,
+			    /*向内打出高光*/
+                10px 10px 50px 10px #888 inset;
+                /*将矩形圆角成为圆形*/ 
+			    border-radius:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--这是个圆-->
+		<div class="circle"></div>
+		<p>当圆角的半径和矩形的长宽一致,则为圆形</p>
+		<hr />
+		
+		<div class="boxshadow-outset"></div>
+		<div class="boxshadow-inset"></div>
+		<div class="boxshadow-multi"></div>
+		<div class="circle-shadow"></div>
+		<p>box-shadow: X轴偏移量 Y轴偏移量 [阴影模糊半径] [阴影扩展半径] [阴影颜色] [投影方式]	</p>
+	</body>
+</html>
