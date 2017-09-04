@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录验证页面</title>
+		<script src="https://cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/jquery-1.8.2.min.js"></script>
+		<!--核心包-->
+		<script src="https://cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/jquery.validationEngine.js"></script>
+		<!--国际化支持-->
+		<!--<script src="https://cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/languages/jquery.validationEngine-zh_CN.js"></script>-->
+		<!--扩展支持-->
+		<!--<script src="https://cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/contrib/other-validations.js"></script>-->
+		<!--插件CSS-->
+		<link href="https://cdn.bootcss.com/jQuery-Validation-Engine/2.6.4/validationEngine.jquery.css" rel="stylesheet">
+	</head>
+	<body>
+		<form id="login_form">
+		<fieldset>
+			<legend>用户登录</legend>
+				<p>
+					<label>用户</label>
+					<input type="text" name="username" />
+				</p>
+				<p>
+					<label>密码</label>
+					<input type="password" name="password" />
+				</p>				
+				<p>
+					<input type="submit" value="提交" />
+				</p>
+		</fieldset>
+		</form>
+		
+		
+		<!--表单验证-->
+		<script type="text/javascript">
+			//页面初始化时加载验证方法
+			$(document).ready(function(){
+				
+				//调用validate方法,传入验证规则
+				$('#login_form').validate({
+					rules:{
+						username : {
+							required : true,
+							minlength : 2,
+							maxlength : 10
+						},
+						password : {
+							required : true,
+							minlength : 2,
+							maxlength : 10
+						}
+					}
+				});
+			});
+				
+		</script>
+	</body>
+</html>
