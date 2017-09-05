@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>从服务器端加载字体</title>
+		<style type="text/css">
+			
+			@font-face {
+			    font-family: "Font";
+			    src: url("../../font/汉鼎简粗圆.otf")
+			}
+			/*必须项，设置@font-face中font-family同样的值*/
+			div {
+		    font-size :15px;
+		    font-family : "Font";
+		    }
+		</style>
+	</head>
+	<body>
+		<h3>服务器字体加载</h3>
+		<p>@font-face能够加载服务器端的字体文件，让浏览器端可以显示用户电脑里没有安装的字体。</p>
+		<pre>@font-face {
+			    font-family : 字体名称;
+			    src : 字体文件在服务器上的相对或绝对路径;
+			}
+		</pre>
+
+		<!--实例-->
+		<div>这是示例字体......</div>
+	</body>
+</html>

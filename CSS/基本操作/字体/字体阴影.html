@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>字体阴影</title>
+		<style type="text/css">
+			div {
+				/*宽度*/
+			    width: 340px;
+			    /*边界填充*/
+			    padding: 30px;
+			   	/*字宽,字号,字形*/
+			    font: bold 55px/100% "微软雅黑";
+			    /*背景色*/
+			    background: #C5DFF8;
+			    /*字体阴影*/
+			    text-shadow: 2px 2px 0 red;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<h3>字体阴影</h3>
+		<p>
+			<pre>text-shadow: X-Offset Y-Offset blur color;</pre>
+				X-Offset：表示阴影的水平偏移距离，其值为正值时阴影向右偏移，反之向左偏移；      <br />
+				Y-Offset：是指阴影的垂直偏移距离，如果其值是正值时，阴影向下偏移，反之向上偏移；<br />
+				Blur：是指阴影的模糊程度，其值不能是负值，如果值越大，阴影越模糊，反之阴影越清晰，如果不需要阴影模糊可以将Blur值设置为0；<br />
+				Color：是指阴影的颜色，其可以使用rgba色。<br />
+		</p>
+		
+		<!--示例文字-->
+		<div>
+			示例文字......
+		</div>
+	</body>
+</html>

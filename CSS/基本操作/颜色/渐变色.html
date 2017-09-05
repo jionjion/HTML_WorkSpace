@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>渐变色</title>
+		
+		<style type="text/css">
+			div {
+				width: 400px;
+				height: 150px;
+				line-height: 150px;
+				text-align:center;
+				color: #000;
+				font-size:24px;
+				
+				/*浏览器兼容性*/
+				background-image:-webkit-gradient(linear, 0 0, 100% 0, from(red), color-stop(0.17, orange), color-stop(0.33, yellow), color-stop(0.5, green), color-stop(0.67, blue), color-stop(0.83, indigo), to(violet));
+				background-image:-webkit-linear-gradient(to left, red, orange, yellow, green, blue, indigo, violet);
+				background-image:-moz-linear-gradient(to left, red, orange, yellow, green, blue, indigo, violet);
+				background-image:-o-linear-gradient(to left, red, orange, yellow, green, blue, indigo, violet);
+				background-image:linear-gradient(to left, red, orange, yellow, green, blue, indigo, violet);			
+}
+		</style>
+	</head>
+	<body>
+		<h3>渐变色</h3>
+		<p>CSS3 Gradient 分为线性渐变(linear)和径向渐变(radial)。</p>
+		<p>
+			<img src="../../img/color00.jpg"/><br />
+			<img src="../../img/color01.jpg"/><br />
+			第一个参数省略时，默认为“180deg”，等同于“to bottom”。<br />
+			第二个和第三个参数，表示颜色的起始点和结束点，可以有多个颜色值。
+			<pre>background-image:linear-gradient(to left, red, orange,yellow,green,blue,indigo,violet);</pre>
+		</p>
+		<!--示例-->
+		<div></div>
+	</body>
+</html>
