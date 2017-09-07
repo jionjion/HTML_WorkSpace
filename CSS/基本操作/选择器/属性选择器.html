@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>属性选择器</title>
+		<style type="text/css">
+			/*<a>标签中,class属性,以icon开头的*/
+			a[class^=icon]{
+			  background: green;
+			  color:#fff;
+			}
+			
+			/*<a>标签中,href中以pdf结尾的*/
+			a[href$=pdf]{
+			  background: orange;
+			  color: #fff;
+			}
+			
+			/*<a>标签中,title属性中包含more关键字的*/
+			a[title*=more]{
+			  background: blue;
+			  color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>属性选择器</h3>
+		<p>	在HTML中，通过各种各样的属性可以给元素增加很多附加的信息。例如，通过id属性可以将不同div元素进行区分。<br />
+	   		在CSS2中引入了一些属性选择器，而CSS3在CSS2的基础上对属性选择器进行了扩展，新增了3个属性选择器，使得属性选择器有了通配符的概念，
+	   		这三个属性选择器与CSS2的属性选择器共同构成了CSS功能强大的属性选择器。<br />
+			<img src="../../img/choose01.jpg"/>
+		</p>
+		
+		<!--示例-->
+		<a href="#" class="icon">我类名是icon</a>
+		<a href="xxx.pdf">我链接的是PDF文件</a>
+		<a href="#" title="我的title是more">我的title是more</a>
+	</body>
+</html>
