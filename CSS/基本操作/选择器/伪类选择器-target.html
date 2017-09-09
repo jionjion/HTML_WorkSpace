@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title伪类选择器</title>
+		<style type="text/css">
+			#brand:target {
+			  background: orange;
+			  color: #fff;
+			}
+			#jake:target {
+			  background: blue;
+			  color: #fff;
+			}
+			#aron:target {
+			  background: red;
+			  color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>伪类选择器—target</h3>
+		<p>:target选择器称为目标选择器，用来匹配文档(页面)的url的某个标志符的目标元素。</p>
+		<p>
+			1.具体来说，触发元素的URL中的标志符通常会包含一个#号，后面带有一个标志符名称，上面代码中是：#brand<br />
+			2.：target就是用来匹配id为“brand”的元素（id="brand"的元素）,上面代码中是那个div元素。<br />
+			3.当点击触发事件时,目标样式会被激活。
+		</p>
+		
+		<!--示例代码-->
+		<h2><a href="#brand">Brand</a></h2>
+		<div class="menuSection" id="brand">
+		  content for Brand
+		</div>
+		<h2><a href="#jake">jake</a></h2>
+		<div class="menuSection" id="jake">
+		 content for jake
+		</div>
+		<h2><a href="#aron">aron</a></h2>
+		<div class="menuSection" id="aron">
+		    content for aron
+		</div>
+	</body>
+</html>

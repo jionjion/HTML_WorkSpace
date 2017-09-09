@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		
+		<style type="text/css">
+			
+			/*匹配子元素的,不会修改后代元素*/
+			ol > li{
+			  font-size:20px;
+			  font-weight: bold;
+			  margin-bottom: 10px;
+			}
+			
+			/*后代元素选择器*/
+			ol a {
+			  font-size: 16px;
+			  font-weight: normal;
+			}
+			
+			/*选择子们的第一个*/
+			ol > li:first-child{
+			  color: red;
+			}
+			
+			/*选择子们的最后一个*/
+			ol > li:last-child {
+				background:cornflowerblue;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<h3>伪类选择器—first-child</h3>
+		<p>
+			“:first-child”选择器表示的是选择父元素的第一个子元素的元素E。<br />
+			简单点理解就是选择元素中的第一个子元素，记住是子元素，而不是后代元素。</p>
+		
+		<ol>
+		  <li><a href="##">Link1</a></li>
+		  <li><a href="##">Link2</a></li>
+		  <li><a href="##">link3</a></li>
+		</ol>
+	</body>
+</html>

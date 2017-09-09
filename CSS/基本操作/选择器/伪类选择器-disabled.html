@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		<style type="text/css">
+			input {
+			  background: #fff;
+			  border: 1px solid orange;
+			  border-radius: 3px;
+			}
+			input[type="text"]:disabled {
+			  background: rgba(0,0,0,.15);
+			  border: 1px solid rgba(0,0,0,.15);
+			  color: rgba(0,0,0,.15);
+			}
+		</style>
+	</head>
+	<body>
+		<h3>伪类选择器-disabled</h3>
+		<p>“:disabled”选择器刚好与“:enabled”选择器相反，用来选择不可用表单元素。<br />
+		要正常使用“:disabled”选择器，需要在表单元素的HTML中设置“disabled”属性。</p>
+		
+		
+		<!--示例代码-->
+		<form action="#">
+		  <div>
+		    <input type="text" placeholder="我是可用输入框" />
+		  </div>
+		  <div>
+		    <input type="text" placeholder="我是不可用输入框" disabled />
+		  </div>
+		</form>  		
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		
+		<style type="text/css">
+			/*查找wrapper类下的唯一一个div,并将其置为橘色*/
+			.wrapper > div:only-of-type {
+			  background: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>伪类选择器only-of-type选择器</h3>
+		<p>“:only-of-type”选择器用来选择一个元素是它的父元素的唯一一个相同类型的子元素。</p>
+		
+		
+		<!--示例代码-->
+		<div class="wrapper">
+		  <p>我是一个段落</p>
+		  <p>我是一个段落</p>
+		  <p>我是一个段落</p>
+		  <div>我是一个Div元素</div>
+		</div>
+		<div class="wrapper">
+		  <div>我是一个Div</div>
+		  <ul>
+		    <li>我是一个列表项</li>
+		  </ul>
+		  <p>我是一个段落</p>
+		</div>
+	</body>
+</html>

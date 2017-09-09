@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		<style type="text/css">
+			.post p {
+			  background: green;
+			  color: #fff;
+			  padding: 10px;
+			}
+			
+			/*post类下的唯一一个元素,更改背景色,注意,选择越具体,其效果优先级越高*/
+			.post p:only-child {
+			  background: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>伪类选择器only-child</h3>
+		<p>:only-child 选择器选择的是父元素中只有一个子元素，而且只有唯一的一个子元素。也就是说，匹配的元素的父元素中仅有一个子元素，而且是一个唯一的子元素。</p>
+		
+		
+		<!--示例代码-->
+		<div class="post">
+		  <p>我是一个段落</p>
+		  <p>我是一个段落</p>
+		</div>
+		<div class="post">
+		  <p>我是一个段落</p>
+		</div>
+	</body>
+</html>

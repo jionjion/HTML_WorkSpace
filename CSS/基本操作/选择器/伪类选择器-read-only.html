@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		<style type="text/css">
+			form {
+  				width: 300px;
+			  	padding: 10px;
+			  	border: 1px solid #ccc;
+			  	margin: 50px auto;
+			}
+			form > div {
+			  	margin-bottom: 10px;
+			}
+			
+			input[type="text"]{
+			  	border: 1px solid orange;
+			  	padding: 5px;
+			  	background: #fff;
+			  	border-radius: 5px;
+			}
+			
+			/*只读属性,兼容火狐*/
+			input[type="text"]:-moz-read-only{
+			  	border-color: #ccc;
+			}
+			/*只读属性*/
+			input[type="text"]:read-only{
+			  	border-color: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>伪类选择器:read-only选择器</h3>
+		<p>“:read-only”伪类选择器用来指定处于只读状态元素的样式。简单点理解就是，元素中设置了“readonly=’readonly’”</p>
+		
+		<!--示例代码-->
+		<form action="#">
+		  <div>
+		    <label for="name">姓名:</label>
+		    <input type="text" placeholder="读写" />
+		  </div>
+		  <div>
+		    <label for="address">地址:</label>
+		    <input type="text" placeholder="只读" readonly="readonly" />
+		  </div>
+		</form>  
+	</body>
+</html>

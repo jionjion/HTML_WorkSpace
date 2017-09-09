@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		<style type="text/css">
+			/*:first-of-type”选择器，定位div容器中的第一个p元素（p不一定是容器中的第一个子元素），并设置其背景色为橙色。*/
+			/*我要改变第一个段落的背景为橙色*/
+			.wrapper > p:first-of-type {
+			  background: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>伪类选择器first-of-type选择器</h3>
+		<p>“:first-of-type”选择器类似于“:first-child”选择器，不同之处就是指定了元素的类型,其主要用来定位一个父元素下的某个类型的第一个子元素。</p>
+		
+		<!--示例代码-->
+		<div class="wrapper">
+		  <div>我是一个块元素，我是.wrapper的第一个子元素</div>
+		  <p>我是一个段落元素，我是不是.wrapper的第一个子元素，但是他的第一个段落元素</p>
+		  <p>我是一个段落元素</p>
+		  <div>我是一个块元素</div>
+		</div>
+	</body>
+</html>

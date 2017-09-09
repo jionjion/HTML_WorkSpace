@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		<style type="text/css">
+			
+			/*对wrapper类下的p元素类型,只取偶数个*/
+			.wrapper > p:nth-of-type(2n){
+			  background: orange;
+			}
+		</style>
+	</head>
+	<body
+		<h3>伪类选择器nth-of-type(n)选择器</h3>
+		<a>当某个元素中的子元素不单单是同一种类型的子元素时，使用“:nth-of-type(n)”选择器来定位于父元素中某种类型的子元素是非常方便和有用的。<br />
+		在“:nth-of-type(n)”选择器中的“n”和“:nth-child(n)”选择器中的“n”参数也一样，可以是具体的整数，也可以是表达式，还可以是关键词。</a>
+		
+		
+		<!--示例代码-->
+		<div class="wrapper">
+		  <div>我是一个Div元素</div>
+		  <p>我是一个段落</p>
+		  <div>我是一个Div元素</div>
+		  <p>我是一个段落</p>
+		  <div>我是一个Div元素</div>
+		  <p>我是一个段落</p>
+		  <div>我是一个Div元素</div>
+		  <p>我是一个段落</p>
+		  <div>我是一个Div元素</div>
+		  <p>我是一个段落</p>
+		  <div>我是一个Div元素</div>
+		  <p>我是一个段落</p>
+		  <div>我是一个Div元素</div>
+		  <p>我是一个段落</p>
+		  <div>我是一个Div元素</div>
+		  <p>我是一个段落</p>
+		</div>
+	</body>
+</html>

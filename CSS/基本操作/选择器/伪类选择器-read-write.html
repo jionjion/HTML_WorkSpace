@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		<style type="text/css">
+			
+			form {
+			  width: 300px;
+			  padding: 10px;
+			  border: 1px solid #ccc;
+			  margin: 50px auto;
+			}
+			form > div {
+			  margin-bottom: 10px;
+			}
+			
+			input[type="text"]{
+			  border: 1px solid orange;
+			  padding: 5px;
+			  background: #fff;
+			  border-radius: 5px;
+			}
+			
+			/*读写状态*/
+			input[type="text"]:-moz-read-only{
+			  border-color: #ccc;
+			}
+			/*只读状态*/
+			input[type="text"]:read-only{
+			  border-color: #ccc;
+			}
+			
+			/*读写状态,兼容火狐*/
+			input[type="text"]:-moz-read-write{
+			  border-color: #f36;
+			}
+			/*读写状态*/
+			input[type="text"]:read-write{
+			  border-color: #f36;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>伪类选择器:read-write</h3>
+		<p>:read-write”选择器刚好与“:read-only”选择器相反，主要用来指定当元素处于非只读状态时的样式。</p>
+		
+		
+		<!--示例代码-->
+		<form action="#">
+		  <div>
+		    <label>姓名:</label>
+		    <input type="text"  placeholder="读写" />
+		  </div>
+		  <div>
+		    <label>地址:</label>
+		    <input type="text"  placeholder="只读" readonly="readonly" />
+		  </div>
+		</form>  
+	</body>
+</html>

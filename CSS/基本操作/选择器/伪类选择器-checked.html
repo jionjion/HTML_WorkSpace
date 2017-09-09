@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		<style type="text/css">
+			form {
+			  border: 1px solid #ccc;
+			  padding: 20px;
+			  /*给定宽度,以便居中*/
+			  width: 300px;
+			  /*实现form表单的居中*/
+			  margin: 30px auto;			
+			}
+			
+			
+			.box {
+				/*让DIV放在同一行*/
+			  display: inline-block;
+			  width: 20px;
+			  height: 20px;
+			  margin-right: 10px;
+			  /*相对定位*/
+			  position: relative;
+			  border: 2px solid orange;
+			  /*垂直对齐*/
+			  vertical-align: middle;
+			}
+			
+			.box input {
+			  opacity: 0;
+			  /*子元素绝对定位*/
+			  position: absolute;
+			  top:0;
+			  left:0;
+			}
+			
+			/*box中地对号图标位置*/
+			.box span {
+			  /*子元素绝对定位*/
+			  position: absolute;
+			  /*将对号填入多选框中*/
+			  top: -10px;
+			  right: 3px;
+			  font-size: 30px;
+			  font-weight: bold;
+			  font-family: Arial;
+			  -webkit-transform: rotate(30deg);
+			  transform: rotate(30deg);
+			  color: orange;
+			}
+			
+			/*input的相邻兄弟元素,在其选中时置为透明隐藏*/
+			input[type="checkbox"] + span {
+			  opacity: 0;
+			}
+			
+			input[type="checkbox"]:checked + span {
+			  opacity: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>伪类选择器:checked选择器</h3>
+		<p>	在表单元素中，单选按钮和复选按钮都具有选中和未选中状态。<br />
+			在CSS3中，我们可以通过状态选择器“:checked”配合其他标签实现自定义样式。<br />
+			而“:checked”表示的是选中状态。</p>
+		
+		
+		<!--示例代码-->
+		<form action="#">
+		    <div class="box">
+		      <input type="checkbox" checked="checked" id="usename" /><span>√</span>
+		    </div>
+		    <lable for="usename">我是选中状态</lable>
+		  
+		    <div class="box">
+		      <input type="checkbox"  id="usepwd" /><span>√</span>
+		    </div>
+		    <label for="usepwd">我是未选中状态</label>
+		</form> 		
+	</body>
+</html>

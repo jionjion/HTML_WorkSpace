@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		
+		<style type="text/css">
+			/*使奇数的变色,n从0开始自增,带入表达式进行计算*/
+			ol > li :nth-child(2n+1){
+			  background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>伪类选择器—nth-child(n)</h3>
+		<p>
+			“:nth-child(n)”选择器用来定位某个父元素的一个或多个特定的子元素。<br />
+			其中“n”是其参数，而且可以是整数值(1,2,3,4)，也可以是表达式(2n+1、-n+5)和关键词(odd、even)，但参数n的起始值始终是1，而不是0。<br />
+			也就是说，参数n的值为0时，选择器将选择不到任何匹配的元素。
+		</p>
+		<p>:nth-child(n)”选择器中的n为一个表达式时，其中n是从0开始计算，当表达式的值为0或小于0的时候，不选择任何匹配的元素。如下表所示：<br />
+			<img src="../../img/choose02.jpg"/>
+		</p>
+		
+		<p>
+			“:nth-last-child(n)”选择器和前面的“:nth-child(n)”选择器非常的相似，只是这里多了一个“last”.<br />
+			的作用和“:nth-child(n)”选择器有所区别，从某父元素的最后一个子元素开始计算,位置为1，来选择特定的元素。
+		</p>
+		
+		
+		<!--示例代码-->
+		<ol>
+		  <li>item1</li>
+		  <li>item2</li>
+		  <li>item3</li>
+		  <li>item4</li>
+		  <li>item5</li>
+		  <li>item6</li>
+		  <li>item7</li>
+		  <li>item8</li>
+		  <li>item9</li>
+		  <li>item10</li>
+		</ol>
+	</body>
+</html>

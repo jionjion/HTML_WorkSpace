@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		<style type="text/css">
+			/*为所有的p标签*/
+			div {
+			 background: orange;
+			 min-height: 30px;
+			}
+			/*为p标签的为空的,默认不显示*/
+			div:empty {
+			  display: none;
+			}​
+		</style>
+	</head>
+	<body>
+		<h3>伪类选择器—empty</h3>
+		<p>:empty选择器表示的就是空。用来选择没有任何内容的元素，这里没有内容指的是一点内容都没有，哪怕是一个空格。</p>
+		
+		<!--示例代码-->
+		<div>我显示了</div>
+		<div></div>	
+	</body>
+</html>

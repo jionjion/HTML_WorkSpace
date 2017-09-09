@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		
+		<style type="text/css">
+			/*完成对wrapper类下的p标签类型的最后一个p标签*/
+			.wrapper > p:last-of-type{
+			  background: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>伪类选择器last-of-type</h3>
+		<p>:last-of-type选择是父元素下的某个类型的最后一个子元素。</p>
+		
+		<!--示例代码-->
+		<div class="wrapper">
+		  <p>我是第一个段落</p>
+		  <p>我是第二个段落</p>
+		  <p>我是第三个段落</p>
+		  <div>我是第一个Div元素</div>
+		  <div>我是第二个Div元素</div>
+		  <div>我是第三个Div元素</div>
+		</div>
+	</body>
+</html>

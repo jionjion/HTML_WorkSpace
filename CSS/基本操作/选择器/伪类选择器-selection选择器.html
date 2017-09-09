@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪类选择器</title>
+		<style type="text/css">
+			
+			/*文本选择时,兼容火狐*/
+			::-moz-selection {
+			  background: red;
+			  color: green;
+			}
+			/*文本选择时*/
+			::selection {
+			  background: red;
+			  color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>伪类选择器:selection选择器</h3>
+		<p>	“::selection”伪元素是用来匹配突出显示的文本(用鼠标选择文本时的文本)。<br />
+			浏览器默认情况下，用鼠标选择网页文本是以“深蓝的背景，白色的字体”显示的.</p>
+			
+		<!--示例代码-->
+		<p>“::selection”伪元素是用来匹配突出显示的文本。浏览器默认情况下，选择网站文本是深蓝的背景，白色的字体，</p>
+	</body>
+</html>
