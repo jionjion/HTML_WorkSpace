@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画播放时间</title>
+		<style type="text/css">
+			/*定义关键帧*/
+			@keyframes toradius{
+			  /*动画开始*/
+			  from {
+			    border-radius: 0;
+			  }
+			  /*动画结束*/
+			  to {
+			    border-radius: 100%;
+			  }
+			}
+			/*容器,设定宽高后居中*/
+			div {
+			  width: 200px;
+			  height: 200px;
+			  line-height: 200px;
+			  text-align: center;
+			  color: #fff;
+			  background: mediumpurple;
+			  margin: 20px auto;
+			}
+			/*悬停触发*/
+			div:hover {
+			  /*执行动画的名字*/
+			  animation-name: toradius;
+			  /*动画持续时间*/
+			  animation-duration: 10s;
+			  /*动画的事件函数*/
+			  animation-timing-function: ease-in-out;
+			  /*动画延时执行时间*/
+			  animation-delay: 0.1s;
+			}
+		</style>
+	</head>
+	<body>
+		<p>
+			animation-duration主要用来设置CSS3动画播放时间，其使用方法和transition-duration类似，
+			是用来指定元素播放动画所持续的时间长，也就是完成从0%到100%一次动画所需时间。
+		<pre>
+			animation-duration: time[,time]*
+		</pre>
+			取值time为数值，单位为秒，其默认值为“0”，这意味着动画周期为“0”，也就是没有动画效果（如果值为负值会被视为“0”）。
+		</p>
+		
+		<!--实例代码-->
+		<div>Hover Me</div>
+	</body>
+</html>

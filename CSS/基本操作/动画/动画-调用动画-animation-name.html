@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>调用动画</title>
+		
+		<style type="text/css">
+			
+			/*定义关键帧*/
+			@keyframes around{
+			  0% {
+			    transform: translateX(0);
+			  }
+			  25%{
+			    transform: translateX(180px);
+			  }
+			  50%{
+			     transform: translate(180px, 180px); 
+			  }
+			  75%{
+			    transform:translate(0,180px);
+			  }
+			  100%{
+			    transform: translateY(0);
+			  }
+			}
+			
+			/*容器宽高居中*/
+			div {
+			  width: 200px;
+			  height: 200px;
+			  border: 1px solid red;
+			  margin: 20px auto;
+			}
+			
+			/*讲矩形圆角为一个圆*/
+			div span {
+			  display: inline-block;
+			  width: 20px;
+			  height: 20px;
+			  background: orange;
+			  /*圆角为一个圆*/
+			  border-radius: 100%;
+			  /*执行动画 */
+			  animation-name:around;
+			  /*动画执行时间*/
+			  animation-duration: 10s;
+			  /*动画的事件函数*/
+			  animation-timing-function: ease;
+			  /*动画的延时*/
+			  animation-delay: 1s;
+			  /*动画执行次数*/
+			  animation-iteration-count:infinite;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>调用动画animation-name</h3>
+		<p>
+			animation-name属性主要是用来调用 @keyframes 定义好的动画。需要特别注意: animation-name 调用的动画名需要和“@keyframes”定义的动画名称完全一致（区分大小写），如果不一致将不具有任何动画效果。<br />
+			语法：<br />
+		<pre>
+			animation-name: none | IDENT[,none|DENT]*;
+		</pre>
+			1、IDENT是由 @keyframes 创建的动画名，上面已经讲过了（animation-name 调用的动画名需要和“@keyframes”定义的动画名称完全一致）；<br />
+			2、none为默认值，当值为 none 时，将没有任何动画效果,这可以用于覆盖任何动画。<br />
+			注意：需要在 Chrome 和 Safari 上面的基础上加上-webkit-前缀，Firefox加上-moz-。<br />
+		</p>
+		
+		<!--示例代码-->
+		<div><span></span></div>
+	</body>
+</html>

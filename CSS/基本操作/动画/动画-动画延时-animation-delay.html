@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画延时</title>
+		<style type="text/css">
+			/*定义关键帧,将点位进行移动*/
+			@keyframes move {
+			  0%{
+			    transform: translate(0);
+			  }
+			  15%{
+			    transform: translate(100px,180px);
+			  }
+			  30%{
+			    transform: translate(150px,0);
+			  }
+			  45%{
+			    transform: translate(250px,180px);
+			  }
+			  60%{
+			    transform:translate(300px,0);
+			  }
+			  75%{
+			    transform: translate(450px,180px);
+			  }
+			  100%{
+			    transfrom: translate(480px,0);
+			  }
+			}
+			/*定义容器*/
+			div {
+			  width: 500px;
+			  height: 200px;
+			  border: 1px solid red;
+			  margin: 20px auto;
+			}
+			/*定义执行元素*/
+			div span {
+			  display: inline-block;
+			  width: 20px;
+			  height: 20px;
+			  /*动画元素的背景色*/
+			  background: green;
+			  /*圆角为圆形*/
+			  border-radius: 100%;
+			  /*执行动画的名称*/
+			  animation-name:move;
+			  /*动画执行时间*/
+			  animation-duration: 10s;
+			  /*动画执行的时间过渡函数*/
+			  animation-timing-function:ease;
+			  /*动画延时执行时间*/
+			  animation-delay:2s;
+			  /*动画的执行次数*/
+			  animation-iteration-count:infinite;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>动画延时时间animation-delay</h3>
+		<p>animation-delay属性用来定义动画开始播放的时间，用来触发动画播放的时间点。和transition-delay属性一样，用于定义在浏览器开始执行动画之前等待的时间。</p>
+		
+		<!--示例代码-->
+		<div><span></span></div>
+	</body>
+</html>

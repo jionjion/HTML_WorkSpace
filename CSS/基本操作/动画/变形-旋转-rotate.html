@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>旋转变形</title>
+		
+		<style type="text/css">
+			
+			/*容器,设置块状元素宽高后水平居住*/
+			.wrapper {
+			  width: 200px;
+			  height: 200px;
+			  border: 1px dotted red;
+			  margin: 100px auto;
+			}
+			/*后代元素*/
+			.wrapper div {
+			  width: 200px;
+			  height: 200px;
+			  background: orange;
+			  /*兼容浏览器私有属性*/
+			  -webkit-transform: rotate(45deg);
+			  transform: rotate(45deg);
+			}
+		</style>
+	</head>
+	<body>
+		<h3>旋转变形</h3>
+		<p>旋转rotate()函数通过指定的角度参数使元素相对原点进行旋转。<br />
+		它主要在二维空间内进行操作，设置一个角度值，用来指定旋转的幅度。
+		如果这个值为正值，元素相对原点中心顺时针旋转；如果这个值为负值，元素相对原点中心逆时针旋转。<br />
+		注意,必须是块状元素才可以进行旋转动画</p>
+		
+		
+		
+		<!--示例代码-->
+		<div class="wrapper">
+		  <div></div>
+		</div>
+	</body>
+</html>

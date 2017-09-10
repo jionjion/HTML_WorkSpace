@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>矩阵变形</title>
+		<style type="text/css">
+			/*容器,给定宽高后居中*/
+			.wrapper {
+			  width: 300px;
+			  height: 200px;
+			  border: 2px dotted red;
+			  margin: 40px auto;
+			}
+			/*给定背景颜色后矩阵变形*/
+			.wrapper div {
+			  width:300px;
+			  height: 200px;
+			  background: orange;
+			  /*矩阵变形*/
+			  -webkit-transform: matrix(1,0,0,1,50,50);
+			  -moz-transform:matrix(1,0,0,1,50,50);
+			  transform: matrix(1,0,0,1,50,50);
+			}
+		</style>
+	</head>
+	<body>
+		<h3>矩阵matrix</h3>
+		<p>
+			matrix() 是一个含六个值的(a,b,c,d,e,f)变换矩阵，用来指定一个2D变换，相当于直接应用一个[a b c d e f]变换矩阵。
+		</p>
+		<p>
+			a为元素的水平伸缩量，1为原始大小；	<br />
+			b为纵向扭曲，0为不变；<br />
+			c为横向扭曲，0不变；<br />
+			d为垂直伸缩量，1为原始大小；<br />
+			e为水平偏移量，0是初始位置；<br />
+			f为垂直偏移量，0是初始位置
+		</p>
+		
+		
+		<!--示例代码-->
+		<div class="wrapper">
+		  <div></div>
+		</div>
+	</body>
+</html>

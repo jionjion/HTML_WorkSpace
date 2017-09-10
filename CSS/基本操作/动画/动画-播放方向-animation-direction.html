@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画播放方向</title>
+		<style type="text/css">
+			/*定义关键帧*/
+			@keyframes move {
+			  0%{
+			    transform: translateY(90px);
+			  }
+			  15%{
+			    transform: translate(90px,90px);
+			  }
+			  30%{
+			    transform: translate(180px,90px);
+			  }
+			  45%{
+			    transform: translate(90px,90px);
+			  }
+			  60%{
+			    transform: translate(90px,0);
+			  }
+			  75%{
+			    transform: translate(90px,90px);
+			  }
+			  90%{
+			    transform: translate(90px,180px);
+			  }
+			  100%{
+			    transform: translate(90px,90px);
+			  }
+			}
+			
+			/*给定宽高的容器元素*/
+			div {
+			  width: 200px;
+			  height: 200px;
+			  border: 1px solid red;
+			  margin: 20px auto;
+			}
+			span {
+			  /*动画元素,为行内块状元素*/
+			  display: inline-block;
+			  width: 20px;
+			  height: 20px;
+			  /*设置动画元素颜色*/
+			  background: orange;
+			  /*平面Y轴移动*/
+			  transform: translateY(90px);
+			  animation-name: move;
+			  /*动画持续*/
+			  animation-duration: 10s;
+			  /*动画时间函数*/
+			  animation-timing-function: ease-in;
+			  /*动画延时时间*/
+			  animation-delay: 0.2s;
+			  /*动画执行次数*/
+			  animation-iteration-count:infinite;
+			  /*奇数次正序,偶数次逆序*/
+			  animation-direction:alternate;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>动画播放方向animation-iteration-count</h3>
+		<p>
+			animation-direction属性主要用来设置动画播放方向，其语法规则如下：						<br />
+			其主要有两个值：normal、alternate  											<br />
+			1、normal是默认值，如果设置为normal时，动画的每次循环都是向前播放；						<br />
+			2、另一个值是alternate，他的作用是，动画播放在第偶数次逆序播放，第奇数次顺序方向播放。			<br />
+		</p>
+		
+		<div><span></span></div>
+	</body>
+</html>

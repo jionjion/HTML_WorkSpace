@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>过渡函数</title>
+		<style type="text/css">
+			div {
+			  width: 200px;
+			  height: 200px;
+			  background: green;
+			  margin: 20px auto;
+			  
+			  /*过渡的元素*/
+			  -webkit-transition-property: -webkit-border-radius;
+			  transition-property: border-radius;
+			  
+			  /*过渡时间*/
+			  -webkit-transition-duration: 0.5s;
+			  transition-duration: 0.5s;
+			  
+			  /*过渡函数*/
+			  -webkit-transition-timing-function: ease-in-out;
+			  transition-timing-function: ease-in-out;
+			  
+			  /*延时执行时间*/
+			  -webkit-transition-delay: 0.2s;
+			  transition-delay: 0.2s;
+			}
+			div:hover {
+			  border-radius: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>过渡函数 transition-timing-function</h3>
+		<p>
+			transition-timing-function属性指的是过渡的“缓动函数”。主要用来指定浏览器的过渡速度，以及过渡期间的操作进展情况，其中要包括以下几种函数：<br />
+			<img src="../../img/shape13.jpg"/>
+		</p>
+		
+		<!--示例代码-->
+		<div></div>
+	</body>
+</html>

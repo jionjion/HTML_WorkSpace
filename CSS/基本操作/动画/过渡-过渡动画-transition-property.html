@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画过渡属性</title>
+		<style type="text/css">
+			/*容器*/
+			.wrapper {
+			  width: 200px;
+			  height: 200px;
+			  background-color:red;
+			  margin: 20px auto;
+			  
+			  /*过渡的属性为背景色	在0.5S内完成过渡	使用内置ease函数进行控制	延时0.1S后执行*/
+			  -webkit-transition: background-color 0.5s ease 0.1s;
+			  transition: background-color 0.5s ease 0.1s;
+			}
+			
+			/*鼠标悬停,改变背景颜色,触发过渡CSS*/
+			.wrapper:hover {
+			  background-color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>过渡属性 transition-property</h3>
+		<p>
+			transition，它可以通过一些简单的CSS事件来触发元素的外观变化，让效果显得更加细腻。<br />
+			简单点说，就是通过鼠标的单击、获得焦点，被点击或对元素任何改变中触发，并平滑地以动画效果改变CSS的属性值。
+		</p>
+		<p>
+			在CSS中创建简单的过渡效果可以从以下几个步骤来实现：<br />
+			第一，在默认样式中声明元素的初始状态样式；all表示全部元素差异执行过渡<br />
+			第二，声明过渡元素最终状态样式，比如悬浮状态；<br />
+			第三，在默认样式中通过添加过渡函数，添加一些不同的样式。
+		</p>
+		<p>
+			动画的执行函数:<br />
+			ease    规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。<br />    
+			ease-in    规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。    <br />
+			ease-out    规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。    <br />
+			ease-in-out    规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。<br />
+		</p>
+		<p>
+			CSS3的过度transition属性是一个复合属性，主要包括以下几个子属性：<br />
+			transition-property:指定过渡或动态模拟的CSS属性<br />
+			transition-duration:指定完成过渡所需的时间<br />
+			transition-timing-function:指定过渡函数<br />
+			transition-delay:指定开始出现的延迟时间
+		</p>
+		<p>
+			transition-property用来指定过渡动画的CSS属性名称，而这个过渡属性只有具备一个中点值的属性（需要产生动画的属性）才能具备过渡效果，其对应具有过渡的CSS属性主要有：<br />
+			<img src="../../img/shape12.jpg"/>
+		</p>
+		
+		
+		<!--示例代码-->
+		<div class="wrapper">鼠标悬停变色</div>
+	</body>
+</html>

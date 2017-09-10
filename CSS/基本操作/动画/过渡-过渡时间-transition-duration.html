@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画过渡时间</title>
+		<style type="text/css">
+			
+			.wrapper {
+			  width: 300px;
+			  height: 200px;
+			  background-color: orange;
+			  margin: 20px auto;
+			  /*设置过渡属性，为圆角过渡*/
+			  -webkit-transition-property: -webkit-border-radius;
+			  transition-property: border-radius;
+			  /*设置过渡时间*/
+			  -webkit-transition-duration: 0.5s;
+			  transition-duration: 0.5s;
+			  
+			  /*设置时间函数,为预定义的的*/
+			  -webkit-transition-timing-function: ease-out;
+			  transition-timing-function: ease-out;
+			  
+			  /*设置延时时间后执行*/
+			  -webkit-transition-delay: 0.2s;
+			  transition-delay: 0.2s;
+			}
+			.wrapper:hover {
+			  border-radius: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>动画过渡时间</h3>
+		<p>transition-duration属性主要用来设置一个属性过渡到另一个属性所需的时间，也就是从旧属性过渡到新属性花费的时间长度，俗称持续时间。</p>
+		
+		<!--示例代码-->
+		<div class="wrapper"></div>
+	</body>
+</html>

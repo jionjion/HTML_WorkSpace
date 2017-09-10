@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>扭曲变形</title>
+		<style type="text/css">
+			/*容器元素,居中后增加边框*/
+			.wrapper {
+			  width: 300px;
+			  height: 100px;
+			  border: 2px dotted red;
+			  margin: 30px auto;
+			}
+			/*变形的元素,必须为块状元素*/
+			.wrapper div {
+			  width: 300px;
+			  height: 100px;
+			  line-height: 100px;
+			  text-align: center;
+			  color: #fff;
+			  background: orange;
+			  /*浏览器私有属性测试*/
+			  -webkit-transform: skew(45deg);
+			  /*兼容火狐*/
+			  -moz-transform:skew(45deg);
+			  /*CSS标准*/ 
+			  transform:skew(45deg);
+			}
+		</style>
+	</head>
+	<body>
+		<h3>扭曲 skew</h3>
+		<p>
+			扭曲skew()函数能够让元素倾斜显示。它可以将一个对象以其中心位置围绕着X轴和Y轴按照一定的角度倾斜。			<br />
+			这与rotate()函数的旋转不同，rotate()函数只是旋转，而不会改变元素的形状。skew()函数不会旋转，而只会改变元素的形状。	
+		</p>
+		<p>
+			Skew()具有三种情况：																	<br />
+			1、skew(x,y)使元素在水平和垂直方向同时扭曲（X轴和Y轴同时按一定的角度值进行扭曲变形）；					<br />
+			<img src="../../img/shape01.jpg"/>												<br />
+			第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则值为0，也就是Y轴方向上无斜切。				<br />
+			2、skewX(x)仅使元素在水平方向扭曲变形（X轴扭曲变形）；										<br />
+			<img src="../../img/shape02.jpg"/>												<br />
+			3、skewY(y)仅使元素在垂直方向扭曲变形（Y轴扭曲变形）											<br />
+			<img src="../../img/shape03.jpg"/>
+		</p>
+		
+		
+		<!--示例代码-->
+		<div class="wrapper">
+		  <div>我变成平形四边形</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画播放次数</title>
+		<style type="text/css">
+			/*动画关键帧*/
+			@keyframes move {
+			  0%{
+			    transform: translate(0);
+			  }
+			  15%{
+			    transform: translate(100px,180px);
+			  }
+			  30%{
+			    transform: translate(150px,0);
+			  }
+			  45%{
+			    transform: translate(250px,180px);
+			  }
+			  60%{
+			    transform:translate(300px,0);
+			  }
+			  75%{
+			    transform: translate(450px,180px);
+			  }
+			  100%{
+			    transfrom: translate(480px,0);
+			  }
+			}
+			/*给定宽高后居中的容器*/
+			div {
+			  width: 500px;
+			  height: 200px;
+			  border: 1px solid red;
+			  margin: 20px auto;
+			}
+			/*动画元素*/
+			div span {
+			  /*动画元素必须为行内块状元素*/
+			  display: inline-block;
+			  width: 20px;
+			  height: 20px;
+			  background: green;
+			  border-radius: 100%;
+			  /*执行动画名*/
+			  animation-name:move;
+			  /*动画执行时间*/
+			  animation-duration: 10s;
+			  /*动画时间过渡函数*/
+			  animation-timing-function:ease;
+			  /*开始延时时间*/
+			  animation-delay:.1s;
+			  /*执行次数*/
+			  animation-iteration-count:infinite;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>动画播放次数animation-iteration-count</h3>
+		<p>
+			animation-iteration-count属性主要用来定义动画的播放次数。
+		<pre>
+			animation-iteration-count: infinite | number [, infinite | number]*</pre>
+			1、其值通常为整数，但也可以使用带有小数的数字，其默认值为1，这意味着动画将从开始到结束只播放一次。<br />
+			2、如果取值为infinite，动画将会无限次的播放。<br />
+			注意:Chrome或Safari浏览器，需要加入-webkit-前缀！
+		</p>
+		
+		<!--示例代码-->
+		<div><span></span></div>
+	</body>
+</html>
