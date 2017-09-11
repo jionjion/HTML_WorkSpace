@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画时间外属性</title>
+		<style type="text/css">
+			/*关键帧*/
+			@keyframes redToBlue{
+			  from{
+			    background: red;
+			  }
+			  20%{
+			      background:green;
+			  }
+			  40%{
+			      background:lime;
+			  }
+			  60%{
+			      background:yellow;
+			  }
+			  to{
+			    background:blue;
+			  }
+			}
+			
+			/*动画元素 */
+			div {
+			  width: 200px;
+			  height: 200px;
+			  background: red;
+			  /*居中对齐*/
+			  margin: 20px auto;
+			  /*执行动画*/
+			  animation-name:redToBlue;
+			  /*动画持续时间*/
+			  animation-duration: 20s;
+			  /*动画执行时间函数*/
+			  animation-timing-function: ease;
+			  /*动画执行延时时间*/
+			  animation-delay: 1s;
+			  /*动画结束后返回到结束样式*/
+			  animation-fill-mode: both; 
+			}
+		</style>
+	</head>
+	<body>
+		<h3>时间外属性animation-fill-mode</h3>
+		<p>
+			animation-fill-mode属性定义在动画开始之前和结束之后发生的操作。									<br />
+			主要具有四个属性值：none、forwards、backwords和both。其四个属性值对应效果如下：						<br />
+			none 																				<br />
+			默认值，表示动画将按预期进行和结束，在动画完成其最后一帧时，动画会反转到初始帧处								<br />
+			forwards 																			<br />
+			表示动画在结束后继续应用最后的关键帧的位置														<br />
+			backwards 																			<br />
+			会在向元素应用动画样式时迅速应用动画的初始帧 														<br />
+			both 																				<br />
+			元素动画同时具有forwards和backwards效果 													<br />
+			在默认情况之下，动画不会影响它的关键帧之外的属性，使用animation-fill-mode属性可以修改动画的默认行为。			<br />
+			简单的说就是告诉动画在第一关键帧上等待动画开始，或者在动画结束时停在最后一个关键帧上而不回到动画的第一帧上。或者同时具有这两个效果。
+		</p>
+			
+		<!--示例代码-->
+		<div></div>
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画播放状态</title>
+		<style type="text/css">
+			/*定义关键帧*/
+			@keyframes move {
+			  0%{
+			    transform: translateY(90px);
+			  }
+			  15%{
+			    transform: translate(90px,90px);
+			  }
+			  30%{
+			    transform: translate(180px,90px);
+			  }
+			  45%{
+			    transform: translate(90px,90px);
+			  }
+			  60%{
+			    transform: translate(90px,0);
+			  }
+			  75%{
+			    transform: translate(90px,90px);
+			  }
+			  90%{
+			    transform: translate(90px,180px);
+			  }
+			  100%{
+			    transform: translate(90px,90px);
+			  }
+			}
+			
+			/*给定宽高的父元素*/
+			div {
+			  width: 200px;
+			  height: 200px;
+			  border: 1px solid red;
+			  margin: 20px auto;
+			}
+			/*动画元素,执行动画*/
+			span {
+			  /*行内块状元素*/
+			  display: inline-block;
+			  width: 20px;
+			  height: 20px;
+			  background: orange;
+			  /*初始偏移位置*/
+			  transform: translateY(90px);
+			  /*执行自定义动画*/
+			  animation-name: move;
+			  /*动画持续时间*/
+			  animation-duration: 10s;
+			  /*动画时间函数*/
+			  animation-timing-function: ease-in;
+			  /*动画延时执行时间*/
+			  animation-delay: 0.2s;
+			  /*动画执行次数*/
+			  animation-iteration-count:infinite;
+			  /*动画执行顺序,奇次正序,偶次逆序*/
+			  animation-direction:alternate;
+			  /*动画播放状态,暂停*/
+			  animation-play-state:paused;
+			}
+			/*当触发鼠标悬停状态时,修改动画元素的动画播放状态为开始播放*/
+			div:hover span {
+			  animation-play-state:running;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>动画播放状态animation-play-state</h3>
+		<p>
+			animation-play-state属性主要用来控制元素动画的播放状态。<br />
+			参数：<br />
+			其主要有两个值：running和paused。<br />
+			其中running是其默认值，主要作用就是类似于音乐播放器一样，可以通过paused将正在播放的动画停下来，也可以通过running将暂停的动画重新播放.<br />
+			这里的重新播放不一定是从元素动画的开始播放，而是从暂停的那个位置开始播放。
+		</p>
+		
+		<!--示例代码-->
+		<div><span></span></div>
+	</body>
+</html>
