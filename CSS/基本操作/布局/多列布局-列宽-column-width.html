@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>多列布局</title>
+		<style type="text/css">
+			/*容器,边框居中*/
+			.columns {
+			  padding: 5px;
+			  border: 1px solid green;
+			  width: 900px;
+			  margin: 20px auto;
+			  
+			  /*指定分栏的宽度,当为auto时,分栏数量由column-count指定*/
+			  -webkit-column-width :200px;
+			  -moz-column-width:200px;
+			  -o-column-width:200px;
+			  -ms-column-width:200px;
+			  column-width:200px;
+			  
+			  /*分栏数量,当为auto时,系统指定*/
+			  -webkit-column-count:3;
+			  -moz-column-count:3;
+			  -o-column-count:3;
+			  -ms-column-count:3;
+			  column-count:3;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>多列布局column-width</h3>
+		<p>column-width的使用和CSS中的width属性一样，不过不同的是，column-width属性在定义元素列宽的时候，既可以单独使用，也可以和多列属性中其他属性配合使用。</p>
+		<p>
+			auto:如果column-width设置值为auto或者没有显式的设置值时，元素多列的列宽将由其他属性来决定，比如前面的示例就是由列数column-count来决定。<br />
+			length:使用固定值来设置元素列的宽度，其主要是由数值和长度单位组成，不过其值只能是正值，不能为负值。
+		</p>
+		<p>column-count属性主要用来给元素指定想要的列数和允许的最大列数。</p>
+		<p>
+			auto:此值为column-count的默认值，表示元素只有一列，其主要依靠浏览器计算自动设置。<br />
+			integer:此值为正整数值，主要用来定义元素的列数，取值为大于0的整数，负值无效。
+		</p>
+		
+		<!--示例代码-->
+		<div class="columns">
+		  <h2>我要分列显示</h2>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		</div>
+	</body>
+</html>

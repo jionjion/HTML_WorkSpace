@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>多列布局</title>
+		<style type="text/css">
+			/*容器，居中，边框*/
+			.columns {
+			  padding: 5px;
+			  border: 1px solid green;
+			  width: 900px;
+			  margin: 20px auto;
+			  
+			  /*分三栏*/
+			  -webkit-column-count:3;
+			  -moz-column-count:3;
+			  -o-column-count:3;
+			  -ms-column-count:3;
+			  column-count:3;
+			  
+			  /*栏距离2字宽*/
+			  -webkit-column-gap: 2em;
+			  -moz-column-gap: 2em;
+			  -o-column-gap: 2em;
+			  -ms-column-gap: 2em;
+			  column-gap: 2em;
+			  
+			  /*中间分隔栏的线宽,线型,线色*/
+			  -webkit-column-rule:3px solid gray;
+			  -moz-column-rule: 3px solid gray;
+			  -o-column-rule:3px solid gray;
+			  -ms-column-rule:3px solid gray;
+			  column-rule:3px solid gray;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>多列布局column-rule</h3>
+		<p>
+			column-rule主要是用来定义列与列之间的边框宽度、边框样式和边框颜色。简单点说，就有点类似于常用的border属性。<br />
+			column-rule是不占用任何空间位置的，在列与列之间改变其宽度不会改变任何列的位置。
+		</p>
+		<p>
+			column-rule:column-rule-width|column-rule-style|column-rule-color
+		</p>
+		<p>
+			column-rule-width:类似于border-width属性，主要用来定义列边框的宽度，其默认值为“medium”，column-rule-width属性接受任意浮点数，但不接收负值。但也像border-width属性一样，可以使用关键词：medium、thick和thin。<br />
+			column-rule-style:类似于border-style属性，主要用来定义列边框样式，其默认值为“none”。column-rule-style属性值与border-style属值相同，包括none、hidden、dotted、dashed、solid、double、groove、ridge、inset、outset。<br />
+			column-rule-color:类似于border-color属性，主要用来定义列边框颜色，其默认值为前景色color的值，使用时相当于border-color。column-rule-color接受所有的颜色。如果不希望显示颜色，也可以将其设置为transparent(透明色)
+		</p>
+		
+		<!--示例代码-->
+		<div class="columns">
+		  <h2>我要分列显示</h2>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		</div>
+	</body>
+</html>

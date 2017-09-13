@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>多栏布局</title>
+		<style type="text/css">
+			.columns {
+			  padding: 5px;
+			  border: 1px solid green;
+			  width: 900px;
+			  margin: 20px auto;
+			  
+			  -webkit-column-count:3;
+			  -moz-column-count:3;
+			  -o-column-count:3;
+			  -ms-column-count:3;
+			  column-count:3;
+			  
+			  -webkit-column-gap: 2em;
+			  -moz-column-gap: 2em;
+			  -o-column-gap: 2em;
+			  -ms-column-gap: 2em;
+			  column-gap: 2em;
+			  
+			  -webkit-column-rule: 3px gray solid;
+			  -moz-column-rule: 3px gray solid;
+			  -o-column-rule: 3px gray solid;
+			  -ms-column-rule: 3px gray solid;
+			  column-rule: 3px gray solid;
+			}
+			h2{
+			  background: green;
+			  padding: 10px;
+			  color: #fff;
+			}
+			
+			/*行头和偶数实现跨全部列*/
+			h2,	p:nth-child(2n){
+			  -webkit-column-span:all;
+			  -moz-column-span:all;
+			  -o-column-span:all;
+			  -ms-column-span:all;
+			  column-span:all;
+			}			
+		</style>
+	</head>
+	<body>
+		<h3多>栏布局column-span</h3>
+		<p>
+			column-span主要用来定义一个分列元素中的子元素能跨列多少。<br />
+			column-width、column-count等属性能让一元素分成多列，不管里面元素如何排放顺序，他们都是从左向右的放置内容，
+			但有时我们需要基中一段内容或一个标题不进行分列，也就是横跨所有列，此时column-span就可以轻松实现，此属性的语法如下。
+		</p>
+		<p>
+			column-span: none | all<br />
+			none:此值为column-span的默认值，表示不跨越任何列。<br />
+			all:这个值跟none值刚好相反，表示的是元素跨越所有列，并定位在列的Ｚ轴之上。
+		</p>
+		
+		
+		<!--示例代码-->
+		<div class="columns">
+		  <h2>我要分列显示</h2>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		</div>		
+	</body>
+</html>

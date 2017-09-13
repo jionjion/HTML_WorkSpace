@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>多列布局</title>
+		
+		<style type="text/css">
+			/*容器元素,实现居中对齐*/
+			.columns {
+			  width: 500px;
+			  padding: 5px;
+			  border: 1px solid green;
+			  margin: 20px auto;
+			  
+			  /*将容器以150px为分栏,实现多列布局*/ 
+			  -webkit-columns: 150px;
+			  -moz-columns: 150px;
+			  -o-columns:150px;
+			  -ms-columns: 150px;
+			  columns: 150px;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>多列布局Columns</h3>
+		<p>
+			多列排版的布局,它主要应用在文本的布局方面
+		</p>
+		<p>
+			columns：column-width || column-count 
+		</p>
+		<p>
+			参数<br />
+			column-width:主要用来定义多列中每列的宽度<br />
+			column-count:主要用来定义多列中的列数
+		</p>
+		
+		
+		<!--示例代码-->
+		<div class="columns">
+		  <h2>我要分列显示</h2>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		  <p>为了能在Web页面中方便实现类似报纸、杂志那种多列排版的布局，W3C特意给CSS3增加了一个多列布局模块（CSS Multi Column Layout Module）。它主要应用在文本的多列布局方面。对于文本的多列布局，我想大家并不陌生，因为报纸和杂志上我们随处可见，这种布局在报纸和杂志上都使用了几十年了，但需要在Web页面上实现文本的多列布局，正如下图所示。</p>
+		</div>
+	</body>
+</html>
