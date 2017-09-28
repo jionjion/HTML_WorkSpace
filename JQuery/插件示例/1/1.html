@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="qrcode.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="grid.js"></script>
+		<script type="text/javascript" src="version.js"></script>
+		<script type="text/javascript" src="detector.js"></script>
+		<script type="text/javascript" src="formatinf.js"></script>
+		<script type="text/javascript" src="errorlevel.js"></script>
+		<script type="text/javascript" src="bitmat.js"></script>
+		<script type="text/javascript" src="datablock.js"></script>
+		<script type="text/javascript" src="bmparser.js"></script>
+		<script type="text/javascript" src="datamask.js"></script>
+		<script type="text/javascript" src="rsdecoder.js"></script>
+		<script type="text/javascript" src="gf256poly.js"></script>
+		<script type="text/javascript" src="gf256.js"></script>
+		<script type="text/javascript" src="decoder.js"></script>
+		<script type="text/javascript" src="qrcode.js"></script>
+		<script type="text/javascript" src="findpat.js"></script>
+		<script type="text/javascript" src="alignpat.js"></script>
+		<script type="text/javascript" src="databr.js"></script>
+	</head>
+	
+	
+	<script type="text/javascript">
+		
+			//这段代 主要是获取摄像头的视频流并显示在Video 签中
+			window.addEventListener("DOMContentLoaded", function() {							//完全加载后触发事件
+				var canvas = document.getElementById("canvas"),									//获得画板对象
+					context = canvas.getContext("2d"),											//画板内容
+					video = document.getElementById("video"),									//获得视频DOM对象
+					videoObj = {																//对象
+						"video": true		
+					},
+					errBack = function(error) {													//失败的回调函数
+						console.log("Video capture error: ", error.code);
+					};
+				$("#snap").click(function() {													//点击后将视频转为img
+					context.drawImage(video, 0, 0, 330, 250);									//画板将视频中的图像显示
+					base64 = canvas.toDataURL();													//base64编码  data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAFAsda==
+					debugger;
+					var images = new Image();													//保存为图片
+//					$('#img').attr('src',base64);
+					qrcode.decode(base64.substr(22));
+					qrcode.callback = function(a){alert(a)};
+				})
+				//navigator.getUserMedia这个写法在Opera中好像是navigator.getUserMedianow				//navigator封装了浏览器对象	参考   http://www.w3school.com.cn/jsref/dom_obj_navigator.asp
+				if(navigator.getUserMedia) {
+					navigator.getUserMedia(videoObj, function(stream) {							//参考  https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/getUserMedia
+						video.srcObject = stream;
+						video.play();
+					}, errBack);
+				} else if(navigator.webkitGetUserMedia) {
+					navigator.webkitGetUserMedia(videoObj, function(stream) {
+						video.src = window.webkitURL.createObjectURL(stream);
+						video.play();
+					}, errBack);
+				}
+
+			}, false);
+				
+	</script>
+	<body>
+		
+		
+		<!--容器,固定样式-->
+		<div id="contentHolder">
+			<!--取景框-->
+			<video id="video" width="320" height="320" autoplay/>
+			</video>
+			<!--按钮-->
+			<input type="button" id="snap" style="width:100px;height:35px;" value="拍 照" />
+			
+			<!--换换用-->
+			<img id="img" />
+			<!--画板-->
+			<canvas style="" id="canvas" width="320" height="320">
+			</canvas>
+		</div>		
+	</body>
+</html>
