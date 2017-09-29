@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title></title>
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
@@ -27,14 +28,13 @@
 	
 	
 	<script type="text/javascript">
-		
-			//这段代 主要是获取摄像头的视频流并显示在Video 签中
-			window.addEventListener("DOMContentLoaded", function() {							//完全加载后触发事件
+		//这段代 主要是获取摄像头的视频流并显示在Video 签中
+			window.addEventListener("DOMContentLoaded", function() {
 				var canvas = document.getElementById("canvas"),									//获得画板对象
 					context = canvas.getContext("2d"),											//画板内容
 					video = document.getElementById("video"),									//获得视频DOM对象
-					videoObj = {																//对象
-						"video": true		
+					videoObj = {
+						"video": true
 					},
 					errBack = function(error) {													//失败的回调函数
 						console.log("Video capture error: ", error.code);
