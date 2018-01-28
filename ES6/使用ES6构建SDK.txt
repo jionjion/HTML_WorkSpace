@@ -1,0 +1,178 @@
+
+项目启动
+	在项目目录下执行
+		hb dev
+
+------------------
+Babel
+	ES6通用的核心
+		通过.babelrc配置文件进行配置
+		与Webpack或者Gulp等打包工具配合
+		在浏览器中引入Babel-polyfill转换为新的API
+				
+流程示意
+	Webpack  编译工具	-> Babel	浏览器端兼容包	->ES5-shim,Babel-polyfill	->	兼容性良好的代码
+	
+工程化工具Webpack
+	对工程进行模块化管理
+	配置babel-loader将ES6+转为ES5
+	压缩,合并代码
+	
+html-bundler安装,简便创建项目经过
+	解决babel和webpack的配置
+	1.全局安装插件
+		npm install html-bundler -g
+	2.使用webpack创建项目
+		hb create 项目名   -w
+	3.在项目目录下,引入相关依赖,并开发
+		cd 项目目录  && npm install && hb dev
+		
+安装兼容性依赖
+	npm install es5-shim  --save-dev
+	
+安装兼容编译依赖
+	npm install babel-polyfill --save-dev
+	
+安装webpack依赖
+	npm install webpack --save-dev
+安装依赖
+	npm install transform-runtime --save-dev
+	npm install babel-plugin-transform-runtime --save-dev
+	npm install babel-runtime --save-dev
+	npm install babel-preset-env --save-dev
+ 	npm install webpack-stream --save-dev
+	npm install es6-promise --save-dev
+	npm install fetch-detector --save-dev
+	npm install fetch-ie8 --save-dev
+
+
+
+安装CSS,JS编译插件,并引入html-bundler.config.js
+	npm install gulp-file-include --save-dev
+	
+安装JS拷贝
+	npm install babel-loader --save-dev
+安装依赖
+	npm install babel-core --save-dev
+	
+安装图片拷贝
+	 npm install happypack --save-dev
+
+修改 webpack.dll.js , 并在命令行中重新生成.
+	npm run dll
+	
+重新启动 , 运行在 http://192.168.11.1:8008 
+	hb dev
+	
+
+需求分析:
+	产品要求,登录,注册,找回密码,信息设置与修改
+	支持PC和移动,各个子网站需要自己的样式
+	功能逻辑必须统一和同步
+
+为什么使用SDK方式
+	通过JS SDK的方式,由一个团队统一开发维护,保持功能的统一及修改的同步.
+	支持PC和移动端,因此包体积要小,同时根据功能进行分包,不能有依赖.
+	JS SDK要包含的全部业务逻辑,但不包括具体的样式,由下游业务方进行自定义
+
+技术指标
+	浏览器兼容到IE8
+	支持PC和移动端,不能超过30KB
+	支持多种引用方式.
+	
+技术要求
+	使用ID定义选择器,使用Class定义样式
+	命名使用前缀,如果可能掺杂随机字符避免名字重复	
+	
+前端架构设计
+	自顶向下,自外而内.
+		API设计
+			简单易用,封装性,灵活性
+				暴露什么样的接口?(类/函数/对象)
+					函数:功能单一,无内部状态
+					对象:无关联的功能集合,类似Utils函数
+					类:相互关联的功能集合或者存在内部状态的功能
+				有哪些配置项?
+				默认值是什么?
+		功能模块划分与关联
+			公共模块:
+				表单验证/活人验证/省市级联
+			注册模块:
+				手机号验证/手机号注册/个人信息填写/绑定支付方式
+		模块的具体实现与一般性套路
+		
+	如何编写业务模块
+		init:	初始化,用于接收参数和设置初始化,作为入口
+		render:	渲染,作为单页面的显示
+		event:	事件绑定,作为JS特效
+	
+	如何编写公共模块
+		确定如何暴露接口: 类/函数/对象
+		 
+
+环境搭建
+	1.创建项目
+		hb create ES6 -w
+	2.进入项目中,安装依赖
+		npm install
+	3.运行dll,进行编译打包
+		npm run dll
+
+项目结构
+	- .babelrc
+		定义了前端用到的插件,transform-runtime:在编译时检查项目如果使用的ES6,则转换为ES3进行兼容;presets:根据环境进行转换ES6语法
+		
+	- webpack.config.js
+		定义了项目用到的模块
+		
+	- webpack.dll
+		打包后的模块设置
+
+模块化:使用打包工具最终将代码转为commonJS规范.
+
+commonJS可以重新赋值,而ES6模块重新赋值会报错.
+都可以对对象内部的值进行改变
+commonJS是对模块的拷贝,ES6是对模块的引用.
+
+基本语法
+	import & export	:静态化,必须放在顶部,不能使用条件语句,自动采用严格模式
+		在webpack打包时,进行优化,作用域的提升.
+		在外部可以拿到实时值,而不是一份拷贝.
+			注意:如果文件被直接使用而没有依赖关系,直接使用import即可
+	const & let		:创建变量
+		const:只在块级作用域上有效,不会有变量提升,不允许重复声明. 不可修改
+		let:只在块级作用域上有效,不会有变量提升,不允许重复声明.	可以修改
+		var:使用完后泄露,成为全局变量.
+	箭头函数			:函数的简便写法,不能作为构造函数,不可以使用new关键词,没有arguments对象
+		1.单行使用且不加{}情况下,默认有返回值,不能再有return关键字.
+			错误:	var fn = v => return v;
+			正确:	var fn = v => v;	
+			正确:	var fn = v => { return v };
+		2.如果返回值为对象,需要加()
+			正确:	var fn = () => ( {a:1} );
+		3.参数如果只有一个
+			正确:	var fn = v => v;
+		4.多个或者无参数
+			正确:var fn = () => ( {a:1} );
+			正确:var fn = (a,b) => { return a+b };
+		列如:
+			var fn = function(v) {return v};
+			var fn = v => v ;
+		5.this指向定义时所在的对象.
+			var o = {
+				a:1,
+				f:function(){
+					setTimeout(() => {
+						console.log(this);
+					},2000);
+				}
+			};
+			o.f;
+数据mock
+	1.创建 mock.js文件
+	2.安装mock服务
+		npm install fetch-mock --save-dev
+
+
+promise:
+	避免重复调用异步请求的方式.

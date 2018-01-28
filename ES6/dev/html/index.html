@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1517109457597">
+</head>
+<body>
+
+	<!--引入头部,相对路径和页面参数-->
+		<div class="header">
+		----头部----
+	</div>
+    
+    <!--进行表单引用-->
+    <div class="back">
+    	<div id="login-area">
+    		<h1>密码登录</h1>
+    		<div id="login-container"></div>
+    	</div>
+    </div>
+    
+    <!--引入底部-->
+	    <div class="footer">
+    	----底部-----
+    </div>
+   
+   	<!--引入打包的框架资源 -->
+    
+    <!--<script type="text/javascript" src="../js/index.js"></script>-->
+    
+    <!--引入入口JS,将会打包工具打入同一个JS文件中.-->
+	
+
+	<!--调用导入的JS内的方法-->
+	    	
+<script type="text/javascript" src="../lib/vendors.js"></script><script type="text/javascript" src="..\js\index.js?v=1517109457596"></script><script type="text/javascript">
+		
+		//使用pass关键字引用Windows下的全局对象
+		var login = pass.login({
+			container: document.getElementById('login-container'),
+			autocomplete: false,
+			success: function(){
+				location.replace('profile.html');
+			}
+		});
+    </script></body>
+</html>
+
