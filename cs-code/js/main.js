@@ -84,7 +84,7 @@ var YDMHttp = {
     	}
     },
 	
-	//上传图片方法 filename 文件名,暂时无用  TODO
+	//上传图片方法 filename 文件名,暂时不支持文件名方式上传.暂定为获得页面嵌入验证码  TODO
 	'upload' : function(filename){
 		debugger;
         data = {
@@ -97,9 +97,7 @@ var YDMHttp = {
         	'timeout': YDMHttp.user_info.timeout
         };
         //图片对象
-        file = {
-        	'file': Tools.getCodeImage()
-        };
+        file = Tools.getCodeImage();
         YDMHttp.request(data,file);
         if (response){
             if (response['ret'] && response['ret'] < 0){
@@ -116,11 +114,11 @@ var YDMHttp = {
 	'post_url': function(url,fields, files){
 		// 针对文件列表,循环打开文件,其实只有一张图片
 		//TODO 没有调试过
-		$.each(files, function(index,element) {
+		if(files != undefined){
 			// 二进制打开文件
-            file = getBase64Image(element);
+            file = Tools.getBase64Image(files);
             fields['file'] = file
-		});
+		}
 		//ajax提交,并同步获得报文后返回
 		var data = $.ajax({
 			type:"post",
@@ -132,6 +130,20 @@ var YDMHttp = {
 				return data;
 			}
 		}).responseText;
+
+		//使用Form表单结合Post请求发送报文
+//		var formData = new FormData();
+//		formData.append("method", 'login');
+//	    formData.append("username", 'jionjion');
+//	    formData.append("password", 'jionjion520');
+//	    formData.append("appcodetypekey", '1005');
+//	    formData.append("appid", '5015');
+//	    formData.append("appkey", '79c2d472c2e7f49d42f793fcc0d08af3');
+//	    formData.append("timeout", '60');
+//	    formData.append("file", files);
+	    
+	    
+		
 		return data;
 	}
 }
@@ -151,19 +163,79 @@ var Tools = {
 		canvas.height = img.height;
 		// 拷贝图片到画板对象
 		var ctx = canvas.getContext("2d");
-		ctx.drawImage(img, 0, 0);
+		ctx.drawImage(img, 0, 0, img.width, img.height);
 
 		// 火狐支持PNG,JPG格式
 		var dataURL = canvas.toDataURL("image/png");
-
-		return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+		return dataURL;
+//		return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");	//编码开头文件格式
 	},
 
-	//获得页面中的图片对象,只返回第一个
+	//获得页面中的图片对象,只返回第一个,默认页面之中只有一个未识别的验证码
 	getCodeImage: function(){
 		// TODO
 		var image = $('#code')[0];
 		return image;
+	},
+	
+	//将base64转为blob对象
+	
+
+	//将图片转为file文件对象
+	getFileImage:function(img){
+		var data = Tools.getBase64Image(img);
+		
 	}
 }
 
+var test = {
+	
+	
+	sumitImageFile : function (){  
+		
+		file = Tools.getCodeImage();
+		
+		base64Codes = Tools.getBase64Image(file);
+		
+	
+	    var formData = new FormData();   //这里连带form里的其他参数也一起提交了,如果不需要提交其他参数可以直接FormData无参数的构造函数  
+		formData.append("method", 'upload');
+	    formData.append("username", 'jionjion');
+	    formData.append("password", 'jionjion520');
+	    formData.append("appcodetypekey", '1005');
+	    formData.append("appid", '5015');
+	    formData.append("appkey", '79c2d472c2e7f49d42f793fcc0d08af3');
+	    formData.append("timeout", '60');
+	    //convertBase64UrlToBlob函数是将base64编码转换为Blob  
+	    formData.append("file",test.convertBase64UrlToBlob(base64Codes));  //append函数的第一个参数是后台获取数据的参数名,和html标签的input的name属性功能相同  
+	
+	    //ajax 提交form  
+	    $.ajax({  
+	        url : 'http://api.yundama.com/api.php',  
+	        type : "POST",  
+	        data : formData,  
+	        dataType:"text",  
+	        async:false,
+	        processData : false,         // 告诉jQuery不要去处理发送的数据  
+	        contentType : false,        // 告诉jQuery不要去设置Content-Type请求头  
+	
+	        success:function(data){  
+	            console.log(data);	  
+	        }
+	    });  
+	}  
+	,
+	convertBase64UrlToBlob : function (urlData){  
+	
+	    var bytes=window.atob(urlData.split(',')[1]);        //去掉url的头，并转换为byte  
+	
+	    //处理异常,将ascii码小于0的转换为大于0  
+	    var ab = new ArrayBuffer(bytes.length);  
+	    var ia = new Uint8Array(ab);  
+	    for (var i = 0; i < bytes.length; i++) {  
+	        ia[i] = bytes.charCodeAt(i);  
+	    }  
+	
+	    return new Blob( [ab] , {type : 'image/png'});  
+	}  
+}

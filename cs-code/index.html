@@ -7,14 +7,25 @@
 	</head>
 	<body>
 		<h1>测试页面</h1>
-		<img id="code" src="img/code_1.jpg"/>
+		<form>
+			<div style="padding: 20px;">
+				<img id="code" src="img/code_1.jpg"/>
+				<input type="file" name="file" id="file"/>
+			</div>
+		</form>
+	    <img id="canvasImg" src=""/>
+		<canvas id="mycanvas"></canvas>		
+		
 		<script type="text/javascript">
 			debugger
 			//登录方法
-//			YDMHttp.login();
+//			document.writeln('登录UID:' + YDMHttp.login() + '<br>')
 			//查询余额
-//			YDMHttp.balance();
-			Tools.getCodeImage()
+//			document.writeln('余额信息:' + YDMHttp.balance() + '<br />');
+			//上传信息
+//			document.write('上传信息:' + YDMHttp.upload());
+
+			test.sumitImageFile()
 		</script>
 	</body>
 </html>
