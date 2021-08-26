@@ -1,0 +1,48 @@
+{
+  "getNewsList": [
+    {
+      "id": 1,
+      "title": "新闻条目1",
+      "url": "#"
+    },
+    {
+      "id": 2,
+      "title": "新闻条目2",
+      "url": "#"
+    },
+    {
+      "id": 3,
+      "title": "新闻条3",
+      "url": "#"
+    },
+    {
+      "id": 4,
+      "title": "新闻条4广告发布",
+      "url": "#"
+    }
+  ],
+  "login": {
+    "username": "Jion",
+    "userId": 123
+  },
+  "getPrice": {
+    "buyNumber": 1,
+    "buyType": 0,
+    "period": 0,
+    "version": "0",
+    "amount": 500
+  },
+  "createOrder": {
+    "buyNumber": 1,
+    "buyType": 0,
+    "period": 0,
+    "version": "0",
+    "bankId": 201
+  },
+  "getOrderList": {
+    "query": "",
+    "productId": 0,
+    "startDate": "",
+    "endDate": ""
+  }
+}

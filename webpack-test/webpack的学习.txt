@@ -1,0 +1,47 @@
+
+webpack的安装及初始化
+	创建文件夹,用来构建web页面,文件夹名不能为关键字
+		
+	进入文件夹,初始化npm
+		npm init
+	安装相关软件,推荐本地安装	
+		主程序
+			npm install webpack --save-dev
+		样式加载器
+			npm install css-loader style-loader --save-dev
+	创建相关文件夹
+		src		源文件
+		dist	打包后的文件
+
+webpack.config.js配文件
+
+	
+项目的编写
+	hello.js
+
+项目的打包
+	基础打包命令
+	webpack hello.js hello.bundle.js
+	
+	--watch	当文件改变时,随即进行编译
+	webpacl hello.js hello.bundle.js --watch
+	
+	--module-bind 绑定加载器	
+	打包,并制定css样式的加载器,减少import中的加载器指定
+	webpack  hello.js hello.bundle.js --module-bind 'css=style=loader!css-loader'
+	
+	-- progress 显示打包过程的控制台输出
+	-- display-modules 显示所有引用的模块及加载器
+	-- display-reasons 打包的原因显示
+
+
+控制台输出
+	Hash: 666340732ac35577055f		打包后文件的哈希值
+	Version: webpack 3.10.0			打包文件的版本
+	Time: 89ms						花费的时间
+	          Asset(文件名)     	Size(文件大小)  		Chunks(文件的分块)      	Chunk Names(打包后的名字)
+	hello.bundle.js  			2.51 kB       		0  [emitted]  			main
+	
+打包的过程
+	将项目所需要的依赖引入文件,并将不同的模块分块打入同一个文件	
+

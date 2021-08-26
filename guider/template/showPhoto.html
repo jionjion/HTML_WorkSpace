@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" th:href="@{/css/bootstrap.css}" />
+	</head>
+	<script src="../js/jquery.min.js" th:src="@{/js/jquery.min.js}" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		.guider-card-box {
+			/* max-width: calc(60% - 20px); */
+		}
+		
+		/* 重写框架,默认显示4列 */
+		.guider-card-columns {
+			margin: 0 auto;
+			-webkit-column-count: 4;
+			-moz-column-count: 4;
+			column-count: 4;
+			column-gap: 2 rem;
+		}
+		
+		.guider-card-box > img {
+			
+		}
+	</style>
+	<body>
+
+		<div class="container-fluid">
+			<div class="row m-3">
+
+
+				<div id="main" class="card-columns guider-card-columns">
+					<div class="card guider-card-box">
+						<img class="card-img-top" src="../store/qipao/上海老街巷里的青花旗袍/上海老街巷里的青花旗袍(图4).jpg" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">青花旗袍</h5>
+							<p class="card-text">迷失在上海古老的小巷中</p>
+						</div>
+					</div>
+
+					<div class="card guider-card-box">
+						<img class="card-img-top" src="../store/qipao/中国美女明星旗袍装/中国美女明星旗袍装(图9).jpg" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">明星旗袍装</h5>
+							<p class="card-text">迷失在上海古老的小巷中</p>
+						</div>
+					</div>
+					<div class="card guider-card-box">
+						<img class="card-img-top" src="../store/qipao/余男新写真妖艳旗袍魅惑/余男新写真妖艳旗袍魅惑(图5).jpg" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">妖艳旗袍</h5>
+							<p class="card-text">迷失在上海古老的小巷中</p>
+						</div>
+					</div>
+					<div class="card guider-card-box">
+						<img class="card-img-top" src="../store/qipao/中国美女明星旗袍装/中国美女明星旗袍装(图5).jpg" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">青花旗袍</h5>
+							<p class="card-text">迷失在上海古老的小巷中</p>
+						</div>
+					</div>
+					<div class="card guider-card-box">
+						<img class="card-img-top" src="../store/qipao/余男新写真妖艳旗袍魅惑/余男新写真妖艳旗袍魅惑(图1).jpg" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">妖艳旗袍</h5>
+							<p class="card-text">迷失在上海古老的小巷中</p>
+						</div>
+					</div>
+					<div class="card guider-card-box">
+						<img class="card-img-top" src="../store/qipao/上海老街巷里的青花旗袍/上海老街巷里的青花旗袍(图4).jpg" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">青花旗袍</h5>
+							<p class="card-text">迷失在上海古老的小巷中</p>
+						</div>
+					</div>
+					<div class="card guider-card-box">
+						<img class="card-img-top" src="../store/qipao/气质旗袍美女居家秀丝袜美腿/气质旗袍美女居家秀丝袜美腿(图3).jpg" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">青花旗袍</h5>
+							<p class="card-text">迷失在上海古老的小巷中</p>
+						</div>
+					</div>
+					<div class="card guider-card-box">
+						<img class="card-img-top" src="../store/qipao/旗袍绝色嫩模修美腿好身材/旗袍绝色嫩模修美腿好身材(图6).jpg" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">青花旗袍</h5>
+							<p class="card-text">迷失在上海古老的小巷中</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+		<script>
+		/* 
+		outerHeight	:	DOM边距高度
+		innerHeight	:	DOM填充高度
+		
+			Bootstrap的无限瀑布流布局
+		 
+		 */
+		$(function(){
+			
+			//动态添加瀑布图片的功能函数
+ 			function waterfall() {
+				
+				var $boxs = $("#main > div");
+				
+				// 4个一列
+				var cols = 4;
+	
+				// 用于存储 每列相加的高度
+				var cols_array = [];
+
+				// 循环当前所有的方块
+				$boxs.each(function(index, item) {
+					// 每一个方块的高度
+					var box_with = $boxs.eq(index).outerHeight();
+					// 对于第一行,将其高度填入数组
+					if (index < cols) {
+						cols_array[index] = box_with; 
+					// 第二行,将其高度加上数组的最小值,并将其放在上一行最低的后面
+					} else {
+						// 数组中的最小值
+						var cols_array_min_hegiht = Math.min.apply(null, cols_array); 
+						// 最小值所在的索引
+						var cols_array_min_hegiht_index = $.inArray(cols_array_min_hegiht, cols_array);
+						// 修改其位置,放在改行最小值后面
+						$(item).css({
+							'position': 'absolute',
+							'top': cols_array_min_hegiht + 'px',
+							'left': cols_array_min_hegiht_index * box_with + 'px'
+						});
+						//数组 最小高元素的高 + 添加上的展示框[i]块框高
+						hArr[minHIndex] += $boxs.eq(index).outerHeight(); //更新添加了块框后的列高
+					}
+				});
+			}
+
+
+
+
+			// 监听滚动条,是否到底
+			window.onscroll = function() {
+				// 滚动条初始高度
+				var scroll_height = $(document).scrollTop();
+				// 当前窗口高度
+				var window_height = $(window).height();
+				// 整个页面的高度,即渲染的页面总高
+				var document_height = $(document).height();
+				// 滚动条滚过的高度 + 当前窗口高度 >= 已渲染的总页面高度 
+				// 30为预留感应边距
+				if (scroll_height + window_height + 30 >= document_height) {
+					// 渲染新页面
+					addNewPhoto();
+				}
+			}
+			
+			function return_template(src){
+				var template = ""
+					+	'<div class="card guider-card-box">'
+					+		'<img class="card-img-top" src=" '+ src +' " alt="Card image cap">'
+					+		'<div class="card-body">'
+					+			'<h5 class="card-title">青花旗袍</h5>'
+					+			'<p class="card-text">迷失在上海古老的小巷中</p>'
+					+		'</div>'
+					+	'</div>';
+				return template;
+			}
+			
+			function get_scr(){
+				var imgs = ['../store/qipao/旗袍MM王婉珈笔记本片片/旗袍MM王婉珈笔记本片片(图1).jpg',
+							'../store/qipao/奢华旗袍摄影大片《昏弥》/奢华旗袍摄影大片《昏弥》(图10).jpg',
+							'../store/qipao/旗袍MM王婉珈笔记本片片/旗袍MM王婉珈笔记本片片(图3).jpg',
+							'../store/qipao/平面模特金雪儿庭院旗袍写真/平面模特金雪儿庭院旗袍写真(图1).jpg',
+							'../store/qipao/旗袍绝色嫩模修美腿好身材/旗袍绝色嫩模修美腿好身材(图1).jpg',
+							'../store/qipao/奢华旗袍摄影大片《昏弥》/奢华旗袍摄影大片《昏弥》(图7).jpg',
+							'../store/qipao/旗袍绝色嫩模修美腿好身材/旗袍绝色嫩模修美腿好身材(图5).jpg',
+							'../store/qipao/中国美女明星旗袍装/中国美女明星旗袍装(图1).jpg',
+							'../store/qipao/平面模特金雪儿庭院旗袍写真/平面模特金雪儿庭院旗袍写真(图5).jpg',
+							'../store/qipao/奢华旗袍摄影大片《昏弥》/奢华旗袍摄影大片《昏弥》(图5).jpg',
+							'../store/qipao/旗袍绝色嫩模修美腿好身材/旗袍绝色嫩模修美腿好身材(图4).jpg',
+							'../store/qipao/平面模特金雪儿庭院旗袍写真/平面模特金雪儿庭院旗袍写真(图3).jpg',
+							'../store/qipao/奢华旗袍摄影大片《昏弥》/奢华旗袍摄影大片《昏弥》(图2).jpg',
+							'../store/qipao/气质旗袍美女居家秀丝袜美腿/气质旗袍美女居家秀丝袜美腿(图4).jpg',
+							'../store/qipao/气质旗袍美女居家秀丝袜美腿/气质旗袍美女居家秀丝袜美腿(图1).jpg',
+							'../store/qipao/中国美女明星旗袍装/中国美女明星旗袍装(图3).jpg'
+							];
+							
+				var index = Math.floor(Math.random() * 16);
+				return imgs[index];
+			}
+			
+			// 添加图片
+			function addNewPhoto(){
+				// 每次添加十张
+				for (var i=0 ; i<10 ; i++){
+					var src = get_scr();
+					var temp = return_template(src);
+					$('#main').append(temp);
+				}
+			}
+			
+			
+			});
+		</script>
+	</body>
+</html>
